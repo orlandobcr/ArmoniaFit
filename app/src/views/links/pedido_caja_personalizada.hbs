@@ -1,0 +1,106 @@
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">
+<link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-gradient.css">
+<link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/drag-and-drop.css">
+<!-- END: Page CSS-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+          <div class="content-header row">
+              <div class="content-header-left col-md-9 col-12 mb-2">
+                  <div class="row breadcrumbs-top">
+                      <div class="col-12">
+                          <h2 class="content-header-title float-left mb-0">Caja {{nombre_caja}}</h2>
+                          <div class="breadcrumb-wrapper col-12">
+                              <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="index.html">Home</a>
+                                  </li>
+                                  <li class="breadcrumb-item"><a href="#">contenido de caja</a>
+                                  </li>
+                                  <li class="breadcrumb-item active">detalle
+                                  </li>
+                              </ol>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+          <div class="content-body">
+              <!-- Data list view starts -->
+              <section id="sortable-lists">
+                  <div class="row">
+                      <!-- Basic List Group -->
+
+                      <div class="col-sm-12">
+                          <div class="card">
+                              <div class="card-header">
+                                  <h4 class="card-title">
+                                      Arrastre las pulpas que quiere agregar o quitar de la caja
+                                  </h4>
+                              </div>
+                              <div class="card-content">
+                                  <div class="card-body">
+                                      <div class="row">
+                                          <div class="col-md-6 col-sm-12">
+                                              <h4 class="my-1">Pulpas disponibles</h4>
+                                              <ul class="list-group list-group-flush" id="pulpas_disponibles">
+                                                {{#each pulpas}}
+                                                  <li id="{{id_pulpa}}" class="list-group-item">
+                                                      <div class="media">
+                                                          <img src="/imagenes/pulpas/{{imagen_pulpa}}" class="" alt="img-placeholder"  width="50">
+                                                          <div class="media-body ml-1">
+                                                              <h5 class="mt-0">{{nombre_pulpa}}</h5>
+                                                              <span id="descripcion_{{id_pulpa}}" class="mt-0">{{{descripcion}}}</span>
+                                                              <h5 id="precio_{{id_pulpa}}" class="mt-0">Precio unidad: ${{precio_pulpa}}</h5>
+                                                              <h5 id="subtotal_{{id_pulpa}}" class="mt-0 d-none subtotal">Subtotal: ${{precio_pulpa}}</h5>
+
+                                                          </div>
+
+                                                          <div class="d-none text-center" id="opciones_{{id_pulpa}}">
+                                                          <h5 class="mt-0">Cantidad: <span class="cantidad_pulpas" id="cantidad_{{id_pulpa}}" >1</span></h5>
+                                                          <i style="font-size:1.5em" onclick="restar({{id_pulpa}},{{precio_pulpa}});" class="feather icon-minus"></i>
+                                                          <i style="font-size:1.5em" onclick="sumar({{id_pulpa}},{{precio_pulpa}});" class="feather icon-plus"></i>
+
+
+                                                          <div>
+                                                      </div>
+                                                      <div >
+
+
+                                                      </div>
+                                                  </li>
+                                                {{/each}}
+
+                                              </ul>
+                                          </div>
+                                          <div class="col-md-6 col-sm-12 row">
+                                              <h4 class="my-1 col">Contenido caja</h4>
+                                              <h4 id="total" class="my-1  text-right">Total $0</h5>
+                                              <ul class="list-group list-group-flush full-height col-12" id="contenido_caja">
+
+                                              </ul>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+              <!-- Data list view end -->
+
+          </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="/app-assets/vendors/js/extensions/dragula.min.js"></script>
+    <!-- END: Page Vendor JS-->
+    <!-- BEGIN: Page JS-->
+    <script src="/app-assets/js/scripts/extensions/pedido_caja_personalizada.js"></script>
+    <!-- END: Page JS-->

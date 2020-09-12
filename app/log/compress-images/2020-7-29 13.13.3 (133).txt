@@ -1,0 +1,7 @@
+File from: [./src/public/articulos/imagenes/originales/article_4335_20200829_130813.jpg]
+
+File to: [./src/public/articulos/imagenes/article_4335_20200829_130813.jpg]
+
+Compression algorithm: [-]
+
+Description: File does not exist!

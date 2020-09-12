@@ -1,0 +1,232 @@
+<!-- BEGIN SIDEBPANEL-->
+
+<nav class="page-sidebar" data-pages="sidebar">
+  <!-- BEGIN SIDEBAR MENU TOP TRAY CONTENT-->
+  <div class="sidebar-overlay-slide from-top" id="appMenu">
+    <div class="row">
+      <div class="col-xs-6 no-padding">
+        <a href="#" class="p-l-40"><img src="/assets/img/demo/social_app.svg" alt="socail">
+        </a>
+      </div>
+      <div class="col-xs-6 no-padding">
+        <a href="#" class="p-l-10"><img src="/assets/img/demo/email_app.svg" alt="socail">
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 m-t-20 no-padding">
+        <a href="#" class="p-l-40"><img src="/assets/img/demo/calendar_app.svg" alt="socail">
+        </a>
+      </div>
+      <div class="col-xs-6 m-t-20 no-padding">
+        <a href="#" class="p-l-10"><img src="/assets/img/demo/add_more.svg" alt="socail">
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
+  <!-- BEGIN SIDEBAR MENU HEADER-->
+  <div class="sidebar-header">
+    <img src="/assets/img/logo_white.png" alt="logo" class="brand" data-src="/assets/img/logo_white.png" data-src-retina="/assets/img/logo_white_2x.png" width="78" height="22">
+    <div class="sidebar-header-controls">
+      <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20 hidden-md-down" data-pages-toggle="#appMenu"><i class="fa fa-angle-down fs-16"></i>
+      </button>
+      <button type="button" class="btn btn-link hidden-md-down" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
+      </button>
+    </div>
+  </div>
+  <!-- END SIDEBAR MENU HEADER-->
+  <!-- START SIDEBAR MENU -->
+  <div class="sidebar-menu">
+    <!-- BEGIN SIDEBAR MENU ITEMS-->
+    <ul class="menu-items">
+
+      <li class="m-t-30 ">
+        <a href="/" class="detailed">
+          <span class="title">Dashboard</span>
+          <span class="details">home</span>
+        </a>
+        <span class="bg-success icon-thumbnail"><i class="pg-home"></i></span>
+      </li>
+
+
+
+
+            {{#compare user.realizar_solicitudes "1"}}
+
+            <li>
+              <a href="javascript:;">
+                <span class="title">Nueva solicitud</span>
+                <span class=" open  arrow"></span>
+              </a>
+              <span class="icon-thumbnail"><i class="pg-form"></i></span>
+              <ul class="sub-menu">
+                <li class="">
+                  <a href="/links/nuevo_estudio_antecedentes">Antecedente</a>
+                  <span class="icon-thumbnail">A</span>
+                </li>
+
+                <li class="">
+                  <a href="/links/nuevo_estudio_hv"><span class="title">Hoja de vida</span></a>
+                  <span class="icon-thumbnail">HV</span>
+                </li>
+
+                <li class="">
+                  <a href="/links/nuevo_estudio_visita"><span class="title">Visita domiciliaria</span></a>
+                  <span class="icon-thumbnail">V</span>
+                </li>
+
+                <li class="">
+                  <a href="/links/nuevo_estudio_esp"><span class="title">ESP</span></a>
+                  <span class="icon-thumbnail">ESP</i></span>
+                </li>
+
+                <li class="">
+                  <a href="/links/nuevo_estudio_poligrafia"><span class="title">Poligrafía</span></a>
+                  <span class="icon-thumbnail">P</span>
+                </li>
+              </ul>
+            </li>
+            {{/compare}}
+
+            {{#compare user.consultar_solicitudes "1"}}
+            <li>
+              <a href="javascript:;">
+                <span class="title">Consultas </span>
+                <span class=" open  arrow"></span>
+              </a>
+              <span class="icon-thumbnail"><i class="pg-search"></i></span>
+              <ul class="sub-menu">
+                <li class="">
+                  <a href="/links/consulta_antecedentes">Antecedentes</a>
+                  <span class="icon-thumbnail">A</span>
+                </li>
+                <li class="">
+                  <a href="/links/consulta_hv">Hojas de vida</a>
+                  <span class="icon-thumbnail">H</span>
+                </li>
+                <li class="">
+                  <a href="/links/consulta_visitas">Visita domiciliaria</a>
+                  <span class="icon-thumbnail">V</span>
+                </li>
+                <li class="">
+                  <a href="/links/consulta_esp">ESP</a>
+                  <span class="icon-thumbnail">E</span>
+                </li>
+                <li class="">
+                  <a href="/links/consulta_poligrafias">Poligrafías</a>
+                  <span class="icon-thumbnail">E</span>
+                </li>
+              </ul>
+            </li>
+
+
+            {{/compare}}
+
+
+
+            {{#coordinador user.gestor_ante user.gestor_hv user.gestor_visita user.gestor_esp user.gestor_poligrafia }}
+            <li>
+              <a href="javascript:;">
+                <span class="title">Coordinación</span>
+                <span class=" open  arrow"></span>
+              </a>
+              <span class="icon-thumbnail"><i class="pg-form"></i></span>
+              <ul class="sub-menu">
+                {{#compare ../user.gestor_ante "1"}}
+                <li>
+                  <a href="/links/inbox_antecedentes">Inbox antecedentes</a>
+                  <span class="icon-thumbnail">fe</span>
+                </li>
+                {{/compare}}
+                {{#compare ../user.gestor_hv "1"}}
+                <li>
+                  <a href="/links/inbox_hv">Inbox HV</a>
+                  <span class="icon-thumbnail">fl</span>
+                </li>
+                {{/compare}}
+                {{#compare ../user.gestor_visita "1"}}
+                <li>
+                  <a  href="/links/inbox_visitas">Inbox visitas</a>
+                  <span class="icon-thumbnail">fw</span>
+                </li>
+                {{/compare}}
+                {{#compare ../user.gestor_esp "1"}}
+                <li>
+                  <a href="/links/inbox_esp">Inbox ESP</a>
+                  <span class="icon-thumbnail">fw</span>
+                </li>
+                {{/compare}}
+                {{#compare ../user.gestor_poligrafia "1"}}
+                <li>
+                  <a href="/links/inbox_poligrafia">Inbox Poligrafía</a>
+                  <span class="icon-thumbnail">fw</span>
+                </li>
+                {{/compare}}
+
+              </ul>
+              </li>
+            {{/coordinador}}
+
+
+            {{#compare user.admin_cuenta "1"}}
+            <li >
+              <a href="/links/detalle_cliente/{{../user.id_cliente}}" class="detailed">
+                <span class="title">Gestión de</span>
+                <span class="details">cuenta</span>
+              </a>
+              <span class="icon-thumbnail"><i class="pg-settings"></i></span>
+            </li>
+            {{/compare}}
+
+            {{#compare user.admin "1"}}
+
+            <li >
+              <a href="javascript:;">
+                <span class="title">Administración</span>
+                <span class=" open  arrow"></span>
+              </a>
+              <span class="icon-thumbnail"><i class="pg pg-ui"></i></span>
+              <ul class="sub-menu">
+                {{#compare ../user.super_admin "1"}}
+                <li class="">
+                  <a href="/links/gestion_usuarios">Usuarios</a>
+                  <span class="icon-thumbnail">fw</span>
+                </li>
+                {{/compare}}
+                <li>
+                  <a href="javascript:;"><span class="title">Clientes</span>
+                  <span class="arrow"></span></a>
+                  <span class="icon-thumbnail">C</span>
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="/links/gestion_clientes">Ver clientes</a>
+                      <span class="icon-thumbnail">View</span>
+                    </li>
+                    <li>
+                      <a href="/links/nuevo_cliente">Agregar cliente</a>
+                      <span class="icon-thumbnail">Add</span>
+                    </li>
+                  </ul>
+                </li>
+                <!--  <li class="">
+                  <a href="/links/settings"><span class="title">Configuraciones</span></a>
+                  <span class="icon-thumbnail"><i class="pg-layouts"></i></span>
+                </li> -->
+              </ul>
+            </li>
+
+            {{/compare}}
+
+
+
+
+
+
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+  <!-- END SIDEBAR MENU -->
+</nav>
+<!-- END SIDEBAR -->
+<!-- END SIDEBPANEL-->

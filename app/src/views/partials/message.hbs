@@ -1,0 +1,40 @@
+
+{{#if warning}}
+<script>
+
+                  Swal.fire({
+                    title: "Notificación:",
+                    text: "{{message}}",
+                    type: "warning",
+                    confirmButtonClass: 'btn btn-primary',
+                    buttonsStyling: false,
+                  });
+</script>
+{{/if}}
+
+{{#if success}}
+<script>
+
+                  Swal.fire({
+                    title: "Notificación:",
+                    text: "{{success}}",
+                    type: "success",
+                    confirmButtonClass: 'btn btn-primary',
+                    buttonsStyling: false,
+                  });
+</script>
+{{/if}}
+
+
+{{#if danger}}
+<script>
+
+                  Swal.fire({
+                    title: "Notificación:",
+                    text: "{{success}}",
+                    type: "danger",
+                    confirmButtonClass: 'btn btn-primary',
+                    buttonsStyling: false,
+                  });
+</script>
+{{/if}}

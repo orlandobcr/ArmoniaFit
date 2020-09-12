@@ -1,0 +1,148 @@
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="/app-assets/css/pages/users.css">
+<!-- END: Page CSS-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+          <div class="content-header row">
+              <div class="content-header-left col-md-9 col-12 mb-2">
+                  <div class="row breadcrumbs-top">
+                      <div class="col-12">
+                          <h2 class="content-header-title float-left mb-0">Tipo de registro</h2>
+                          <div class="breadcrumb-wrapper col-12">
+                              <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="/">Registro</a>
+                                  </li>
+                                  <li class="breadcrumb-item"><a href="#">tipo</a>
+                                  </li>
+                              </ol>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+          <div class="content-body">
+              <!-- Data list view starts -->
+              <div class="row">
+
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <img class="card-img img-fluid" src="/app-assets/images/tipo_registro/cliente.jpg" alt="Card image">
+                                    <div class="card-img-overlay overflow-hidden  overlay-lighten-2">
+                                          <h4 style="text-shadow: black 0.1em 0.1em 0.2em;width: 100%; margin: 0px;position: absolute;background: #0000008f;left: 0px;padding: 20px;bottom: 0px;text-align: left;" class="text-white">¿Buscas entrenador?</h4>
+                                          <button id="cliente" style="position:absolute; bottom:0px  ; right:0px ;margin-bottom:10px;margin-right:10px" href="#" class="btn btn-primary waves-effect waves-light">¡Comenzar!</button>
+                                    </div>
+                                </div>
+                            </div>
+                  </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <img class="card-img img-fluid" src="/app-assets/images/tipo_registro/entrenador.png" alt="Card image">
+                                    <div class="card-img-overlay overflow-hidden  overlay-lighten-2">
+                                          <h4 style="text-shadow: black 0.1em 0.1em 0.2em;width: 100%; margin: 0px;position: absolute;background: #0000008f;left: 0px;padding: 20px;bottom: 0px;text-align: left;" class="text-white">¡Soy entrenador!</h4>
+                                          <button id="entrenador" style="position:absolute; bottom:0px  ; right:0px ;margin-bottom:10px;margin-right:10px"  class="btn btn-primary waves-effect waves-light">¡Comenzar!</button>
+                                    </div>
+                                </div>
+                            </div>
+                  </div>
+
+
+
+                </div>
+
+              <!-- Data list view end -->
+
+          </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+
+
+<script>
+
+$(document).ready(function(e) {
+
+  $("#entrenador").click(function () {
+
+               var data2send = {"es_entrenador":1};
+
+               $.ajax({
+                   url: "/links/guardar_tipo_usuario",
+                   data:data2send,
+                   type: "POST",
+                   success: function(response) {
+
+                     if(response.status == 1){
+
+                      window.location.href = '/links/editar_perfil_entrenador';
+
+                       }else{
+
+                         Swal.fire({
+                           title: "No estamos recibiendo aplicaciones en este momento",
+                           text: "",
+                           type: "warning",
+                           confirmButtonClass: 'btn btn-primary',
+                           buttonsStyling: false,
+                         });
+
+
+                       }
+                   },
+                   error: function(xhr) {
+
+                   }
+               });
+
+
+
+  });
+
+
+  $("#cliente").click(function () {
+
+               var data2send = {"es_cliente":1};
+
+               $.ajax({
+                   url: "/links/guardar_tipo_usuario",
+                   data:data2send,
+                   type: "POST",
+                   success: function(response) {
+
+                     if(response.status == 1){
+
+                      window.location.href = '/links/editar_perfil_cliente';
+
+                       }else{
+
+                         Swal.fire({
+                           title: "No estamos recibiendo aplicaciones en este momento",
+                           text: "",
+                           type: "warning",
+                           confirmButtonClass: 'btn btn-primary',
+                           buttonsStyling: false,
+                         });
+
+
+                       }
+                   },
+                   error: function(xhr) {
+
+                   }
+               });
+
+
+
+  });
+
+
+});
+
+</script>

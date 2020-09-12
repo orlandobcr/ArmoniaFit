@@ -1,0 +1,2303 @@
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="/app-assets/css/pages/users.css">
+
+<link rel="stylesheet" type="text/css" href="/app-assets/css/ruta.css">
+<link rel="stylesheet" type="text/css" href="/app-assets/css/maps/jquery.ui.all.css">
+
+<link rel="stylesheet" type="text/css" href="/app-assets/vendors/css/extensions/nouislider.min.css">
+
+
+<link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/extensions/noui-slider.css">
+<link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-noui.css">
+
+
+
+<!-- END: Page CSS-->
+{{#each usuario}}
+  <!-- BEGIN: Content-->
+  <div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+      <div class="content-header row">
+        <div class="content-header-left col-md-9 col-12 mb-2">
+          <div class="row breadcrumbs-top">
+            <div class="col-12">
+              <h2 class="content-header-title float-left mb-0">Tu información de registro</h2>
+              <div class="breadcrumb-wrapper col-12">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a>
+                  </li>
+                  <li class="breadcrumb-item"><a href="/links/perfil_entrenador">perfil entrenador</a>
+                  </li>
+                  <li class="breadcrumb-item"><a href="/links/editar_perfil_entrenador">editar</a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="content-body">
+        <!-- Data list view starts -->
+        <section id="page-account-settings">
+          <div class="row">
+            <!-- left menu section -->
+            <div class="col-md-3 mb-2 mb-md-0">
+              <ul class="nav nav-pills flex-column mt-md-0 mt-1">
+                <li id="menu-personal" class="nav-item">
+                  <a class="nav-link d-flex py-75 active" id="account-pill-personal" data-toggle="pill" href="#info-personal" aria-expanded="true">
+                    <i class="feather icon-user mr-50 font-medium-3"></i>
+                    Datos personales
+                    <span id="info_per"></span>
+                  </a>
+                </li>
+
+                <li id="menu-laboral" class="nav-item">
+                  <a class="nav-link d-flex py-75" id="account-pill-laboral" data-toggle="pill" href="#info-laboral" aria-expanded="false">
+                    <i class="feather icon-heart mr-50 font-medium-3"></i>
+                    Laboral
+                    <span id="info_lab"></span>
+                  </a>
+                </li>
+
+                <li style="display:none" id="menu-cobertura" class="nav-item load_circle">
+                  <a class="nav-link d-flex py-75" id="account-pill-cobertura" data-toggle="pill" href="#info-cobertura" aria-expanded="true">
+                    <i class="feather icon-globe mr-50 font-medium-3"></i>
+                    Cobertura
+                    <span id="info_cob"></span>
+                  </a>
+                </li>
+
+                <li id="menu-academico" class="nav-item">
+                  <a class="nav-link d-flex py-75" id="account-pill-academico" data-toggle="pill" href="#info-academica" aria-expanded="false">
+                    <i class="fa fa-graduation-cap mr-50 font-medium-3"></i>
+                    Académica
+                  <span id="info_aca"></span>
+                  </a>
+                </li>
+
+                <li id="menu-social" class="nav-item">
+                  <a class="nav-link d-flex py-75" id="account-pill-social" data-toggle="pill" href="#account-vertical-social" aria-expanded="false">
+                    <i class="feather icon-camera mr-50 font-medium-3"></i>
+                    Redes sociales
+                      <span id="info_soc"></span>
+                  </a>
+                </li>
+
+                <li id="menu-planes" class="nav-item d-none">
+                  <a class="nav-link d-flex py-75" id="account-pill-planes" data-toggle="pill" href="#info-planes" aria-expanded="false">
+                    <i class="feather icon-feather mr-50 font-medium-3"></i>
+                    Planes
+                  </a>
+                </li>
+
+
+                <!--
+                              <li id="menu-planes" class="nav-item">
+                                  <a class="nav-link d-flex py-75" id="account-pill-connections" data-toggle="pill" href="#account-vertical-connections" aria-expanded="false">
+                                      <i class="feather icon-feather mr-50 font-medium-3"></i>
+                                      Connections
+                                  </a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a class="nav-link d-flex py-75" id="account-pill-notifications" data-toggle="pill" href="#account-vertical-notifications" aria-expanded="false">
+                                      <i class="feather icon-message-circle mr-50 font-medium-3"></i>
+                                      Notifications
+                                  </a>
+                              </li>
+                              -->
+              </ul>
+            </div>
+            <!-- right content section -->
+            <div class="col-md-9">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane active" id="info-personal" aria-expanded="true">
+
+                        <form method="post" enctype="multipart/form-data" id="form-info-personal" class="p-t-15" action="/links/guardar_info_personal">
+                          <div class="media">
+                            <a href="javascript: void(0);">
+                              <img id="foto" src="{{#if imagen_perfil}}{{imagen_perfil}}{{else}}/img_profiles/profile_default.jpg{{/if}}" class="rounded mr-75" alt="profile image" height="64" width="64">
+                            </a>
+                            <div class="media-body mt-75">
+                              <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer cambiar_imagen">Cambiar imágen</label>
+                                <input class="hidden" accept="image/*" name="img_perfil" id="img_perfil" type="file" class="custom-file-input archivo_adjunto">
+                                <!-- <button class="btn btn-sm btn-outline-warning ml-50">Reset</button> -->
+                              </div>
+                              <p class="text-muted ml-75 mt-50"><small>Formatos permitidos: JPG, GIF or PNG</small></p>
+                            </div>
+                          </div>
+                          <hr>
+
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="form-group">
+                                <label for="account-nick">Nombre personalizado (asi aparecerá en los resultados de búsqueda)</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <input type="text" class="form-control" name="nick" id="account-nick" placeholder="Nick" value="{{#if nick}}{{nick}}{{else}}{{nombre}} {{apellido}}{{/if}}" data-validation-required-message="El nick es requerido"
+                                    required>
+                                  <div class="form-control-position">
+                                    <i class="feather icon-user"></i>
+                                  </div>
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+                            <div class="col-12">
+                              <div class="form-group">
+                                <label for="account-bio">Descripción tuya (asi aparecerá en los resultados de búsqueda)</label>
+                                <fieldset class="form-group position-relative ">
+                                  <textarea class="form-control" placeholder="Cuéntanos algo sobre ti" name="bio" id="account-bio" maxlength="200" value="" required ></textarea>
+
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="account-nick">Nombre</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <input type="text" class="form-control" name="nombre" id="account-name" placeholder="Nombre" value="{{nombre}}" required data-validation-required-message="This username field is required">
+                                  <div class="form-control-position">
+                                    <i class="feather icon-user"></i>
+                                  </div>
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="account-nick">Apellido</label>
+                                <fieldset class="form-group position-relative has-icon-left ">
+                                  <input type="text" class="form-control" name="apellido" id="account-lastname" placeholder="Apellido" value="{{apellido}}" required data-validation-required-message="This name field is required" >
+                                  <div class="form-control-position">
+                                    <i class="feather icon-user"></i>
+                                  </div>
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="account-nick">Tipo de documento</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <select class="form-control js-example-programmatic" name="tipo_documento" id="tipo_documento" required>
+                                      <option selected="selected" value="CC">Cédula de ciudadanía</option>
+                                      <option value="CE">Cédula de extrangería</option>
+                                      <option value="PEP">Permiso especial</option>
+                                      <option value="PA">Pasaporte</option>
+                                  </select>
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="account-nick">Número de documento</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <input type="text" class="form-control" name="documento" id="documento" placeholder="Número de documento" value="{{documento}}" required >
+                                  <div class="form-control-position">
+                                    <i class="feather icon-hash"></i>
+                                  </div>
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="account-nick">E-mail</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <input type="email" class="form-control" placeholder="Email" name="email" value="{{email}}" disabled>
+                                  <div class="form-control-position">
+                                    <i class="fa fa-envelope"></i>
+                                  </div>
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="account-nick">Número celular</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <input type="tel" class="form-control" placeholder="Celular" name="celular" value="{{celular}}" required>
+                                  <div class="form-control-position">
+                                    <i class="fa fa-mobile"></i>
+                                  </div>
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="account-nick">Departamento de residencia</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <select class="form-control js-example-programmatic" name="departamento" id="dep" required> </select>
+
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="account-nick">Ciudad de residencia</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <select class="form-control js-example-programmatic" name="ciudad" id="city" required> </select>
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+                            <div class="col-12">
+                              <div class="form-group">
+                                <label for="account-nick">Dirección de residencia</label>
+                                <fieldset class="form-group">
+                                  <textarea class="form-control" name="direccion" required>{{direccion}}</textarea>
+
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+
+                            <!--
+                                                      <div class="col-12">
+                                                          <div class="alert alert-warning alert-dismissible mb-2" role="alert">
+                                                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                  <span aria-hidden="true">×</span>
+                                                              </button>
+                                                              <p class="mb-0">
+                                                                  Your email is not confirmed. Please check your inbox.
+                                                              </p>
+                                                              <a href="javascript: void(0);">Resend confirmation</a>
+                                                          </div>
+                                                      </div>
+
+                                                      <div class="col-12">
+                                                          <div class="form-group">
+                                                              <label for="account-company">Company</label>
+                                                              <input type="text" class="form-control" id="account-company" placeholder="Company name">
+                                                          </div>
+                                                      </div>
+                                                    -->
+
+                            <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                              <button type="submit" class="btn-lg btn-primary mr-sm-1 mb-1 mb-sm-0">Guardar</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div class="tab-pane fade " id="info-laboral" role="tabpanel" aria-expanded="false">
+                        <form method="post" enctype="multipart/form-data" id="form-info-laboral" class="p-t-15" action="/links/guardar_info_laboral">
+                          <div class="row">
+
+                            <div class="mb-2 row full-width ml-2">
+                              <div class="text-bold-600 font-medium-2 col-12 mb-1">
+                                Seleccione la(s) modalididad(es):
+                              </div>
+                              <div class="vs-checkbox-con vs-checkbox-primary col mt-">
+                                <input id="virtual" name="virtual" type="checkbox" value="0">
+                                <span class="vs-checkbox vs-checkbox-lg">
+                                  <span class="vs-checkbox--check">
+                                    <i class="vs-icon feather icon-check"></i>
+                                  </span>
+                                </span>
+                                <span class="">Aulas virtuales</span>
+                              </div>
+                              <div class="vs-checkbox-con vs-checkbox-primary col float-left">
+                                <input id="presencial" name="presencial" type="checkbox" value="0">
+                                <span class="vs-checkbox vs-checkbox-lg">
+                                  <span class="vs-checkbox--check">
+                                    <i class="vs-icon feather icon-check"></i>
+                                  </span>
+                                </span>
+                                <span class="">Aulas presenciales</span>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="text-bold-600 font-medium-2">
+                                Seleccione la(s) categorías(s):
+                              </div>
+                              <div class="form-group">
+                                <select name="categorias" id="categorias" class="select2 form-control select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" required>
+                                  {{#each ../categorias}}
+                                    <option value="{{id}}">{{nombre}}</option>
+                                  {{/each}}
+                                </select>
+                              </div>
+                            </div>
+                            <div id="sub-categoria-div" class="col-12 d-none">
+                              <div class="text-bold-600 font-medium-2">
+                                Seleccione la(s) subcategoría(s):
+                              </div>
+                              <div class="form-group">
+                                <select name="sub_categorias" id="sub-categorias" class="select2 form-control select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true">
+
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="text-bold-600 font-medium-2">
+                                Seleccione los idimas en los que puedes atender
+                              </div>
+                              <div class="form-group">
+                                <select name="idiomas" id="idiomas" class="select2 form-control select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" required>
+                                  <option value="es" selected> Español</option>
+                                  <option value="en">Ingles</option>
+                                  <option value="pt">Portugués</option>
+                                  <option value="fr">Francés</option>
+                                  <option value="it">Italiano</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                              <button type="submit" class="btn-lg btn-primary mr-sm-1 mb-1 mb-sm-0 ">Guardar</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div role="tabpanel" class="tab-pane" id="info-cobertura" aria-labelledby="account-pill-general" aria-expanded="false">
+
+
+
+                        <form method="post" enctype="multipart/form-data" id="form-info-cobertura" class="p-t-15" action="/links/guardar_info_cobertura" novalidate>
+
+                          <div class="row">
+
+
+
+                            <div style="top: 0px;z-index: 2;left: 0px;background: #343a40b5;position: relative;height: 230px;" class="col">
+
+                              <div style="position: absolute;width: 100%;left: 0px;top: 0px;">
+
+
+                                <div class='row ml-2 mr-2 mt-1 mb-0'>
+
+
+                                  <h3 class="col-12 text-white text-center mt-0">Zona de cobertura:</h3>
+                                  <h5 class="col-12 text-white text-center mt-0">Escriba la dirección o arrastre el marcador</h5>
+
+                                  <div class="col-sm-12 data-field-col">
+                                    <h4 style="color:white !important" for="data-name">Direccion:</h4>
+                                    <input id="addresspicker_map" type="text" class="form-control col" name="cobertura_dir" required="">
+                                  </div>
+
+                                  <div class="col-sm-10 data-field-col">
+                                    <h4 style="color:white !important" for="data-name">Radio en kilometros:</h4>
+                                    <input id="cobertura_radio" type="number" class="form-control col" name="cobertura_radio" value="{{#if cobertura_radio}}{{cobertura_radio}}{{else}}2{{/if}}" hidden>
+                                    <div tyle="color:white !important" class="form-group">
+                                      <div style="color:white !important" id="pips-range" class="mt-1 mb-3"></div>
+                                    </div>
+                                  </div>
+
+                                  <div style="" class=" col-sm-2 align-self-center">
+                                    <button type="submit" class="btn-lg btn-primary mr-sm-1 mb-1 mb-sm-0">Guardar</button>
+                                  </div>
+
+
+                                  <div style="display:none" class="col-sm-12 data-field-col">
+                                    <label style="color:white !important" for="data-name">Ciudad:</label>
+                                    <input name="cobertura_ciudad" class="col form-control" id="locality" disabled=disabled>
+                                  </div>
+
+                                  <div style="display:none" class="col-sm-12 data-field-col">
+                                    <label style="color:white !important" for="data-name">Barrio:</label>
+                                    <input name="cobertura_barrio" class="col form-control" id="sublocality" disabled=disabled>
+                                  </div>
+
+                                  <div style="display:none" class="col-sm-12 data-field-col">
+                                    <label style="color:white !important" for="data-name">Municipio</label>
+                                    <input class="col form-control" id="administrative_area_level_1" disabled=disabled>
+                                  </div>
+
+                                  <div style="display:none" class="col-sm-6 data-field-col">
+                                    <label style="color:white !important" for="data-name">LAT:</label>
+                                    <input name="cobertura_lat" class="col form-control" id="lat" required>
+                                  </div>
+
+                                  <div style="display:none" class="col-sm-6 data-field-col">
+                                    <label style="color:white !important" for="data-name">LON:</label>
+                                    <input name="cobertura_lng" class="col form-control" id="lng" required>
+                                  </div>
+
+
+
+                                  <!-- <label class="col-4 text-white text-left">Country:  </label> <input class="col-7" id="country" disabled=disabled> <br/>-->
+                                  <!--  <label class="col-4 text-white text-left">Postal Code: </label> <input class="col-7" id="postal_code" disabled=disabled> <br/> -->
+
+
+                                  <!--  <label class="col-4 text-white text-left">Zoom:     </label> <input class="col-7" id="zoom" disabled=disabled> <br/> -->
+                                  <!-- <label class="col-4 text-white text-left">Type:     </label> <input class="col-7" id="type" disabled=disabled /> <br/> -->
+
+                                </div>
+
+
+                              </div>
+
+                            </div>
+                            <div style="position:relative;height:500px;top:0px" id="map-canvas"></div>
+
+
+
+
+
+                            <!--
+                                                      <div class="col-12">
+                                                          <div class="alert alert-warning alert-dismissible mb-2" role="alert">
+                                                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                  <span aria-hidden="true">×</span>
+                                                              </button>
+                                                              <p class="mb-0">
+                                                                  Your email is not confirmed. Please check your inbox.
+                                                              </p>
+                                                              <a href="javascript: void(0);">Resend confirmation</a>
+                                                          </div>
+                                                      </div>
+
+                                                      <div class="col-12">
+                                                          <div class="form-group">
+                                                              <label for="account-company">Company</label>
+                                                              <input type="text" class="form-control" id="account-company" placeholder="Company name">
+                                                          </div>
+                                                      </div>
+                                                    -->
+
+
+                          </div>
+                        </form>
+                      </div>
+
+                      <div role="tabpanel" class="tab-pane" id="info-academica" aria-expanded="false">
+
+
+                          <div class="row col-12">
+
+                            <div class="row match-height col-12">
+                              <div id="soportes_entrenador" class="col-12">
+                                <div class="card" >
+                                  <div class="card-header">
+                                    <h4 class="card-title">Título(s) obtenido(s)</h4>
+                                    <button type="button" data-toggle="modal" data-target="#nuevo_titulo_div" class="btn btn-secondary mr-sm-1 mb-1 mb-sm-0">+Agregar título</button>
+                                  </div>
+                                  <div class="card-content">
+                                    <div class="card-body">
+
+                                      <ul id="lista_titulos" class="list-group">
+                                        {{#each ../soportes_academicos}}
+                                          <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span> {{titulo}}</span>
+                                            {{#compare verificado 1}}
+                                              <span class="badge badge-success badge-pill"><i class="fa fa-check mr-50 col"></i></span>
+                                        {{else}}
+                                          <span class="badge badge-warning badge-pill"> <i class="fa fa-info mr-50 col" data-toggle="tooltip" data-placement="top" title="" data-original-title="En verificación"></i></span>
+
+                                            {{/compare}}
+                                          </li>
+
+                                        {{else}}
+
+                                          <li id="sin_titulos" class="list-group-item d-flex justify-content-between align-items-center list-group-item-danger">
+                                            <span> Aún no has subido ningún soporte académico</span>
+
+                                          </li>
+
+                                        {{/each}}
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+
+                            </div>
+
+                            <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                              <button id="info_academica_btn" type="button" class="btn-lg btn-primary mr-sm-1 mb-1 mb-sm-0">Guardar</button>
+                            </div>
+                          </div>
+
+                      </div>
+
+
+                      <div role="tabpanel" class="tab-pane " id="info-planes" aria-expanded="false">
+
+                        <div class="row">
+
+                          <div class="col-xl-6 col-md-6 col-sm-6">
+                            <div class="card">
+                              <div class="card-content">
+                                <div class="card-body col">
+                                  <h2 class=" text-center">Plan Básico</h2>
+                                  <h3 class=" text-center">($0 pesos)</h3>
+                                  <p class="card-text"></p>
+                                </div>
+                                <ul class="list-group list-group-flush col">
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Gestióna de tu perfil
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Galería
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Aparece en los resultados
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Chat con cliente
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Publicación de articulos
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Agenda
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-danger float-right"><i class="fa fa-close mr-10 col"></i></span>
+                                    Notificaciones email/SMS
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-danger float-right"><i class="fa fa-close mr-10 col"></i></span>
+                                    Prioridad en resultados
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-danger float-right"><i class="fa fa-close mr-10 col"></i></span>
+                                    Constructor de rutinas
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-danger float-right"><i class="fa fa-close mr-10 col"></i></span>
+                                    Aula virtuales (video llamadas)
+                                  </li>
+
+
+                                </ul>
+                                <div class="card-body text-center">
+                                  <button type="button" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Seleccionar</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xl-6 col-md-6 col-sm-6">
+                            <div class="card">
+                              <div class="card-content">
+                                <div class="card-body col">
+                                  <h2 class=" text-center">Plan PRO</h2>
+                                  <h3 class=" text-center">($19.999 mensual)</h3>
+                                  <p class="card-text"></p>
+                                </div>
+                                <ul class="list-group list-group-flush col">
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Gestióna de tu perfil
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Galería
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Aparece en los resultados
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Chat con cliente
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Publicación de articulos
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Agenda
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Notificaciones email/SMS
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Prioridad en resultados
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Constructor de rutinas
+                                  </li>
+                                  <li class="list-group-item">
+                                    <span class="badge badge-pill bg-success float-right"><i class="fa fa-check mr-10 col"></i></span>
+                                    Aula virtuales (video llamadas)
+                                  </li>
+
+
+                                </ul>
+                                <div class="card-body text-center">
+
+                                  <!-- =====================================================================
+   ///////////   Este es su botón de Botón de pago ePayco   ///////////
+  ===================================================================== -->
+                                  <form>
+                                    <script src='https://checkout.epayco.co/checkout.js' data-epayco-key='f5ba7fed245bcc59656fc7ab2a1acd3e' class='epayco-button' data-epayco-amount='19999' data-epayco-tax='0' data-epayco-tax-base='19999'
+                                      data-epayco-name='Licencia ArmoniaFit.com Edición PRO' data-epayco-description='Licencia ArmoniaFit.com Edición PRO' data-epayco-currency='COP' data-epayco-country='CO' data-epayco-test='true'
+                                      data-epayco-external='false' data-epayco-response='http://localhost:8081/links/editar_perfil_entrenador' data-epayco-confirmation='http://localhost:8081/links/editar_perfil_entrenador'
+                                      data-epayco-button='https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn6.png'>
+                                    </script>
+                                  </form>
+                                  <!-- ==================================================================
+                                                      <button type="button" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Seleccionar</button> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+
+
+                      </div>
+
+                      <div class="tab-pane fade " id="account-vertical-social" role="tabpanel" aria-labelledby="account-pill-social" aria-expanded="false">
+                        <form method="post" id="form-info-social" class="p-t-15" action="/links/guardar_info_social" novalidate>
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="text-bold-600 font-medium-2 col-12 mb-1">
+                                Tus redes sociales:
+                              </div>
+
+                              <div class="form-group">
+                                <label for="account-nick">Twitter</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <input type="text" class="form-control" id="twitter" name="twitter" placeholder="Tu cuenta de twitter" value="{{twitter}}">
+                                  <div class="form-control-position">
+                                    <i class="fa fa-twitter"></i>
+                                  </div>
+                                </fieldset>
+
+                              </div>
+
+                            </div>
+                            <div class="col-12">
+                              <div class="form-group">
+                                <label for="account-nick">Facebook</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Tu cuenta de facebook" value="{{facebook}}">
+                                  <div class="form-control-position">
+                                    <i class="fa fa-facebook"></i>
+                                  </div>
+                                </fieldset>
+
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="form-group">
+                                <label for="account-nick">Linkedin</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <input type="text" class="form-control" id="linkedin" name="linkedin" placeholder="Tu cuenta de linkedin" value="{{linkedin}}">
+                                  <div class="form-control-position">
+                                    <i class="fa fa-linkedin"></i>
+                                  </div>
+                                </fieldset>
+
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="form-group">
+                                <label for="account-nick">Instragram</label>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                  <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Tu cuenta de Instragram" value="{{instagram}}">
+                                  <div class="form-control-position">
+                                    <i class="fa fa-instagram"></i>
+                                  </div>
+                                </fieldset>
+
+                              </div>
+                            </div>
+
+                            <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                              <button type="submit" class="btn-lg btn-success mr-sm-1 mb-1 mb-sm-0">Terminar</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="tab-pane fade" id="account-vertical-connections" role="tabpanel" aria-labelledby="account-pill-connections" aria-expanded="false">
+                        <div class="row">
+                          <div class="col-12 mb-3">
+                            <a href="javascript: void(0);" class="btn btn-info">Connect to
+                              <strong>Twitter</strong></a>
+                          </div>
+                          <div class="col-12 mb-3">
+                            <button class=" btn btn-sm btn-secondary float-right">edit</button>
+                            <h6>You are connected to facebook.</h6>
+                            <span>Johndoe@gmail.com</span>
+                          </div>
+                          <div class="col-12 mb-3">
+                            <a href="javascript: void(0);" class="btn btn-danger">Connect to
+                              <strong>Google</strong>
+                            </a>
+                          </div>
+                          <div class="col-12 mb-2">
+                            <button class=" btn btn-sm btn-secondary float-right">edit</button>
+                            <h6>You are connected to Instagram.</h6>
+                            <span>Johndoe@gmail.com</span>
+                          </div>
+                          <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
+                              changes</button>
+                            <button type="reset" class="btn btn-outline-warning">Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="account-vertical-notifications" role="tabpanel" aria-labelledby="account-pill-notifications" aria-expanded="false">
+                        <div class="row">
+                          <h6 class="m-1">Activity</h6>
+                          <div class="col-12 mb-1">
+                            <div class="custom-control custom-switch custom-control-inline">
+                              <input type="checkbox" class="custom-control-input" checked id="accountSwitch1">
+                              <label class="custom-control-label mr-1" for="accountSwitch1"></label>
+                              <span class="switch-label w-100">Email me when someone comments
+                                onmy
+                                article</span>
+                            </div>
+                          </div>
+                          <div class="col-12 mb-1">
+                            <div class="custom-control custom-switch custom-control-inline">
+                              <input type="checkbox" class="custom-control-input" checked id="accountSwitch2">
+                              <label class="custom-control-label mr-1" for="accountSwitch2"></label>
+                              <span class="switch-label w-100">Email me when someone answers on
+                                my
+                                form</span>
+                            </div>
+                          </div>
+                          <div class="col-12 mb-1">
+                            <div class="custom-control custom-switch custom-control-inline">
+                              <input type="checkbox" class="custom-control-input" id="accountSwitch3">
+                              <label class="custom-control-label mr-1" for="accountSwitch3"></label>
+                              <span class="switch-label w-100">Email me hen someone follows
+                                me</span>
+                            </div>
+                          </div>
+                          <h6 class="m-1">Application</h6>
+                          <div class="col-12 mb-1">
+                            <div class="custom-control custom-switch custom-control-inline">
+                              <input type="checkbox" class="custom-control-input" checked id="accountSwitch4">
+                              <label class="custom-control-label mr-1" for="accountSwitch4"></label>
+                              <span class="switch-label w-100">News and announcements</span>
+                            </div>
+                          </div>
+                          <div class="col-12 mb-1">
+                            <div class="custom-control custom-switch custom-control-inline">
+                              <input type="checkbox" class="custom-control-input" id="accountSwitch5">
+                              <label class="custom-control-label mr-1" for="accountSwitch5"></label>
+                              <span class="switch-label w-100">Weekly product updates</span>
+                            </div>
+                          </div>
+                          <div class="col-12 mb-1">
+                            <div class="custom-control custom-switch custom-control-inline">
+                              <input type="checkbox" class="custom-control-input" checked id="accountSwitch6">
+                              <label class="custom-control-label mr-1" for="accountSwitch6"></label>
+                              <span class="switch-label w-100">Weekly blog digest</span>
+                            </div>
+                          </div>
+                          <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
+                              changes</button>
+                            <button type="reset" class="btn btn-outline-warning">Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Data list view end -->
+
+      </div>
+    </div>
+  </div>
+  <!-- END: Content-->
+
+
+{{/each}}
+
+<div class="modal fade text-left" id="nuevo_titulo_div" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel33">Agregando título académico </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="form-info-titulos" action="#">
+        <div class="modal-body">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="account-nick">Nivel académico</label>
+              <fieldset class="form-group position-relative has-icon-left">
+                <select class="form-control js-example-programmatic" name="nivel_academico" required>
+                  <option value="" disabled selected>Seleccionar</option>
+                  {{#each niveles_academicos}}
+                    <option value="{{id}}">{{nivel_academico}}</option>
+                  {{/each}}
+                </select>
+              </fieldset>
+
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="account-nick">Título obtenido</label>
+              <fieldset class="form-group position-relative has-icon-left">
+                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Título" required data-validation-required-message="Este campo es requerido" required>
+                <div class="form-control-position">
+                  <i class="fa fa-graduation-cap"></i>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="account-nick">Diploma / certificado o a fin</label>
+              <fieldset class="form-group">
+
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" name="adjunto" id="adjunto" required>
+                  <label class="custom-file-label">Seleccione archivo (PDF o imágen)</label>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button id="subir_titulo" type="button" class="btn btn-primary" data-dismiss="modal">Subir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="/app-assets/js/scripts/extensions/noui-slider.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCSHkV_wdSyW2CuVmJMwgLHjXIq7xRcFNg"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+
+<script src="/app-assets/js/jquery-validator/jquery.validate.min.js"></script>
+
+
+<!--<script src="/app-assets/js/typeahead/typeahead.jquery.min.js"></script> -->
+
+
+<script>
+
+  var gmarker ;
+  var map ;
+
+  var circle;
+
+var ciudades=[];
+var departamentos=[];
+
+var categorias=[];
+
+var pipsRange = document.getElementById('pips-range');
+
+var direction = 'ltr';
+
+var range_all_sliders = {
+  'min': [1],
+  'max': [6]
+};
+
+
+var info_per={{info_per}};
+var info_lab={{info_lab}};
+var info_cob={{info_cob}};
+var info_aca={{info_aca}};
+  {{#each usuario}}
+
+  // estado 0 = sin activar    // estado 1 = registro terminado  //  estado 2 = verificado   //  -1 = desactivado
+    var estado_usuario={{estado}};
+
+    {{#if bio}}$("#account-bio").html("{{bio}}");{{/if}}
+
+
+    if({{virtual}}){
+       $("#virtual").prop("checked", true);
+       $("#virtual").val(1);
+    }
+    if({{presencial}}){
+        $("#presencial").prop('checked', true);
+        $("#presencial").val(1);
+        $('#menu-cobertura').show();
+
+    }
+
+    var departamento="{{departamento}}";
+
+    var ciudad="{{ciudad}}";
+
+    var virtual="{{virtual}}";
+
+    var presencial="{{presencial}}";
+
+    var categorias_json='{{#if categorias }} {{#decode_html categorias}}{{/decode_html}}{{/if}}';
+
+    var sub_categorias='{{#if sub_categorias}} {{#decode_html sub_categorias}}{{/decode_html}}{{/if}}';
+
+    var idiomas2='{{#if idiomas}} {{#decode_html idiomas}}{{/decode_html}}{{/if}}';
+
+    var cobertura_dir="{{cobertura_dir}}";
+
+    var cobertura_lat="{{cobertura_lat}}";
+
+    var  cobertura_lng="{{cobertura_lng}}";
+
+
+
+    var punto_inicial = {
+        'Cucuta': {
+          center: {lat: 7.9214724, lng: -72.498776},
+          zoom: 12
+        },
+        'Bucaramanga': {
+          center: {lat: 7.0667326, lng: -73.1283975},
+          zoom: 12
+        },
+        'Bogota':{
+          center: {lat: 4.658891626523887, lng: -74.06043887636717},
+          zoom: 12
+        }
+      }
+
+
+      noUiSlider.create(pipsRange, {
+        range: range_all_sliders,
+        start: {{#if cobertura_radio}}{{cobertura_radio}}{{else}}2{{/if}},
+        direction: direction,
+        pips: {
+          mode: 'range',
+          density: 3
+        }
+      });
+
+  {{/each}}
+
+var searchIntoJson = function (obj, column, value) {
+    var results = [];
+    var valueField;
+    var searchField = column;
+    for (var i = 0 ; i < obj.length ; i++) {
+        valueField = obj[i][searchField].toString();
+        if (valueField === value) {
+            results.push(obj[i]);
+        }
+    }
+    return results;
+};
+
+var loadDepartamentos = function () {
+    $("#dep").empty();
+    $("#dep").append('<option disabled  value="" selected="selected">Seleccione</option>');
+    $.each(departamentos, function (i, valor) {
+        $("#dep").append("<option value='" + valor.departamentoId + "'>" + valor.nombreDepartamento + "</option>");
+    });
+};
+
+var loadCiudades = function (departamentoId) {
+    var ciudadesDepto = searchIntoJson(ciudades, "departamentoId", departamentoId);
+    $("#city").empty();
+    $("#city").append('<option disabled value="" selected="selected">Seleccione</option>');
+    $.each(ciudadesDepto, function (i, valor) {
+        $("#city").append('<option value="' + valor.ciudadId + '">' + valor.nombreCiudad + '</option>');
+    });
+};
+
+
+
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $('#foto').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+
+function verificar_pasos() {
+
+  if(estado_usuario==2){
+    $("#menu-planes").removeClass('d-none');
+
+  }else{
+
+    $("#menu-planes").addClass('d-none');
+
+  }
+
+  var info_per=0;
+  var info_lab=0;
+  var info_cob=0;
+  var info_aca=0;
+  var info_soc=0;
+
+if($('#form-info-personal')[0].checkValidity()){
+  $("#info_per").html("<i  class=\"ml-1 feather icon-check mr-50 font-medium-3 \">");
+  info_per=1;
+}else{
+  $("#info_per").html("");
+}
+
+
+if($('#form-info-laboral')[0].checkValidity()){
+  $("#info_lab").html("<i  class=\"ml-1 feather icon-check mr-50 font-medium-3 \">");
+  info_lab=1;
+}else{
+  $("#info_lab").html("");
+
+}
+
+if($("#presencial").prop('checked')){
+
+  if($("#form-info-cobertura").valid()){
+
+    $("#info_cob").html("<i class=\"ml-1 feather icon-check mr-50 font-medium-3 \">");
+    info_cob=1;
+
+    }else{
+      $("#info_cob").html("");
+
+    }
+
+
+  }else{
+
+  info_cob=1;
+  }
+
+
+  if($( "#sin_titulos" ).length==0){
+
+  $("#info_aca").html("<i class=\"ml-1 feather icon-check mr-50 font-medium-3 \">");
+    info_aca=1;
+    }else{
+    $("#info_aca").html("");
+
+    }
+
+
+if ($( "#twitter" ).val()=="" && $( "#facebook" ).val()=="" && $( "#linkedin" ).val()==""  && $( "#instagram" ).val()==""){
+
+  $("#info_soc").html("");
+
+}else{
+  info_soc=1;
+  $("#info_soc").html("<i  class=\"ml-1 feather icon-check mr-50 font-medium-3 \">");
+}
+
+if(info_aca && info_lab && info_cob && info_aca && info_soc){
+  return true;
+}else{
+
+  return false;
+}
+
+
+}
+
+
+
+var load_sub_categorias= function (categorias_id) {
+    $("#sub-categorias").empty();
+    var sub_categorias =[];
+    //console.log(categorias_id);
+
+
+    if(categorias_id){
+
+        $.each(categorias_id, function (n, valor) {
+
+            $.each(categorias, function (i, valor) {
+
+            if(categorias[i].id==categorias_id[n]){
+
+                if(categorias[i].sub_categorias){
+                  var nombre_sub_categoria=categorias[i].nombre;
+                  var sub_cateogorias_val=categorias[i].sub_categorias;
+                  sub_categorias.push({nombre_sub_categoria,sub_cateogorias_val});
+                }
+
+            }
+
+          });
+
+
+      });
+
+
+    }
+
+    //console.log(sub_categorias);
+
+if(sub_categorias.length>0){
+
+  $("#sub-categoria-div").removeClass('d-none');
+  //console.log(sub_categorias);
+  $.each(sub_categorias, function (i, valor) {
+
+    $.each(sub_categorias[i].sub_cateogorias_val, function (n, valor2) {
+
+      $("#sub-categorias").append('<option value="'+sub_categorias[i].nombre_sub_categoria+" - " + valor2.nombre + '">'+sub_categorias[i].nombre_sub_categoria+" - " + valor2.nombre + '</option>');
+    });
+
+  });
+
+
+}else{
+
+  $("#sub-categoria-div").addClass('d-none');
+}
+
+
+}
+
+$(document).ready(function(e) {
+
+if(cobertura_dir!=""){
+  $("#addresspicker_map").val(cobertura_dir);
+}
+
+
+$(".load_circle").click(function () {
+
+    circle.setMap(map);
+});
+
+
+
+
+categorias= {{#if categorias_json}} {{#decode_html categorias_json}}{{else}}[]{{/decode_html}}{{/if}};
+
+$.each( categorias, function( index,key, value ) {
+  var obj2=JSON.parse(categorias[index].sub_categorias);
+
+  if(categorias[index].sub_categorias){
+    delete categorias[index].sub_categorias;
+    categorias[index].sub_categorias=obj2;
+  }
+
+});
+
+
+$("#categorias").change(function () {
+    var categoria_id = $("#categorias").val();
+
+    load_sub_categorias(categoria_id);
+});
+
+
+
+
+if(categorias_json!=''){
+  categorias_json=JSON.parse(categorias_json);
+
+      $("#categorias").val(categorias_json).trigger("change");
+
+}
+
+if(sub_categorias!=''){
+  sub_categorias=JSON.parse(sub_categorias);
+      $("#sub-categorias").val(sub_categorias).trigger("change");
+
+
+}
+
+if(idiomas2!=''){
+
+  idiomas2=JSON.parse(idiomas2);
+    $("#idiomas").val(idiomas2).trigger("change");
+
+}
+
+
+
+
+
+  $('#subir_titulo').on('click', function() {
+      $('#nuevo_titulo_div').on('hide.bs.modal', function(e) {
+
+        if($('#nivel_academico').val()=="" | $('#titulo').val()=="" | $('#adjunto').val()==""){
+          e.preventDefault();
+          Swal.fire({
+            title: "Llene todos lo datos para continuar",
+            text: "",
+            type: "warning",
+            confirmButtonClass: 'btn btn-primary',
+            buttonsStyling: false,
+          });
+        }else{
+
+          $("#form-info-titulos").submit();
+
+        }
+
+
+      });
+  });
+
+
+
+
+  $("#entrenador").change(function() {
+      if(this.checked) {
+
+        //inicio alert
+        Swal.fire({
+          title: 'Deberás subir los titulos asociados ',
+          text: "Puedes continuar con el registro y subirlos después. (Tu cuenta unicamente será activada cuando termines el registro)",
+          type: 'warning',
+          html:name,
+          showCloseButton: true,
+          showCancelButton: true,
+          focusConfirm: true,
+          confirmButtonText:
+            '<span>Ok, continuar!</span>',
+          confirmButtonAriaLabel: 'Ok, continuar!',
+          cancelButtonText:
+            '<span>Cancelar</span>',
+          cancelButtonAriaLabel: 'Cancelar',
+          confirmButtonClass: 'btn btn-primary',
+          buttonsStyling: false,
+          cancelButtonClass: 'btn btn-danger ml-1',
+        }).then((result) => {
+          if (result.value) {
+
+
+
+          }else{
+
+            $("#entrenador").prop('checked', false);
+            $("#entrenador").val(false);
+
+
+
+
+          }
+        });
+
+        //fin alert
+
+      }else{
+
+
+
+      }
+  });
+
+
+  $("#presencial").change(function() {
+      if(this.checked) {
+        $("#presencial").prop('checked', true);
+        $("#presencial").val(1);
+        $('#menu-cobertura').show();
+      }else{
+
+        $("#presencial").prop('checked', false);
+        $("#presencial").val(0);
+        $('#menu-cobertura').hide();
+      }
+
+  });
+
+  $("#virtual").change(function() {
+      if(this.checked) {
+        $("#virtual").prop('checked', true);
+        $("#virtual").val(1);
+      }else{
+
+        $("#virtual").prop('checked', false);
+        $("#virtual").val(0);
+      }
+
+  });
+
+
+
+
+  $("#form-info-personal").submit(function(e){
+
+       e.preventDefault();
+
+       var data2send = new FormData($("#form-info-personal").get(0));
+
+
+       $.ajax({
+           url: "/links/guardar_info_personal",
+           data:data2send,
+           type: "POST",
+           contentType : false,
+           processData : false,
+           success: function(response) {
+
+               if(response.status == 1){
+                 Swal.fire({
+                   title: "Info guardada",
+                   text: "",
+                   type: "success",
+                   confirmButtonClass: 'btn btn-primary',
+                   buttonsStyling: false,
+                 });
+
+                 $('#account-pill-laboral').trigger('click');
+                 verificar_pasos();
+
+               }else{
+
+                 Swal.fire({
+                   title: "No se pudo guardar la información",
+                   text: "",
+                   type: "error",
+                   confirmButtonClass: 'btn btn-primary',
+                   buttonsStyling: false,
+                 });
+
+
+               }
+           },
+           error: function(xhr) {
+
+           }
+       });
+
+
+   });
+
+   $("#form-info-laboral").submit(function(e){
+
+        e.preventDefault();
+
+        var data2send=$('#form-info-laboral').serializeArray();
+
+        if($("#virtual").prop("checked") || $("#presencial").prop("checked")){
+
+        if($("#virtual").prop("checked")==false){
+          data2send.push({"name":"virtual","value":0});
+
+        }
+
+        if($("#presencial").prop("checked")==false){
+          data2send.push({"name":"presencial","value":0});
+
+        }
+
+        if($("#entrenador").prop("checked")==false){
+          data2send.push({"name":"es_entrenador","value":0});
+
+        }
+
+
+        $.ajax({
+            url: "/links/guardar_info_laboral",
+            data:data2send,
+            type: "POST",
+            success: function(response) {
+
+                if(response.status == 1){
+                  Swal.fire({
+                    title: "Info guardada",
+                    text: "",
+                    type: "success",
+                    confirmButtonClass: 'btn btn-primary',
+                    buttonsStyling: false,
+                  });
+
+                  if($("#presencial").prop("checked")==true){
+                    $('#account-pill-cobertura').trigger('click');
+                    verificar_pasos();
+
+                  }else{
+                      $('#account-pill-academico').trigger('click');
+                      verificar_pasos();
+
+                  }
+
+
+                }else{
+
+                  Swal.fire({
+                    title: "No se pudo guardar la información",
+                    text: "",
+                    type: "error",
+                    confirmButtonClass: 'btn btn-primary',
+                    buttonsStyling: false,
+                  });
+
+
+                }
+            },
+            error: function(xhr) {
+
+            }
+        });
+
+      }else{
+
+        Swal.fire({
+          title: "Seleccione al menos una modalidad",
+          text: "",
+          type: "warning",
+          confirmButtonClass: 'btn btn-primary',
+          buttonsStyling: false,
+        });
+
+      }
+
+
+    });
+
+
+    $("#form-info-cobertura").submit(function(e){
+
+         e.preventDefault();
+
+         if($("#addresspicker_map").val()==""){
+
+           Swal.fire({
+             title: "Ingrese una dirección de cobertura o arrastre el marcador en el mapa",
+             text: "",
+             type: "warning",
+             confirmButtonClass: 'btn btn-primary',
+             buttonsStyling: false,
+           });
+
+
+         }else{
+
+         var data2send=$('#form-info-cobertura').serializeArray();
+
+         $.ajax({
+             url: "/links/guardar_info_cobertura",
+             data:data2send,
+             type: "POST",
+             success: function(response) {
+
+                 if(response.status == 1){
+                   Swal.fire({
+                     title: "Info guardada",
+                     text: "",
+                     type: "success",
+                     confirmButtonClass: 'btn btn-primary',
+                     buttonsStyling: false,
+                   });
+
+                   $('#account-pill-academico').trigger('click');
+                   verificar_pasos();
+
+                 }else{
+
+                   Swal.fire({
+                     title: "No se pudo guardar la información",
+                     text: "",
+                     type: "error",
+                     confirmButtonClass: 'btn btn-primary',
+                     buttonsStyling: false,
+                   });
+
+
+                 }
+             },
+             error: function(xhr) {
+
+             }
+         });
+
+       }
+
+
+     });
+
+
+
+     $("#form-info-titulos").submit(function(e){
+
+          e.preventDefault();
+          //var formData = new FormData(document.getElementById("form-info-titulos"));
+
+          var formData = new FormData($("#form-info-titulos").get(0));
+
+          $.ajax({
+              url: "/links/guardar_info_titulos",
+              data:formData,
+              type: "POST",
+              contentType : false,
+              processData : false,
+              success: function(response) {
+
+                  if(response.status == 1){
+                    Swal.fire({
+                      title: "Info guardada",
+                      text: "",
+                      type: "success",
+                      confirmButtonClass: 'btn btn-primary',
+                      buttonsStyling: false,
+                    });
+
+                  //  console.log();
+
+                    $("#lista_titulos").append("<li class=\"list-group-item d-flex justify-content-between align-items-center\"><span>" + formData.get("titulo")+"</span><span class=\"badge badge-warning badge-pill\">  <i class=\"fa fa-info mr-50 col\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"\" data-original-title=\"En verificación\"></i></span></li>");
+
+                    $('#sin_titulos').remove();
+
+                    verificar_pasos();
+
+
+                  }else{
+
+                    Swal.fire({
+                      title: "No se pudo guardar la información",
+                      text: "",
+                      type: "error",
+                      confirmButtonClass: 'btn btn-primary',
+                      buttonsStyling: false,
+                    });
+
+
+                  }
+              },
+              error: function(xhr) {
+
+              }
+          });
+
+
+
+
+      });
+
+
+
+      $("#info_academica_btn").click(function () {
+
+        if($( "#sin_titulos" ).length==1){
+          Swal.fire({
+            title: 'Deberás subir por lo menos un título',
+            text: "Puedes continuar con el registro y subirlos después. (Tu cuenta unicamente será activada cuando termines el registro)",
+            type: 'warning',
+            html:name,
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: true,
+            confirmButtonText:
+              '<span>Ok, continuar!</span>',
+            confirmButtonAriaLabel: 'Ok, continuar!',
+            cancelButtonText:
+              '<span>Subir título</span>',
+            cancelButtonAriaLabel: 'Subir títulos',
+            confirmButtonClass: 'btn btn-warning',
+            buttonsStyling: false,
+            cancelButtonClass: 'btn btn-primary ml-1',
+          }).then((result) => {
+            if (result.value) {
+
+              $('#account-pill-social').trigger('click');
+
+
+            }else{
+
+
+            }
+
+          });
+
+        }else{
+
+          $('#account-pill-social').trigger('click');
+
+        }
+
+      });
+
+
+
+      $("#form-info-social").submit(function(e){
+
+           e.preventDefault();
+           //var formData = new FormData(document.getElementById("form-info-titulos"));
+
+           var formData = new FormData($("#form-info-social").get(0));
+
+           $.ajax({
+               url: "/links/guardar_info_social",
+               data:formData,
+               type: "POST",
+               contentType : false,
+               processData : false,
+               success: function(response) {
+
+                   if(response.status == 1){
+
+                     if(verificar_pasos()){
+
+                       if(estado_usuario==2){
+                         Swal.fire({
+                           title: "Datos guardados",
+                           text: "",
+                           type: "success",
+                           confirmButtonClass: 'btn btn-primary',
+                           buttonsStyling: false,
+                         });
+
+                         $('#account-pill-planes').trigger('click');
+
+
+                       }else{
+
+                         $.ajax({
+                             url: "/links/registrar_usuario",
+                             type: "POST",
+                             contentType : false,
+                             processData : false,
+                             success: function(response) {
+
+                                 if(response.status == 1){
+                                   Swal.fire({
+                                     title: "Tu cuenta está en verificación, te avisaremos tan pronto este lista",
+                                     text: "No tardamos mucho",
+                                     type: "warning",
+                                     confirmButtonClass: 'btn btn-primary',
+                                     buttonsStyling: false,
+                                   }).then((result) => {
+                                     window.location.href = '/';
+
+                                   });
+                                 }else{
+
+                                   Swal.fire({
+                                     title: "Ha ocurrido un problema, intenta de nuevo",
+                                     text: "No tardamos mucho",
+                                     type: "danger",
+                                     confirmButtonClass: 'btn btn-primary',
+                                     buttonsStyling: false,
+                                   });
+
+
+                                 }
+
+                               }
+
+                             });
+
+                       }
+
+
+
+                     }else{
+
+                       Swal.fire({
+                         title: "Datos incompletos, porfavor verifica",
+                         text: "",
+                         type: "warning",
+                         confirmButtonClass: 'btn btn-primary',
+                         buttonsStyling: false,
+                       });
+
+                     }
+
+
+
+
+                   }else{
+
+                     Swal.fire({
+                       title: "No se pudo guardar la información",
+                       text: "Intenta de nuevo",
+                       type: "error",
+                       confirmButtonClass: 'btn btn-primary',
+                       buttonsStyling: false,
+                     });
+
+
+                   }
+               },
+               error: function(xhr) {
+
+               }
+           });
+
+       });
+
+
+    $("#account-pill-social").click(function () {
+
+
+    });
+
+
+
+
+ {{#each departamentos}}
+ departamentos.push({"departamentoId":"{{id}}","nombreDepartamento":"{{nombre}}" });
+ {{/each}}
+
+ {{#each ciudades}}
+ ciudades.push({"ciudadId":"{{ciudadId}}","departamentoId":"{{departamentoId}}","nombreCiudad":"{{nombreCiudad}}" });
+ {{/each}}
+
+loadDepartamentos();
+
+  $("#dep").change(function () {
+      var departamentoId = $("#dep").val();
+      loadCiudades(departamentoId);
+  });
+
+  if(!departamento==""){
+      $("#dep").val(departamento).trigger("change");
+  }
+
+  if(!ciudad==""){
+      $("#city").val(ciudad).trigger("change");
+  }
+
+
+  $("#img_perfil").change(function() {
+    readURL(this);
+  });
+
+    $("#estado").val({{estado}});
+    $("#rol").val({{rol}});
+
+    $( ".cambiar_imagen" ).click(function(e) {
+        e.preventDefault();
+        $( "#img_perfil" ).click()
+
+    });
+
+    verificar_pasos();
+
+
+});
+
+</script>
+
+<script src="/app-assets/js/scripts/forms/select/form-select2.js"></script>
+
+<script>
+
+
+$(function() {
+
+
+  $("#form_agregar").submit(function(e){
+
+        e.preventDefault();
+
+      });
+
+  $('.collapse').on('show.bs.collapse', function () {
+      $('.collapse.show').each(function(){
+          $(this).collapse('hide');
+      });
+  });
+
+
+if(cobertura_lat==""){
+  initial_position = new google.maps.LatLng(punto_inicial['Bogota'].center.lat, punto_inicial['Bogota'].center.lng);
+}else{
+  initial_position = new google.maps.LatLng(cobertura_lat, cobertura_lng);
+}
+
+
+  var addresspicker = $( "#addresspicker" ).addresspicker({
+    componentsFilter: 'country:CO'
+  });
+
+
+  var addresspickerMap = $( "#addresspicker_map" ).addresspicker({
+    regionBias: "co",
+    language: "es",
+    updateCallback: showCallback,
+    mapOptions: {
+      zoom: punto_inicial['Bogota'].zoom,
+      center: initial_position,
+      mapTypeControl: false,
+      panControl: false,
+      zoomControl: true,
+      streetViewControl: false,
+      disableDefaultUI: true,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    },
+    elements: {
+      map:      "#map-canvas",
+      lat:      "#lat",
+      lng:      "#lng",
+      street_number: '#street_number',
+      route: '#route',
+      locality: '#locality',
+      sublocality: '#sublocality',
+      administrative_area_level_3: '#administrative_area_level_3',
+      administrative_area_level_2: '#administrative_area_level_2',
+      administrative_area_level_1: '#administrative_area_level_1',
+      country:  '#country',
+      postal_code: '#postal_code',
+      type:    '#type'
+    }
+  });
+
+  gmarker = addresspickerMap.addresspicker( "marker");
+  gmarker.setVisible(true);
+  addresspickerMap.addresspicker( "updatePosition");
+
+  pipsRange.noUiSlider.on('update', function () {
+
+    $("#cobertura_radio").val(pipsRange.noUiSlider.get());
+
+         circle.setMap(null);
+         var new_pos=new google.maps.LatLng(gmarker.position.lat(),gmarker.position.lng());
+         circle = new google.maps.Circle({
+             strokeColor: "#FF0000",
+             strokeOpacity: 0.8,
+             strokeWeight: 2,
+             fillColor: "#FF0000",
+             fillOpacity: 0.35,
+             map: map,
+             center: new_pos,
+             radius: 1000*$("#cobertura_radio").val(),
+            zIndex: 9999
+           });
+
+         circle.setMap(map);
+     });
+
+
+  function showCallback(geocodeResult, parsedGeocodeResult){
+  //  $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
+
+  lat_guardar=parsedGeocodeResult.lat;
+  lng_guardar=parsedGeocodeResult.lng;
+
+   console.log((JSON.stringify(parsedGeocodeResult, null, 4)));
+  }
+  // Update zoom field
+
+  map = $("#addresspicker_map").addresspicker("map");
+
+  $("#addresspicker_map").addresspicker("option", "reverseGeocode", 'true');
+
+  google.maps.event.addListener(map, 'idle', function(){
+    $('#zoom').val(map.getZoom());
+  });
+
+});
+
+
+
+
+(function( $, undefined ) {
+
+  $.widget( "ui.addresspicker", {
+    options: {
+        appendAddressString: "{{query.ciudad}}",
+        draggableMarker: true,
+        regionBias: null,
+        bounds: '',
+        componentsFilter:'',
+        updateCallback: null,
+        reverseGeocode: false,
+        autocomplete: 'default',
+        language: '',
+        mapOptions: {
+            zoom: 10,
+            center: new google.maps.LatLng(46, 2),
+            scrollwheel: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        },
+        elements: {
+            map: false,
+            lat: false,
+            lng: false,
+            street_number: false,
+            route: false,
+            locality: false,
+            sublocality: false,
+            administrative_area_level_3: false,
+            administrative_area_level_2: false,
+            administrative_area_level_1: false,
+            country: false,
+            postal_code: false,
+            type: false
+
+        },
+        autocomplete: '' // could be autocomplete: "bootstrap" to use bootstrap typeahead autocomplete instead of jQueryUI
+    },
+
+    marker: function() {
+      return this.gmarker;
+    },
+
+    map: function() {
+      return this.gmap;
+    },
+
+    updatePosition: function() {
+      this._updatePosition(this.gmarker.getPosition());
+    },
+
+    reloadPosition: function() {
+      this.gmarker.setVisible(true);
+      this.gmarker.setPosition(new google.maps.LatLng(this.lat.val, this.lng.val));
+      this.gmap.setCenter(this.gmarker.getPosition());
+
+
+    },
+
+    resize: function() {
+      google.maps.event.trigger(this.gmap, 'resize')
+    },
+
+    selected: function() {
+      return this.selectedResult;
+    },
+    _mapped: {},
+    _create: function() {
+      var self = this;
+      this.geocoder = {
+        geocode: function(options, callback)
+        {
+          jQuery.ajax({
+            url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCSHkV_wdSyW2CuVmJMwgLHjXIq7xRcFNg&" + jQuery.param(options) + '&sensor=false',
+            type: "GET",
+            success: function(data) {
+              callback(data.results, data.status);
+            }
+          });
+        }
+        //new google.maps.Geocoder();
+      };
+
+      if (this.options.autocomplete === 'bootstrap') {
+          this.element.typeahead({
+            source: function(query, process) {
+                self._mapped = {};
+                var response = function(results) {
+                    var labels = [];
+                    for (var i = 0; i < results.length; i++) {
+                        self._mapped[results[i].label] = results[i];
+                        labels.push(results[i].label);
+                    }
+                    process(labels);
+                };
+                var request = {term: query};
+                self._geocode(request, response);
+            },
+            updater: function(item) {
+                var ui = {item: self._mapped[item]}
+                self._focusAddress(null, ui);
+                self._selectAddress(null, ui);
+                return item;
+            }
+          });
+      } else {
+        this.element.autocomplete($.extend({
+            source: $.proxy(this._geocode, this),
+            focus:  $.proxy(this._focusAddress, this),
+            select: $.proxy(this._selectAddress, this)
+        }), this.options.autocomplete);
+      }
+
+      this.lat      = $(this.options.elements.lat);
+      this.lng      = $(this.options.elements.lng);
+      this.street_number = $(this.options.elements.street_number);
+      this.route = $(this.options.elements.route);
+      this.locality = $(this.options.elements.locality);
+      this.sublocality = $(this.options.elements.sublocality);
+      this.administrative_area_level_3 = $(this.options.elements.administrative_area_level_3);
+      this.administrative_area_level_2 = $(this.options.elements.administrative_area_level_2);
+      this.administrative_area_level_1 = $(this.options.elements.administrative_area_level_1);
+      this.country  = $(this.options.elements.country);
+      this.postal_code = $(this.options.elements.postal_code);
+      this.type     = $(this.options.elements.type);
+      if (this.options.elements.map) {
+        this.mapElement = $(this.options.elements.map);
+        this._initMap();
+      }
+    },
+
+    _initMap: function() {
+
+      if (this.lat && this.lat.val()) {
+        this.options.mapOptions.center = new google.maps.LatLng(this.lat.val(), this.lng.val());
+
+      }
+
+      this.gmap = new google.maps.Map(this.mapElement[0], this.options.mapOptions);
+      this.gmarker = new google.maps.Marker({
+        position: this.options.mapOptions.center,
+        map:this.gmap,
+        draggable: this.options.draggableMarker});
+      google.maps.event.addListener(this.gmarker, 'dragend', $.proxy(this._markerMoved, this));
+      this.gmarker.setVisible(false);
+
+
+
+      circle_init = new google.maps.LatLng(punto_inicial['Bogota'].center.lat, punto_inicial['Bogota'].center.lng);
+
+
+      circle = new google.maps.Circle({
+          strokeColor: "#FF0000",
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: "#FF0000",
+          fillOpacity: 0.35,
+          map: this.gmap,
+          center: circle_init,
+          radius: 1000*$("#cobertura_radio").val()
+        });
+
+
+
+
+
+
+
+
+
+
+
+    },
+
+    _updatePosition: function(location) {
+      if (this.lat) {
+        this.lat.val(location.lat());
+      }
+      if (this.lng) {
+        this.lng.val(location.lng());
+      }
+    },
+
+    _addressParts: {street_number: null, route: null, locality: null, sublocality: null,
+                    administrative_area_level_3: null, administrative_area_level_2: null,
+                    administrative_area_level_1: null, country: null, postal_code:null, type: null},
+
+    _updateAddressParts: function(geocodeResult){
+
+      parsedResult = this._parseGeocodeResult(geocodeResult);
+
+      for (addressPart in this._addressParts){
+        if (this[addressPart]){
+          if (parsedResult[addressPart] !== false){
+            this[addressPart].val(parsedResult[addressPart]);
+          } else {
+            this[addressPart].val('');
+          }
+        }
+      }
+    },
+
+    _updateAddressPartsViaReverseGeocode: function(location){
+      this.geocoder.geocode({'latlng': location.lat() + "," + location.lng()}, $.proxy(function(results, status){
+        if (status == google.maps.GeocoderStatus.OK){
+
+          this._updateAddressParts(results[0]);
+          this.element.val(results[0].formatted_address);
+          this.selectedResult = results[0];
+
+          if (this.options.updateCallback) {
+            this.options.updateCallback(this.selectedResult, this._parseGeocodeResult(this.selectedResult));
+          }
+        }
+      }, this));
+    },
+
+    _parseGeocodeResult: function(geocodeResult){
+
+      var parsed = this._parseLatAndLng(geocodeResult.geometry.location);
+
+      for (var addressPart in this._addressParts){
+        parsed[addressPart] = this._findInfo(geocodeResult, addressPart);
+      }
+
+      parsed.type = geocodeResult.types[0];
+
+      return parsed;
+    },
+
+    _parseLatAndLng: function(location){
+      var longitude, latitude;
+
+      if(typeof(location.lat) === 'function'){
+        latitude =  location.lat();
+        longitude = location.lng();
+      } else {
+        latitude = location.lat;
+        longitude = location.lng;
+      }
+
+      return { lat: latitude, lng: longitude };
+    },
+
+    _markerMoved: function() {
+      this._updatePosition(this.gmarker.getPosition());
+
+      if (this.options.reverseGeocode){
+        this._updateAddressPartsViaReverseGeocode(this.gmarker.getPosition());
+      }
+
+      circle.setMap(null);
+      var new_pos=new google.maps.LatLng(gmarker.position.lat(),gmarker.position.lng());
+      circle = new google.maps.Circle({
+          strokeColor: "#FF0000",
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: "#FF0000",
+          fillOpacity: 0.35,
+          map: map,
+          center: new_pos,
+          radius: 1000*$("#cobertura_radio").val(),
+         zIndex: 9999
+        });
+
+      circle.setMap(map);
+    },
+
+    // Autocomplete source method: fill its suggests with google geocoder results
+    _geocode: function(request, response) {
+        var address = request.term, self = this;
+        this.geocoder.geocode({
+          'language': this.options.language,
+          'address': address + this.options.appendAddressString,
+          'region': this.options.regionBias,
+          'bounds': this.options.bounds,
+          'components': this.options.componentsFilter
+        }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK && results) {
+                for (var i = 0; i < results.length; i++) {
+                  result = results[i]
+                  g = result.geometry
+                  g.location = new google.maps.LatLng(g.location.lat, g.location.lng);
+                  g.viewport = new google.maps.LatLngBounds(
+                    new google.maps.LatLng(g.viewport.southwest.lat, g.viewport.southwest.lng),
+                    new google.maps.LatLng(g.viewport.northeast.lat, g.viewport.northeast.lng)
+                  )
+                  result.label =  results[i].formatted_address;
+                }
+            }
+            response(results);
+        })
+    },
+
+    _findInfo: function(result, type) {
+      for (var i = 0; i < result.address_components.length; i++) {
+        var component = result.address_components[i];
+        if (component.types.indexOf(type) !=-1) {
+          return component.long_name;
+        }
+      }
+      return false;
+    },
+
+    _focusAddress: function(event, ui) {
+      var address = ui.item;
+      if (!address) {
+        return;
+      }
+      if (this.gmarker) {
+        this.gmarker.setPosition(address.geometry.location);
+      //  console.log(address.geometry.location);
+        this.gmarker.setVisible(true);
+        //this.gmap.fitBounds(address.geometry.viewport);
+
+
+        map.panTo(address.geometry.location);
+        //console.log("enfocando");
+
+        //console.log(gmarker.getPosition());
+
+        if(circle.setMap()){circle.setMap(null);}
+
+        var new_pos=new google.maps.LatLng(gmarker.position.lat(),gmarker.position.lng());
+
+
+        circle = new google.maps.Circle({
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+            map: map,
+            center: new_pos,
+            radius: 1000*$("#cobertura_radio").val(),
+           zIndex: 9999
+          });
+
+        circle.setMap(map);
+      }
+
+      this._updatePosition(address.geometry.location);
+
+      this._updateAddressParts(address);
+
+    },
+
+    _selectAddress: function(event, ui) {
+      this.selectedResult = ui.item;
+      if (this.options.updateCallback) {
+        this.options.updateCallback(this.selectedResult, this._parseGeocodeResult(this.selectedResult));
+      }
+    }
+  });
+
+  $.extend( $.ui.addresspicker, {
+    version: "@VERSION"
+  });
+
+  // make IE think it doesn't suck
+  if(!Array.indexOf){
+    Array.prototype.indexOf = function(obj){
+      for(var i=0; i<this.length; i++){
+        if(this[i]==obj){
+          return i;
+        }
+      }
+      return -1;
+    }
+  }
+
+})( jQuery );
+
+
+</script>

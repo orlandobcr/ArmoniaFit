@@ -1,0 +1,2242 @@
+<div id="localizando" style="display:block"  class="cargando">
+
+  <div class="icono_cargando">
+
+    <div class="row">
+      <div class="lds-roller"><div></div><div></div></div>
+      <div style="width:350px"> <h1 id="porcentaje" style="color:#cecece !important"> Localizando..</h1><h5 style="color:#cecece !important">Estamos intentando encontrar tu ubicación para facilitar el llenado del documento. (Es posible que deba aceptar los permisos que pide su dispositivo).</h5></div>
+
+    </div>
+  </div>
+
+
+</div>
+
+<div style="font-size:14px;"  id="documento" class=" container   container-fixed-lg" >
+
+    <div style="left: 0px;z-index: 9;background-color:#626262; padding-top:10px;padding-bottom:10px;position:fixed;width: 100%; bottom: 0px;margin-bottom: 0px;margin-left: 0px; margin-right: 0px;" id="progress">
+
+          <div style="display:inline-block;text-align: end;margin-left: 100px;"  class="">
+
+                <span style="color:white;font-size:14px"><strong> Progreso:</strong></span>
+                <button class="btn btn-default btn-xs" onclick="$('#0').tooltipster('open');$('html, body').animate({scrollTop: ($('#0').offset().top-400)},500);"  id="uno" type="button">1</button>
+                <button class="btn btn-default btn-xs" onclick="$('#1').tooltipster('open');$('html, body').animate({scrollTop: ($('#1').offset().top-400)},500);"  id="dos" type="button">2</button>
+                <button class="btn btn-default btn-xs" onclick="$('#4').tooltipster('open');$('html, body').animate({scrollTop: ($('#4').offset().top-400)},500);"  id="tres" type="button">3</button>
+                <button class="btn btn-default btn-xs" onclick="$('#3').tooltipster('open');$('html, body').animate({scrollTop: ($('#3').offset().top-400)},500);"  id="cuatro" type="button">5</button>
+                <button class="btn btn-default btn-xs" onclick="$('#17').tooltipster('open');$('html, body').animate({scrollTop: ($('#17').offset().top-400)},500);"  id="cinco" type="button">6</button>
+                <button class="btn btn-default btn-xs" onclick="$('#19').tooltipster('open');$('html, body').animate({scrollTop: ($('#19').offset().top-400)},500);"  id="seis" type="button">7</button>
+                <span style="display:inline-block; width:100px;"></span>
+
+
+          </div>
+
+  </div>
+
+    <div style="right: 0px;z-index: 9;background-color:#626262; padding-top:10px;padding-bottom:10px;position:fixed; bottom: 0px;margin-bottom: 0px;margin-left: 0px; margin-right: 0px;" id="font_size">
+
+
+
+          <div style="text-align: end;margin-right: 10px;"  class="">
+
+
+
+                <span style="color:white;font-size:14px"><strong> Tamaño de letra:</strong></span>
+                <button class="btn btn-default btn-xs"  id="decrease" type="button"><i class="fa fa-minus"> </i></button>
+                <!-- <button class="btn btn-default"  id="resetMe" type="button"><i class="fa fa-gear"> Resetear</i></button> -->
+                <button class="btn btn-default btn-xs"  id="increase" type="button"><i class="fa fa-plus"> </i></button>
+          </div>
+  </div>
+
+    <h2 style="text-align: center;">CONTRATO DE COMPRAVENTA DE VEHÍCULO AUTOMOTOR</h2>
+    <h5 class="text-uppercase" ><span style="text-align: center;" class="marca"></span><span class="linea"></span></h5>
+
+    <br><br>
+
+    <p>
+      <span onclick="ir((this.id))"  id="info_localizacion" data-tooltip-content="#verificar_locacion">Departamento:</span><strong class="text-uppercase" onclick="ir((this.id));cargar_datos1()" id="departamento" class="departamento"  data-tooltip-content="#llenar_localizacion">___________________</strong><br>
+      <span>Ciudad/Municipio: </span><strong class="text-uppercase" onclick="ir('departamento')" id="ciudad" class="ciudad">________________</strong>
+    </p>
+
+    <p>
+      <span style="letter-spacing: 0.14px;"><span>Fecha: </span><b id="fecha_actual"></b></span>
+    </p>
+
+    <br>
+
+    <p style="text-align: justify;">
+      <span >El señor(a) </span>
+      <b onclick="ir('nombre_vendedor')" id="nombre_vendedor" class="nombre_vendedor" data-tooltip-content="#datos_vendedor">_______________</b>mayor de edad y vecino(a) de la ciudad de <b onclick="ir('nombre_vendedor')" id="residencia_vendedor" class="residencia_vendedor">_______________</b>, identificado(a) con cédula No.<b onclick="ir('nombre_vendedor')" id="cedula_vendedor" class="cedula_vendedor">_______________</b>, quien en adelante se denominará <b>EL VENDEDOR</b>, y <b onclick="ir('nombre_comprador')" id="nombre_comprador" class="nombre_comprador" data-tooltip-content="#datos_comprador">_____________</b>, mayor de edad y vecino(a) de <b onclick="ir('nombre_comprador')" class="residencia_comprador" id="residencia_comprador">_____________</b>, identificado(a) con cédula No<b onclick="ir('nombre_comprador')" id="cedula_comprador" class="cedula_comprador">_______________</b>, quien en adelante se denominarán <b>EL COMPRADOR</b>, han acordado celebrar un <b>contrato de compraventa de vehículo automotor</b> el cual se regirá por las normas civiles y comerciales que regulan la materia, según las siguientes cláusulas:
+    </p>
+
+    <br>
+
+    <h3 style="text-align: center;" >PRIMERA</h3>
+    <p style="text-align: justify;">
+      <b>Objeto:</b> <b>EL VENDEDOR</b> transfiere a <b>EL COMPRADOR</b> la propiedad del automóvil <b class="marca" onclick="ir('marca')" id="marca" data-tooltip-content="#datos_vehiculo">______________</b> que a continuación se identifica:
+    </p>
+
+    <br>
+
+    <h5 style="text-align: center;" >Datos del vehículo:</h5>
+
+    <br>
+
+    <p style="text-align: justify; " >
+      <span >Marca: <b class="marca">_________________</b>  Modelo: <b class="text-uppercase;" id="modelo">_________________</b>  Línea: <b class="text-uppercase;" id="linea">_________________</b> </span>
+    </p>
+    <p  style=" text-align: justify;">
+      <span>Placa: <b class="text-uppercase;" id="placa">_________________</b> Motor: <b class="text-uppercase;" id="motor">_________________</b> Serie: <b class="text-uppercase;" id="serie">_________________</b> </span>
+    </p>
+
+    <p style="text-align: justify;">
+      <span >Chasis: <b class="text-uppercase;" id="chasis">_________________</b>  Color: <b class="text-uppercase;" id="color">_________________</b> Matriculado en: <b class="text-uppercase;" id="lugar_matricula">_________________</b> </span>
+    </p>
+
+    <p style="text-align: justify;">
+      <span >Puertas: <b class="text-uppercase;" id="puertas">_________________</b>  Soat vigente: <b class="text-uppercase;" id="estado_soat">_________________</b> Revisión Tecnomecámica vigente: <b class="text-uppercase;" id="estado_revision">_________________</b> </span>
+    </p>
+
+    <br>
+
+    <h3 style="text-align: center;" >SEGUNDA</h3>
+
+    <p>
+      <b>Precio:</b><span > Las partes pactan la suma de <b onclick="ir('precio')" class="precio" id="precio" data-tooltip-content="#pregunta_precio">_________________</b> </span> (<b class="text-uppercase" id="precio_letras"></b><b> PESOS M/CTE</b>).
+    </p>
+
+    <br>
+
+
+    <h3 style="text-align: center;" >TERCERA</h3>
+
+    <p>
+    	<b onclick="ir('forma_pago')" id="forma_pago" data-tooltip-content="#pregunta_forma_pago">Forma de pago:</b> <b> EL COMPRADORpaga el precio a que se refiere la cláusula anterior en la siguiente forma: un primer pago por el valor de
+    			<b ><span class="" >CUATRO MILLONES DE  </span> PESOS M/CTE</b>
+
+    		<b>
+    			<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif; background: yellow;"> M/CTE</span>
+    		</b>
+    		<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif; background: yellow;"> (
+    			<b>$</b>
+    			<b>4.000.000.oo</b>) este valor se cancelará a la firma del presente contrato el día doce (12) de junio de 2.019, un segundo&nbsp; último pago de
+    			<b>CINCO MILLONES DE PESOS M/CTE ($5.000.000.oo) </b>para el día 28 de julio de 2.019, y un tercer y último pago de
+    			<b>CINCO MILLONES DE PESOS M/CTE ($5.000.000.oo)</b> valor que se cancelará el día 28 de Agosto de 2.018.
+    		</span>
+    		<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">
+    			<o:p></o:p>
+    		</span>
+    	</p>
+    	<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    		<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">
+    			<o:p>&nbsp;</o:p>
+    		</span>
+    	</p>
+    	<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    		<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">PLAZOS:
+    			<o:p></o:p>
+    		</span>
+    	</p>
+    	<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    		<a>
+    			<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">-CUOTA INICIAL (VALOR) (OPCIONAL)
+    				<o:p></o:p>
+    			</span>
+    		</a>
+    	</p>
+    	<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    		<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">-MENSUAL
+    			<br>-CANTIDAD DE CUENTOS
+    				<br>-FECHA DE PAGO
+    				</span>
+    				<span class="MsoCommentReference">
+    					<span lang="ES-CO" style="font-size: 8pt; line-height: 12.2667px;">
+    						<a class="msocomanchor" id="_anchor_8" href="#_msocom_8" language="JavaScript" name="_msoanchor_8">[AF8]</a>&nbsp;
+    					</span>
+    				</span>
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">
+    					<o:p></o:p>
+    				</span>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">Cuarta. Obligaciones de EL VENDEDOR:</span>
+    				</b>
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;"> Éste se obliga a hacer la entrega material del automóvil
+    					<a>
+    						<b>Marca Vehiculo</b>
+    					</a>
+    				</span>
+    				<span class="MsoCommentReference">
+    					<span lang="ES-CO" style="font-size: 8pt; line-height: 12.2667px;">
+    						<a class="msocomanchor" id="_anchor_9" href="#_msocom_9" language="JavaScript" name="_msoanchor_9">[AF9]</a>&nbsp;
+    					</span>
+    				</span>
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">en buen estado, libre de gravámenes embargos, multas, impuestos, pactos de reserva de dominio y cualquiera otra circunstancia que afecte el libre comercio del bien objeto del presente contrato. Dicha entrega se efectuará a la firma del presente documento y una vez se haya cancelado el valor del primer pago.
+    					<o:p></o:p>
+    				</span>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">Parágrafo</span>
+    				</b>
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">:
+    					<b>EL VENDEDOR</b> se obliga a firmar el formulario de traspaso dentro de los cinco
+    					<a>(5) </a>
+    				</span>
+    				<span class="MsoCommentReference">
+    					<span lang="ES-CO" style="font-size: 8pt; line-height: 12.2667px;">
+    						<a class="msocomanchor" id="_anchor_10" href="#_msocom_10" language="JavaScript" name="_msoanchor_10">[AF10]</a>&nbsp;
+    					</span>
+    				</span>
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">días posteriores al último pago.
+    					<o:p></o:p>
+    				</span>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">Quinta. Gastos: </span>
+    				</b>
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">Los gastos como impuestos, multas y demás que recaigan sobre el automóvil (
+    					<b>Marca del vehículo</b>) antes de la inscripción del traspaso ante la Oficina de Tránsito corren por cuenta de
+    					<b>EL VENDEDOR</b>. Los gastos de registro se pagarán en partes iguales, excepto la Retención en la Fuente la cual será pagada por
+    					<b>LOS COMPRADORES</b>.
+    					<o:p></o:p>
+    				</span>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">Sexta. Cláusula penal:</span>
+    				</b>
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;"> las partes establecen que quien incumpla cualquiera de las estipulaciones derivadas de este contrato, pagará a la otra como sanción la suma de
+    					<b>(hasta el 20% del valor pactado por la compra)</b>.
+    					<b>CUATRO MILLONES DE PESOS M/CTE
+    						<a>($4.000.000.oo)</a>
+    					</b>
+    				</span>
+    				<span class="MsoCommentReference">
+    					<span lang="ES-CO" style="font-size: 8pt; line-height: 12.2667px;">
+    						<a class="msocomanchor" id="_anchor_11" href="#_msocom_11" language="JavaScript" name="_msoanchor_11">[AF11]</a>&nbsp;
+    					</span>
+    				</span>
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">
+    					<o:p></o:p>
+    				</span>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">Séptima. Cláusula Compromisoria: </span>
+    				</b>
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">Toda controversia o diferencia relativa a este contrato, su ejecución y liquidación se resolverá por un mecanismo alternativo de justicia como un Tribunal de Arbitramento o un Centro de Arbitraje o Conciliación, si no existe arreglo por este medio, se agotará esta etapa y se podrá acudir a la Justicia Ordinaria.
+    					<o:p></o:p>
+    				</span>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<a>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">Esta Compraventa se firma en dos (2) ejemplares iguales, en la ciudad de _________ a los ____ (__) días del mes de _____ del año 20__.</span>
+    				</a>
+    				<span class="MsoCommentReference">
+    					<span lang="ES-CO" style="font-size: 8pt; line-height: 12.2667px;">
+    						<a class="msocomanchor" id="_anchor_12" href="#_msocom_12" language="JavaScript" name="_msoanchor_12">[AF12]</a>&nbsp;
+    					</span>
+    				</span>
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">
+    					<o:p></o:p>
+    				</span>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">
+    					<o:p>&nbsp;</o:p>
+    				</span>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">EL VENDEDOR,
+    						<o:p></o:p>
+    					</span>
+    				</b>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">
+    					<o:p>&nbsp;</o:p>
+    				</span>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">____________________________________</span>
+    				</b>
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; XXXXXXXXXXXXXXXXXXXXXXX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    						<o:p></o:p>
+    					</b>
+    				</span>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">c.c. XXXXXXXXXXX de XXXXXXX D.C.
+    						<o:p></o:p>
+    					</span>
+    				</b>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">
+    						<o:p>&nbsp;</o:p>
+    					</span>
+    				</b>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">LA COMPRADORA,
+    						<o:p></o:p>
+    					</span>
+    				</b>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">
+    						<o:p>&nbsp;</o:p>
+    					</span>
+    				</b>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">___________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    						<o:p></o:p>
+    					</span>
+    				</b>
+    			</p>
+    			<p class="MsoNormal" style="margin: 0cm 0cm 10pt; line-height: 16.8667px; font-size: 11pt; font-family: Calibri, sans-serif; letter-spacing: normal; text-align: justify;">
+    				<b>
+    					<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">XXXXXXXXXXXXXXXXXXXXXXX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    						<o:p></o:p>
+    					</span>
+    				</b>
+    			</p>
+    			<b style="font-size: medium; letter-spacing: normal;">
+    				<span lang="ES-CO" style="font-size: 12pt; line-height: 18.4px; font-family: Tahoma, sans-serif;">c.c. XXXXXXXXXXX de XXXXXXX D.C.</span>
+    			</b>
+    			<span style="font-size: medium; letter-spacing: normal;"></span>
+    			<div style="font-size: medium; letter-spacing: normal;">
+    				<hr class="msocomoff" align="left" size="1" width="33%">
+    					<div>
+    						<div id="_com_1" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_1"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_1" class="msocomoff">[AF1]</a>
+    									</span>
+    								</span>FORM
+    								<o:p></o:p>
+    							</p>
+    						</div>
+    					</div>
+    					<div>
+    						<div id="_com_2" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_2"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_2" class="msocomoff">[AF2]</a>
+    									</span>
+    								</span>FORM COMPRADOR
+    								<o:p></o:p>
+    							</p>
+    						</div>
+    					</div>
+    					<div>
+    						<div id="_com_3" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_3"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_3" class="msocomoff">[AF3]</a>
+    									</span>
+    								</span>FORM COMPRADOR
+    								<o:p></o:p>
+    							</p>
+    						</div>
+    					</div>
+    					<div>
+    						<div id="_com_4" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_4"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_4" class="msocomoff">[AF4]</a>
+    									</span>
+    								</span>DEL FORM O SCAN
+    								<o:p></o:p>
+    							</p>
+    						</div>
+    					</div>
+    					<div>
+    						<div id="_com_5" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_5"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_5" class="msocomoff">[AF5]</a>
+    									</span>
+    								</span>
+    								<span lang="ES-CO">EN LETRAS, AUTOMÁTICO
+    									<o:p></o:p>
+    								</span>
+    							</p>
+    						</div>
+    					</div>
+    					<div>
+    						<div id="_com_6" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_6"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_6" class="msocomoff">[AF6]</a>
+    									</span>
+    								</span>
+    								<span lang="ES-CO">NUMEROS
+    									<o:p></o:p>
+    								</span>
+    							</p>
+    						</div>
+    					</div>
+    					<div>
+    						<div id="_com_7" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_7"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_7" class="msocomoff">[DAME7]</a>
+    									</span>
+    								</span>
+    								<span lang="ES-CO">El pago puede ser de contado o contra entrega, ó, se pueden pactar cuotas o plazos.
+    									<o:p></o:p>
+    								</span>
+    							</p>
+    						</div>
+    					</div>
+    					<div>
+    						<div id="_com_8" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_8"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_8" class="msocomoff">[AF8]</a>
+    									</span>
+    								</span>
+    								<span lang="ES-CO">COTIZADOR APP
+    									<o:p></o:p>
+    								</span>
+    							</p>
+    						</div>
+    					</div>
+    					<div>
+    						<div id="_com_9" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_9"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_9" class="msocomoff">[AF9]</a>
+    									</span>
+    								</span>
+    								<span lang="ES-CO">FORM O SCAN
+    									<o:p></o:p>
+    								</span>
+    							</p>
+    						</div>
+    					</div>
+    					<div>
+    						<div id="_com_10" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_10"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_10" class="msocomoff">[AF10]</a>
+    									</span>
+    								</span>
+    								<span lang="ES-CO">modificable
+    									<o:p></o:p>
+    								</span>
+    							</p>
+    						</div>
+    					</div>
+    					<div>
+    						<div id="_com_11" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_11"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_11" class="msocomoff">[AF11]</a>
+    									</span>
+    								</span>
+    								<span lang="ES-CO">calculado 20% del valor de venta
+    									<o:p></o:p>
+    								</span>
+    							</p>
+    						</div>
+    					</div>
+    					<div>
+    						<div id="_com_12" class="msocomtxt" language="JavaScript">
+    							<a name="_msocom_12"></a>
+    							<p class="MsoCommentText" style="margin: 0cm 0cm 10pt; font-size: 10pt; font-family: Calibri, sans-serif;">
+    								<span class="MsoCommentReference">
+    									<span lang="ES-CO" style="font-size: 8pt;">&nbsp;
+    										<a href="#_msoanchor_12" class="msocomoff">[AF12]</a>
+    									</span>
+    								</span>
+    								<span lang="ES-CO">primer form…
+    									<o:p></o:p>
+    								</span>
+    							</p>
+    						</div>
+    					</div>
+    				</div>
+</div>
+
+
+
+<div style="display:none" id="completar_datos_vendedor">
+ <div class="card-block" >
+   <div class="row">
+     <div class="col-md-12">
+       <h3>  <i class="pg-arrow_right"> </i>*Datos del VENDEDOR</h3>
+       <p>
+       </p>
+       <br>
+
+       <form id="vendedor_form"  method="GET" action="" class="form-horizontal" role="form" autocomplete="nope">
+
+         <div class="form-group row">
+           <label for="fname" class="col-md-3 ">*Nombre Completo</label>
+           <div class="col-md-9">
+             <input autocomplete="false" type="text" class="form-control nombre_vendedor" id="nombre_vendedor_form" placeholder="Nombre Completo" required>
+           </div>
+         </div>
+         <div class="form-group row">
+           <label for="tel" class="col-md-3 ">*ID/Cédula/Pasaporte</label>
+           <div class="col-md-9">
+             <input autocomplete="false" type="text" class="form-control cedula_vendedor" id="cedula_vendedor_form" placeholder="Cédula" name="cedula" required>
+           </div>
+         </div>
+
+         <div class="form-group row">
+           <label for="tel" class="col-md-3 ">*Departamento de residencia</label>
+           <div class="col-md-9">
+             <select class="full-width"  data-init-plugin="select2" name="departamento_resi_vendedor" id="dep2" required></select>
+           </div>
+         </div>
+         <div class="form-group row">
+           <label for="tel" class="col-md-3 ">*Ciudad de residencia</label>
+           <div class="col-md-9">
+             <select class="full-width" data-init-plugin="select2" name="ciudad" id="city2" required></select>
+           </div>
+         </div>
+
+
+         <div class="form-group row">
+           <label for="tel" class="col-md-3 ">*Celular</label>
+           <div class="col-md-9">
+             <input autocomplete="false" type="text" class="form-control" id="celular_vendedor" placeholder="Celular" name="celular" required>
+           </div>
+         </div>
+
+         <div class="form-group row">
+           <label for="tel" class="col-md-3 ">*Email</label>
+           <div class="col-md-9">
+             <input autocomplete="false" type="email" class="form-control" id="email_vendedor" placeholder="Email" name="email" required>
+           </div>
+         </div>
+
+         <br>
+         <div class="row">
+           <div class="col-md-8">
+             <p> </p>
+           </div>
+           <div class="col-md-4">
+             <button class="btn-lg btn-" type="reset"><i class="fa fa-close"> Limpiar</i></button>
+             <button class="btn-lg btn-success" type="submit"><i class="fa fa-send"> Continuar</i></button>
+
+           </div>
+         </div>
+
+       </form>
+
+     </div>
+   </div>
+ </div>
+</div>
+
+<div style="display:none" id="completar_datos_comprador">
+ <div class="card-block" >
+   <div class="row">
+     <div class="col-md-12">
+       <h3>  <i class="pg-arrow_right"> </i>*Datos del COMPRADOR</h3>
+       <p>
+       </p>
+       <br>
+
+       <form id="comprador_form"  method="GET" action="" class="form-horizontal" role="form" autocomplete="nope">
+
+         <div class="form-group row">
+           <label for="fname" class="col-md-3 ">*Nombre Completo</label>
+           <div class="col-md-9">
+             <input autocomplete="false" type="text" class="form-control nombre_comprador" id="nombre_comprador_form" placeholder="Nombre Completo" required>
+           </div>
+         </div>
+         <div class="form-group row">
+           <label for="tel" class="col-md-3 ">*ID/Cédula/Pasaporte</label>
+           <div class="col-md-9">
+             <input autocomplete="false" type="text" class="form-control cedula_comprador" id="cedula_comprador_form" placeholder="Cédula" name="cedula" required>
+           </div>
+         </div>
+
+         <div class="form-group row">
+           <label for="tel" class="col-md-3 ">*Departamento de residencia</label>
+           <div class="col-md-9">
+             <select class="full-width"  data-init-plugin="select2" name="departamento_resi_comprador" id="dep3" required></select>
+           </div>
+         </div>
+         <div class="form-group row">
+           <label for="tel" class="col-md-3 ">*Ciudad de residencia</label>
+           <div class="col-md-9">
+             <select class="full-width" data-init-plugin="select2" name="ciudad" id="city3" required></select>
+           </div>
+         </div>
+
+
+         <div class="form-group row">
+           <label for="tel" class="col-md-3 ">*Celular</label>
+           <div class="col-md-9">
+             <input autocomplete="false" type="text" class="form-control" id="celular_comprador" placeholder="Celular" name="celular" required>
+           </div>
+         </div>
+
+         <div class="form-group row">
+           <label for="tel" class="col-md-3 ">*Email</label>
+           <div class="col-md-9">
+             <input autocomplete="false" type="email" class="form-control" id="email_comprador" placeholder="Email" name="email" required>
+           </div>
+         </div>
+
+         <br>
+         <div class="row">
+           <div class="col-md-8">
+             <p> </p>
+           </div>
+           <div class="col-md-4">
+             <button class="btn-lg btn-" type="reset"><i class="fa fa-close"> Limpiar</i></button>
+             <button class="btn-lg btn-success" type="submit"><i class="fa fa-send"> Continuar</i></button>
+
+           </div>
+         </div>
+
+       </form>
+
+     </div>
+   </div>
+ </div>
+</div>
+
+
+<div class="register-container" style="display:none" id="completar_datos_vehiculo">
+
+  <div ><h3><i class=" pg-arrow_right"></i>Información del Vehículo</h3></div>
+
+
+    <div class="form-group row">
+
+    <div class="col-md-12">
+      <div class="card social-card share full-width col-md-12">
+        <div class="card-header ">
+          <h5 class="text-complete pull-left ">Vehículo <i class="fa fa-car text-complete fs-11"></i></h5>
+          <div class="pull-right small hint-text">
+             <i class="fa fa-info"></i>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="card-description">
+
+          <h5>Placa: <b class="placa_vehiculo" > </b></h5>
+          <h5>Estado(RUNT): <b class="estado_vehiculo" > </b></h5>
+          <h5>Marca: <b class="marca_vehiculo" > </b></h5>
+          <h5>Línea: <b class="linea_vehiculo" > </b></h5>
+          <h5>Color: <b class="color_vehiculo" > </b></h5>
+          <h5>Fecha de matricula: <b class="fecha_matricula_vehiculo" > </b></h5>
+
+        </div>
+        <div class="card-footer clearfix">
+          <div class="pull-left">Información desde  <span class="text-complete">RUNT</span>
+          </div>
+          <div class="pull-right hint-text">
+            <!--Apr 23 -->
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="form-group row">
+
+      <div class="col-md-12">
+        <div class="card social-card share full-width col-md-12">
+          <div class="card-header ">
+            <h5 class="text-complete pull-left ">Información de Soat <i class="fa fa-car text-complete fs-11"></i></h5>
+            <div class="pull-right small hint-text">
+               <i class="fa fa-info"></i>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="card-description">
+
+            <h5>Vigente: <b class="estado_soat" > </b></h5>
+            <h5>Fecha de expedición: <b class="fecha_ultimo_soat" > </b></h5>
+            <h5>Fecha de vencimiento: <b class="fecha_vencimeinto_soat" > </b></h5>
+            <h5>Fecha de inicio: <b class="fecha_inicio_soat" > </b></h5>
+            <h5>Número de Soat: <b class="numero_soat" > </b></h5>
+
+          </div>
+          <div class="card-footer clearfix">
+            <div class="pull-left">Información desde  <span class="text-complete">RUNT</span>
+            </div>
+            <div class="pull-right hint-text">
+              <!--Apr 23 -->
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+
+      <div class="col-md-12">
+        <div class="card social-card share full-width col-md-12">
+          <div class="card-header ">
+            <h5 class="text-complete pull-left ">Información de Revisión Tecnomecánica <i class="fa fa-car text-complete fs-11"></i></h5>
+            <div class="pull-right small hint-text">
+               <i class="fa fa-info"></i>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="card-description">
+
+            <h5>Vigente: <b class="estado_revision" > </b></h5>
+            <h5>Fecha de revisión: <b class="fecha_ultima_revision" > </b></h5>
+            <h5>Fecha de venciento: <b class="fecha_vencimiento_revision" > </b></h5>
+            <h5>Número de revisión: <b class="numero_revision" > </b></h5>
+
+
+          </div>
+          <div class="card-footer clearfix">
+            <div class="pull-left">Información desde  <span class="text-complete">RUNT</span>
+            </div>
+            <div class="pull-right hint-text">
+              <!--Apr 23 -->
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="register-container full-height sm-p-t-30 m-t-30">
+      <div class="d-flex justify-content-center flex-column full-height ">
+
+        <div class="row col-md-12">
+          <h4>Necesitamos unos datos adicionales</h4>
+        </div>
+
+        <form id="vehiculo_form"  method="GET" action="" class="p-t-15"  role="form" autocomplete="nope">
+
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group form-group-default">
+              <label>SERIE</label>
+              <input class="form-control"  autocomplete="false" type="text"  id="serie_vehiculo_form" placeholder="Vea la tarjeta de propiedad" required>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group form-group-default">
+              <label>CHASÍS</label>
+              <input class="form-control"  autocomplete="false" type="text"  id="chasis_vehiculo_form" placeholder="Vea la tarjeta de propiedad" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+           <div class="col-12">
+            <div class="form-group form-group-default">
+              <label>LUGAR DE MATRICULA DEL VEHÍCULO</label>
+                <input class="form-control"  autocomplete="false" type="text"  id="lugar_matricula_vehiculo_form" placeholder="Vea la tarjeta de propiedad"  required>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group form-group-default">
+              <label>MODELO</label>
+              <input class="form-control"   autocomplete="false" type="text"  id="modelo_vehiculo_form" placeholder="Vea la tarjeta de propiedad" required>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group form-group-default">
+              <label>CILINDRAJE</label>
+              <input class="form-control"  autocomplete="false" type="text"  id="cilindraje_vehiculo_form" placeholder="Vea la tarjeta de propiedad" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group form-group-default">
+              <label>NÚMERO DE PUERTAS</label>
+              <input class="form-control"  autocomplete="false" type="text"  id="puertas_vehiculo_form" placeholder="Vea la tarjeta de propiedad" required>
+            </div>
+          </div>
+        </div>
+        <button class="btn-lg btn-" onclick="">VOLVER</button>
+        <button class="btn-lg btn-success btn-cons m-t-10" type="submit">CONTINUAR</button>
+        </form>
+    </div>
+  </div>
+
+</div>
+
+<div class="register-container" style="display" id="completar_pagos_plazos">
+
+  <div ><h3><i class=" pg-arrow_right"></i>Pago a plazos</h3></div>
+
+
+    <div class="register-container full-height sm-p-t-30 m-t-30">
+      <div class="d-flex justify-content-center flex-column full-height ">
+
+        <div class="row col-12 text-center">
+          <h4>Agrege los plazos se pactarán en el contrato</h4>
+        </div>
+
+        <strong><div id="msg_plazos" ></div></strong>
+
+        <div class="row col-12">
+          <h4>Costo total: <span class="precio"></span> </span> </h4>
+        </div>
+
+
+        <form id="plazos_form"  method="GET" action="" class="p-t-15 row col-12"  role="form" autocomplete="nope">
+
+        <div class="col-6">
+          <div class="form-group form-group-default">
+            <label>Valor</label>
+            <input  autocomplete="false" type="number" class="form-control" id="pago_input" placeholder="$1.000.000"  required>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="form-group form-group-default input-group col-12">
+            <div class="form-input-group">
+              <label>Limite de pago</label>
+              <input type="" class="form-control datepicker"  placeholder="Seleccione la fecha" id="fecha_pago" required>
+            </div>
+            <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button class="btn-lg btn-primary btn-cons m-t-10" type="submit">AGREGAR</button>
+        </div>
+
+        </form>
+
+    </div>
+
+    <div id="resumen_pago_plazos" style="" class="register-container full-height sm-p-t-30 m-t-30">
+      <div class="d-flex justify-content-center flex-column full-height ">
+
+        <div class="row col-12">
+          <h4>Resumen de pagos<span class=""></span> </h4>
+        </div>
+
+        <div id="resumen_item" class="row col-12">
+
+        </div>
+
+        <div class="row col-12">
+          <button class="btn-lg btn col m-3">LIMIAR</button>
+          <button class="btn-lg btn-primary btn-cons col m-3" type="submit">CONTINUAR</button>
+        </div>
+
+      </div>
+    </div>
+
+</div>
+
+
+<div style=" display: none;" class="tooltip_templates">
+
+  <span id="verificar_locacion">
+     <h4 style="color:white"><strong>¿Es este el departamento y la ciudad/municipio en donde se celebra el contrato?</strong></h4>
+     <h5 style="color:white">Departamento: <strong class="departamento"></strong></h5>
+     <h5 style="color:white">Ciudad/municipio: <strong class="ciudad"></strong></h5>
+     <br>
+        <div class="row no-print">
+
+          <div class="container-fluid  container-fixed-lg">
+
+            <button class="btn btn-default"  onclick="llenar_datos_geo();ir('nombre_vendedor');" type="button"><i class="fa fa-ok"> Si</i></button>
+
+            <button class="btn btn-default"  onclick="cargar_datos1();ir('departamento');" type="button"><i class="fa fa-id-card"> No, editar</i></button>
+
+          </div>
+        </div>
+
+    </span>
+
+    <span id="llenar_localizacion">
+
+       <h4 style="color:white"><strong>¿En dónde se celebra el contrato?</strong></h4>
+       <br>
+          <div class="row no-print">
+
+            <div class="container-fluid  container-fixed-lg">
+
+              <div class="form-group row">
+                <label for="tel" class="col-md-3 ">*Departamento</label>
+                <div class="col-md-9">
+                  <select class="full-width"  data-init-plugin="select2" name="departamento_form" id="dep" required></select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="tel" class="col-md-3 ">*Ciudad</label>
+                <div class="col-md-9">
+                  <select class="full-width" data-init-plugin="select2" name="ciudad_form" id="city" required></select>
+                </div>
+              </div>
+
+              <strong><div id="msg_localiza" style="color:white"></div></strong>
+
+              <button class="btn btn-default"  onclick="llenar_datos_local();" type="button"><i class="fa fa-plus"> Continuar</i></button>
+
+
+
+            </div>
+          </div>
+
+    </span>
+
+    <span id="datos_vendedor">
+       <h4 style="color:white"><strong>Identificación del VENDEDOR:</strong></h4>
+       <br>
+          <div class="row no-print">
+            <div class="container-fluid  container-fixed-lg">
+
+              <select id="tipo_cedula_vendedor" class="full-width" data-placeholder="Tipo de documento" data-init-plugin="select2">
+
+                  <option value="0" disabled>Tipo de documento:</option>
+                  <option selected="true"  value="CC">Cédula de ciudadanía</option>
+                  <option value="CE">Cédula de extranjería</option>
+                  <option value="PA">Pasaporte</option>
+                  <option value="CE">Permiso especial de permanencia</option>
+
+              </select>
+
+              <input autocomplete="false" type="number" class="form-control" id="cedula_vendedor_consulta" placeholder="Número de documento"  required>
+
+              <strong><div id="msg_cedula_vendedor" style="color:white"></div></strong>
+
+              <button onclick="verificar_vendedor();" class="btn btn-default"  type="none"><i class="fa fa-gear"> Verificar</i></button>
+
+
+            </div>
+          </div>
+    </span>
+
+    <span id="datos_comprador">
+
+       <h4 style="color:white"><strong>Identificación del COMPRADOR:</strong></h4>
+       <br>
+          <div class="row no-print">
+            <div class="container-fluid  container-fixed-lg">
+
+              <select id="tipo_cedula_comprador" class="full-width" data-placeholder="Tipo de documento" data-init-plugin="select2">
+
+                  <option value="0" disabled>Tipo de documento:</option>
+                  <option selected="true"  value="CC">Cédula de ciudadanía</option>
+                  <option value="CE">Cédula de extranjería</option>
+                  <option value="PA">Pasaporte</option>
+                  <option value="CE">Permiso especial de permanencia</option>
+
+              </select>
+
+              <input autocomplete="false" type="number" class="form-control" id="cedula_comprador_consulta" placeholder="Número de documento"  required>
+
+              <strong><div id="msg_cedula_comprador" style="color:white"></div></strong>
+
+              <button onclick="verificar_comprador();" class="btn btn-default"  type="none"><i class="fa fa-gear"> Verificar</i></button>
+
+
+            </div>
+          </div>
+    </span>
+
+    <span id="datos_vehiculo">
+
+       <h4 style="color:white"><strong>Placa de vehículo:</strong></h4>
+       <br>
+          <div class="row no-print">
+            <div class="container-fluid  container-fixed-lg">
+              <input autocomplete="false" type="text" class="form-control" id="placa_vehiculo_consulta" placeholder="Sin espacios"  required>
+              <strong><div id="msg_vehiculo" style="color:white"></div></strong>
+              <button onclick="verificar_vehiculo();" class="btn btn-default"  type="none"><i class="fa fa-gear"> Verificar</i></button>
+            </div>
+          </div>
+    </span>
+
+    <span id="pregunta_precio">
+
+       <h4 style="color:white"><strong>Ingrese el precio de venta:</strong></h4>
+       <br>
+          <div class="row no-print">
+            <div class="container-fluid  container-fixed-lg">
+              <input pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency" autocomplete="false" type="text" class="form-control" id="precio_consulta" placeholder="$1.000.000"  required>
+              <strong><div id="msg_precio" style="color:white"></div></strong>
+              <button onclick="verificar_precio();" class="btn btn-default"  type="none"><i class="fa fa-plus"> Ingresar</i></button>
+            </div>
+          </div>
+    </span>
+
+    <span id="pregunta_primer_pago">
+
+       <h4 style="color:white"><strong>Opciones de pago:</strong></h4>
+       <br>
+          <div class="row no-print">
+            <div class="container-fluid  container-fixed-lg">
+              <button onclick="ingresar_pago();" class="btn btn-default"  type="none"><i class="fa fa-plus"> Agregar</i></button>
+            </div>
+          </div>
+    </span>
+
+    <span id="pregunta_forma_pago">
+
+       <h4 style="color:white"><strong>Forma de pago:</strong></h4>
+       <br>
+       <div class="row no-print">
+         <div class="container-fluid  container-fixed-lg">
+           <button class="btn btn-default"  onclick="pagos_mensuales();" type="button"><i class="fa fa-ok"> Mensual</i></button>
+           <button class="btn btn-default"  onclick="pagos_plazos();" type="button"><i class="fa fa-id-card"> Plazos</i></button>
+         </div>
+       </div>
+    </span>
+
+
+</div>
+
+
+<script>
+
+//para cargar si no localiza
+  var ciudades;
+  var departamentos;
+
+//lugar cargar lugar de residnecia vendedor
+  var ciudades2;
+  var departamentos2;
+
+
+//lugar cargar lugar de residnecia comprador
+  var ciudades3;
+  var departamentos3;
+
+//para localizar
+  var pais;
+  var ciudad;
+  var departamento;
+
+  var latitud;
+  var longitud;
+  var tooltip_activo;
+
+//para guardar datos de vehiculo
+  var info_vehiculo;
+
+  var tipo_documento_vendedor;
+  var documento_vendedor;
+
+
+//para guardar costo de vehiculo
+  var costo_vehiculo;
+  var costo_vehiculo_letras;
+
+  var valor_restante;
+  var pagos_plazos_list;
+
+
+  $("input[data-type='currency']").on({
+    keyup: function() {
+      formatCurrency($(this));
+    },
+    blur: function() {
+      formatCurrency($(this), "blur");
+    }
+});
+
+
+function formatNumber(n) {
+  // format number 1000000 to 1,234,567
+  return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+}
+
+
+function formatCurrency(input, blur) {
+
+  var input_val = input.val();
+
+  if (input_val === "") { return; }
+
+  var original_len = input_val.length;
+
+  var caret_pos = input.prop("selectionStart");
+
+  if (input_val.indexOf(",") >= 0) {
+
+
+    var decimal_pos = input_val.indexOf(",");
+    var left_side = input_val.substring(0, decimal_pos);
+    var right_side = input_val.substring(decimal_pos);
+
+    left_side = formatNumber(left_side);
+    right_side = formatNumber(right_side);
+
+    if (blur === "blur") {
+      right_side += "00";
+    }
+
+    right_side = right_side.substring(0, 2);
+    //input_val = "$" + left_side + "," + right_side;
+    input_val = "$" + left_side;
+
+
+  } else {
+
+    input_val = formatNumber(input_val);
+    input_val = "$" + input_val;
+    // final formatting
+    if (blur === "blur") {
+      //input_val += ",00";
+    }
+  }
+
+  input.val(input_val);
+
+  var updated_len = input_val.length;
+  caret_pos = updated_len - original_len + caret_pos;
+  input[0].setSelectionRange(caret_pos, caret_pos);
+}
+
+
+
+function initialize() {
+
+     geocoder = new google.maps.Geocoder();
+     if(navigator.geolocation){
+              var options = {timeout:25000};
+              navigator.geolocation.getCurrentPosition(ubicacion, errorHandler, options);
+
+           } else{
+             console.log("Sorry, browser does not support geolocation!");
+              //alert();
+              console.log('Navegador no soportado, GPS');
+              inicio();
+           }
+}
+
+function errorHandler(err) {
+
+    if(err.code == 1) {
+        console.log("Error: Acceso denegado");
+      } else if( err.code == 2) {
+        console.log("Error: Posición no disponible");
+      }
+
+    inicio();
+
+}
+
+
+function inicio() {
+    $('#localizando').hide();
+
+    //$('#fecha').html("Fecha aca");
+
+    fecha();
+
+    if(ciudad){
+
+      $('.departamento').html(departamento);
+      $('.ciudad').html(ciudad);
+
+      ir("info_localizacion");
+    }else{
+
+      ir("departamento");
+    }
+
+}
+
+function ir(id_in) {
+
+  id = "#"+id_in;
+
+  if(tooltip_activo){
+    $(tooltip_activo).tooltipster('close');
+    console.log("cerrando: "+tooltip_activo);
+  }
+
+
+  if(!$(id).hasClass("tooltipstered")){
+
+  $(id).tooltipster({ //CONFIGURACIONES TOOLTIP
+      contentAsHTML: true,
+      interactive: true,
+      theme: 'tooltipster-default',
+      trigger: 'custom',
+      triggerOpen: {
+        mouseenter: false,
+        click: false,
+        touchstart: false
+      },
+      triggerClose: {
+      mouseleave: false,
+      click: false,
+      touchleave: true
+      }
+
+  });
+
+}
+
+  console.log("abriendo: "+id);
+  $(id).tooltipster('open');
+
+  tooltip_activo=id;
+
+$('html, body').animate({ scrollTop: ($(id).offset().top-400) },500);
+
+}
+
+function llenar_datos_geo() {
+
+
+$("#departamento").html(departamento);
+$("#ciudad").html(ciudad);
+
+}
+
+function llenar_datos_local() {
+
+
+  if($("#dep").find('option:selected').text()=="" | $("#dep").find('option:selected').text()=="" ){
+
+    $("#msg_localiza").html("Seleccione para continuar")
+
+  }else{
+
+
+    $("#departamento").html($("#dep").find('option:selected').text());
+    $("#ciudad").html($("#dep").find('option:selected').text());
+
+    ir('nombre_vendedor');
+
+  }
+
+}
+
+
+function cargar_datos1() {
+
+
+if(!departamentos){
+$.getJSON("/assets/data/departamentos.json", function (data) {
+				      departamentos = data;
+				  });
+
+				  $.getJSON("/assets/data/ciudades.json", function (data) {
+				      ciudades = data;
+				      setTimeout(function () {
+				          if (ciudades !== undefined) {
+				              loadDepartamentos();
+				          }
+				      }, 2000);
+				  });
+
+				  $("#dep").change(function () {
+				      var departamentoId = $("#dep").val();
+				      loadCiudades(departamentoId);
+				  });
+
+        }
+
+}
+
+
+function cargar_datos2() {
+
+if(!departamentos2){
+
+$.getJSON("/assets/data/departamentos.json", function (data) {
+				      departamentos2 = data;
+				  });
+
+          $.getJSON("/assets/data/ciudades.json", function (data) {
+          				      ciudades2 = data;
+          				      setTimeout(function () {
+          				          if (ciudades2 !== undefined) {
+          				              loadDepartamentos2();
+          				          }
+          				      }, 2000);
+          				  });
+
+                    $("#dep2").change(function () {
+                        var departamentoId = $("#dep2").val();
+                        loadCiudades2(departamentoId);
+                    });
+
+}
+
+
+}
+
+function cargar_datos3() {
+
+if(!departamentos3){
+
+  $.getJSON("/assets/data/departamentos.json", function (data) {
+				      departamentos3 = data;
+	});
+
+  $.getJSON("/assets/data/ciudades.json", function (data) {
+          				      ciudades3 = data;
+          				      setTimeout(function () {
+          				          if (ciudades3 !== undefined) {
+          				              loadDepartamentos3();
+          				          }
+          				      }, 2000);
+          				  });
+
+  $("#dep3").change(function () {
+                        var departamentoId = $("#dep3").val();
+                        loadCiudades3(departamentoId);
+   });
+
+ }
+
+}
+
+
+
+function ubicacion(position) {
+
+  latitud = position.coords.latitude;
+  longitud = position.coords.longitude;
+
+  var latlng = {lat: parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude)};
+
+  geocoder.geocode({'location': latlng}, function(results, status) {
+        if (status === 'OK') {
+
+            if (results[0]) {
+                //  x.innerHTML = results[0].formatted_address;
+                $.each( results, function( key, tipos ) {
+
+                        $.each( tipos.types, function( key, local ) {
+                                if(local=="locality")  {
+                                    var locality=tipos.formatted_address;
+                                    var res = locality.split(",");
+                                    pais = res[res.length-1];
+                                    departamento = res[res.length-2];
+                                    ciudad = res[res.length-3];
+                                }
+                        });
+              });
+
+              if(!ciudad){
+              //  x.innerHTML = results[0].formatted_address;
+                  var locality=results[0].formatted_address;
+                  var res = locality.split(",");
+                  pais = res[res.length-1];
+                  departamento = res[res.length-2];
+                  ciudad = res[res.length-3];
+              }
+            } else {
+              console.log('No encontramos para su ubicacación');
+            }
+        } else {
+          console.log('Ha ocurrido un error: '+ status);
+
+                }
+
+    inicio();
+
+  });
+
+
+}
+
+
+
+
+  var ciudades;
+  var departamentos;
+
+  var searchIntoJson = function (obj, column, value) {
+      var results = [];
+      var valueField;
+      var searchField = column;
+      for (var i = 0 ; i < obj.length ; i++) {
+          valueField = obj[i][searchField].toString();
+          if (valueField === value) {
+              results.push(obj[i]);
+          }
+      }
+      return results;
+  };
+
+  var loadDepartamentos = function () {
+      $("#dep").empty();
+      $("#dep").append('<option value="" selected="selected"></option>');
+      $.each(departamentos, function (i, valor) {
+          $("#dep").append("<option value='" + valor.departamentoId + "'>" + valor.nombreDepartamento + "</option>");
+      });
+  };
+
+  var loadCiudades = function (departamentoId) {
+      var ciudadesDepto = searchIntoJson(ciudades, "departamentoId", departamentoId);
+      $("#city").empty();
+      $("#city").append('<option value="" selected="selected"></option>');
+      $.each(ciudadesDepto, function (i, valor) {
+          $("#city").append('<option value="' + valor.ciudadId + '">' + valor.nombreCiudad + '</option>');
+      });
+  };
+
+
+  var loadDepartamentos2 = function () {
+      $("#dep2").empty();
+      $("#dep2").append('<option value="" selected="selected"></option>');
+      $.each(departamentos2, function (i, valor) {
+          $("#dep2").append("<option value='" + valor.departamentoId + "'>" + valor.nombreDepartamento + "</option>");
+      });
+  };
+
+  var loadCiudades2 = function (departamentoId) {
+      var ciudadesDepto = searchIntoJson(ciudades2, "departamentoId", departamentoId);
+      $("#city2").empty();
+      $("#city2").append('<option value="" selected="selected"></option>');
+      $.each(ciudadesDepto, function (i, valor) {
+          $("#city2").append('<option value="' + valor.ciudadId + '">' + valor.nombreCiudad + '</option>');
+      });
+  };
+
+
+  var loadDepartamentos3 = function () {
+      $("#dep3").empty();
+      $("#dep3").append('<option value="" selected="selected"></option>');
+      $.each(departamentos3, function (i, valor) {
+          $("#dep3").append("<option value='" + valor.departamentoId + "'>" + valor.nombreDepartamento + "</option>");
+      });
+  };
+
+  var loadCiudades3 = function (departamentoId) {
+      var ciudadesDepto = searchIntoJson(ciudades3, "departamentoId", departamentoId);
+      $("#city3").empty();
+      $("#city3").append('<option value="" selected="selected"></option>');
+      $.each(ciudadesDepto, function (i, valor) {
+          $("#city3").append('<option value="' + valor.ciudadId + '">' + valor.nombreCiudad + '</option>');
+      });
+  };
+
+
+function fecha() {
+
+      $.ajax({
+          url: "https://panel.yolitigo.co/links/fecha_actual",
+          type: "GET",
+          success: function(response) {
+              console.log(response);
+
+              if (response.fecha) {
+                console.log(response.ano);
+                $("#fecha_actual").html(response.fecha);
+              }
+          },
+          error: function(xhr) {
+
+            console.log("problema adquiriendo fecha");
+
+          }
+      });
+
+}
+
+
+
+function verificar_vendedor() {
+
+  if(!$("#tipo_cedula_vendedor").val() | !$("#cedula_vendedor_consulta").val()){
+
+    $("#msg_cedula_vendedor").html("Llene los campos para continuar");
+    console.log("Llene los campos para continuar");
+
+  }else{
+
+    tipo_documento_vendedor= $("#tipo_cedula_vendedor").val();
+    documento_vendedor= $("#cedula_vendedor_consulta").val();
+
+    var data2send = {documentType:tipo_documento_vendedor,documentNumber:documento_vendedor}
+
+    $.ajax({
+        url: "https://panel.yolitigo.co/links/consulta_cedula",
+        data:data2send,
+        type: "GET",
+        success: function(response) {
+            console.log(response);
+
+            if(response.status == 1){
+
+              $("#nombre_vendedor").tooltipster('close');
+              $("#documento").hide();
+              $("#completar_datos_vendedor").show();
+
+              cargar_datos2();
+
+              $(".nombre_vendedor").html(response.data.fullName);
+              $(".cedula_vendedor").html(documento_vendedor);
+              $(".nombre_vendedor").val(response.data.fullName);
+              $(".cedula_vendedor").val(documento_vendedor);
+
+            }else{
+              $("#msg_cedula_vendedor").html("El documento no se encuentra, verifique");
+            }
+        },
+        error: function(xhr) {
+
+        }
+    });
+
+  }
+
+}
+
+function verificar_comprador() {
+
+  if(!$("#tipo_cedula_comprador").val() | !$("#cedula_comprador_consulta").val()){
+
+    $("#msg_cedula_comprador").html("Llene los campos para continuar");
+    console.log("Llene los campos para continuar");
+
+  }else{
+
+    var documentType= $("#tipo_cedula_comprador").val();
+    var documentNumber= $("#cedula_comprador_consulta").val();
+    var data2send = {documentType,documentNumber}
+
+    $.ajax({
+        url: "https://panel.yolitigo.co/links/consulta_cedula",
+        data:data2send,
+        type: "GET",
+        success: function(response) {
+            console.log(response);
+
+            if(response.status == 1){
+
+              $("#nombre_comprador").tooltipster('close');
+              $("#documento").hide();
+              $("#completar_datos_comprador").show();
+
+              cargar_datos3();
+
+              $(".nombre_comprador").html(response.data.fullName);
+              $(".cedula_comprador").html(documentNumber);
+              $(".nombre_comprador").val(response.data.fullName);
+              $(".cedula_comprador").val(documentNumber);
+
+            }else{
+              $("#msg_cedula_comprador").html("El documento no se encuentra, verifique");
+            }
+        },
+        error: function(xhr) {
+
+        }
+    });
+  }
+}
+
+function verificar_vehiculo() {
+
+  if(!$("#placa_vehiculo_consulta").val()){
+
+    $("#msg_vehiculo").html("Llene los campos para continuar");
+    console.log("Vehiculo: Llene los campos para continuar");
+
+  }else if( !tipo_documento_vendedor | !documento_vendedor){
+
+    $("#msg_vehiculo").html("Llene los datos del vendedor");
+    console.log("Vehiculo: llene los datos del vendedor");
+
+    ir("nombre_vendedor")
+  }else{
+
+
+    var placa=$("#placa_vehiculo_consulta").val();
+    var data2send = {documentType:tipo_documento_vendedor,documentNumber:documento_vendedor, vehicle:placa}
+
+    $.ajax({
+        url: "https://panel.yolitigo.co/links/consulta_vehiculo",
+        data:data2send,
+        type: "GET",
+        success: function(response) {
+            //console.log(response);
+
+            if(response.status == 1){
+
+              $("#marca").tooltipster('close');
+              $("#documento").hide();
+              $("#completar_datos_vehiculo").show();
+
+              console.log(response.data);
+
+              //cargar_datos2();
+
+              $(".marca_vehiculo").html(response.data.vehiculo.marca);
+              $(".color_vehiculo").html(response.data.vehiculo.color);
+              $(".linea_vehiculo").html(response.data.vehiculo.linea);
+              $(".estado_vehiculo").html(response.data.vehiculo.estado);
+              $(".fecha_matricula_vehiculo").html(response.data.vehiculo.fmatri);
+              $(".placa_vehiculo").html(response.data.vehiculo.placa);
+
+
+              var estado_soat = response.data.soat.vigente ? "SI": "NO";
+
+              $(".estado_soat").html(estado_soat);
+              $(".fecha_ultimo_soat").html(response.data.soat.fechaExpedicion);
+              $(".fecha_vencimeinto_soat").html(response.data.soat.fechaVencimiento);
+              $(".fecha_inicio_soat").html(response.data.soat.fechaInicio);
+              $(".numero_soat").html(response.data.soat.noSoat);
+
+
+              var estado_revision = response.data.revision.vigente ? "SI": "NO";
+
+              $(".estado_revision").html(estado_revision);
+              $(".fecha_ultima_revision").html(response.data.revision.fechaRevision);
+              $(".fecha_vencimiento_revision").html(response.data.revision.fechaVencimiento);
+              $(".numero_revision").html(response.data.revision.noRevision);
+
+
+              info_vehiculo={estado_revision,estado_soat,marca:response.data.vehiculo.marca,color:response.data.vehiculo.color,linea:response.data.vehiculo.linea,placa:response.data.vehiculo.placa}
+
+
+
+            }else{
+              $("#msg_vehiculo").html("No se encuentran registros, verifique datos de propietario y placa");
+            }
+        },
+        error: function(xhr) {
+
+        }
+    });
+
+  }
+
+}
+
+
+function verificar_precio() {
+
+  if(!$("#precio_consulta").val()){
+
+    $("#msg_precio").html("Llene los campos para continuar");
+    console.log("Precio: Llene los campos para continuar");
+
+  }else{
+
+    var precio=$("#precio_consulta").val();
+    var data2send = {numero:precio};
+
+    $.ajax({
+        url: "https://panel.yolitigo.co/links/num2text",
+        data:data2send,
+        type: "GET",
+        success: function(response) {
+
+            console.log(response);
+            if(response.status == 1){
+              console.log("respuesta status 1");
+
+              $("#precio").tooltipster('close');
+              $("#precio_letras").html(response.texto);
+              $(".precio").html(precio);
+              costo_vehiculo=precio;
+              valor_restante=precio;
+              costo_vehiculo_letras=response.texto;
+
+            }else{
+              $("#msg_precio").html("Verifique el valor ingresado");
+            }
+        },
+        error: function(xhr) {
+
+        }
+    });
+
+  }
+
+}
+
+
+
+
+function pagos_plazos() {
+  $("#forma_pago").tooltipster('close');
+  $('#documento').css("display", "none");
+  $('#completar_pagos_plazos').css("display", "block");
+  $(".precio").html(costo_vehiculo);
+}
+
+  function abrir_entidades() {
+    $('#opcion_vulnera').css("display", "none");
+    $('#eps').css("display", "block");
+
+  }
+
+  function abrir_ayuda_derechos() {
+
+    $('#documento').css("display", "none");
+    $('#4').tooltipster('close');
+    $('#paso4_derechos').css("display", "block");
+
+    $(window).scrollTop(top);
+
+
+  }
+
+  function abrir_ayuda_hechos() {
+
+    $('#documento').css("display", "none");
+    $('#3').tooltipster('close');
+    $('#paso3_hechos').css("display", "block");
+
+  $(window).scrollTop(top);
+
+
+  }
+
+
+  function abrir_ayuda_peticiones() {
+
+    $('#documento').css("display", "none");
+    $('#17').tooltipster('close');
+    $('#paso17_peticiones').css("display", "block");
+
+    $(window).scrollTop(top);
+
+
+  }
+
+
+  var lista_derechos = [];
+
+  var progreso = [];
+
+  function toggle_derecho(derecho_vulnerado) {
+
+    if($("#"+derecho_vulnerado).text()==" Agregar"){
+
+      $("#"+derecho_vulnerado).removeClass("btn-success");
+      $("#"+derecho_vulnerado).addClass("btn-danger");
+      $("#"+derecho_vulnerado).html('<i class="fa fa-minus"> Quitar</i>');
+
+
+      lista_derechos.indexOf(derecho_vulnerado) === -1 ? lista_derechos.push(derecho_vulnerado) : lista_derechos.splice( lista_derechos.indexOf(derecho_vulnerado), 1 );
+
+
+    }else{
+
+      lista_derechos.splice( lista_derechos.indexOf(derecho_vulnerado), 1 )
+
+      $("#"+derecho_vulnerado).removeClass("btn-danger");
+      $("#"+derecho_vulnerado).addClass("btn-success");
+      $("#"+derecho_vulnerado).html('<i class="fa fa-plus"> Agregar</i>');
+
+    }
+    //console.log(lista_derechos);
+  }
+
+
+  var lista_peticiones = [];
+
+  function toggle_peticion(peticion) {
+
+    if($("#"+peticion).text()==" Agregar"){
+
+      $("#"+peticion).removeClass("btn-success");
+      $("#"+peticion).addClass("btn-danger");
+      $("#"+peticion).html('<i class="fa fa-minus"> Quitar</i>');
+
+
+      lista_peticiones.indexOf(peticion) === -1 ? lista_peticiones.push(peticion) : lista_peticiones.splice( lista_peticiones.indexOf(peticion), 1 );
+
+
+    }else{
+
+      lista_peticiones.splice( lista_peticiones.indexOf(peticion), 1 )
+
+      $("#"+peticion).removeClass("btn-danger");
+      $("#"+peticion).addClass("btn-success");
+      $("#"+peticion).html('<i class="fa fa-plus"> Agregar</i>');
+
+    }
+    //console.log(lista_derechos);
+
+  }
+
+
+  function validar_derechos(derecho_vulnerado) {
+
+  var derechos="";
+
+  if (typeof lista_derechos !== 'undefined' && lista_derechos.length > 0) {
+
+    $.each(lista_derechos, function (ind, derecho) {
+      //console.log('Derecho a '+derecho+'!');
+      derechos += 'derecho a '+derecho+', ';
+    });
+
+    $('#4').html(derechos);
+    $('#paso4_derechos').css("display", "none");
+    $('#documento').css("display", "block");
+
+    $('#3').tooltipster('open'); //PREGUNTA HECHOS
+
+    $('html, body').animate({
+       scrollTop: ($('#3').offset().top-400)
+     },500);
+
+     $("#tres").removeClass("btn-default");
+     $("#tres").addClass("btn-success");
+
+
+  }else{
+  // no hay nada en lista
+  }
+
+  }
+
+
+  function validar_peticiones(peticion) {
+
+  var peticiones="";
+
+  if (typeof lista_peticiones !== 'undefined' && lista_peticiones.length > 0) {
+
+    $.each(lista_peticiones, function (ind, peticion) {
+      //console.log('Derecho a '+derecho+'!');
+      peticiones += 'petición sobre '+peticion+', ';
+    });
+
+    $('#17').html(peticiones);
+    $('#paso17_peticiones').css("display", "none");
+    $('#documento').css("display", "block");
+
+    $('#19').tooltipster('open'); //PREGUNTA HECHOS
+
+    $('html, body').animate({
+       scrollTop: ($('#19').offset().top-400)
+     },500);
+
+     $("#cinco").removeClass("btn-default");
+     $("#cinco").addClass("btn-success");
+
+
+  }else{
+  // no hay nada en lista
+  }
+
+  }
+
+         $(document).ready(function() {
+
+
+           $("#plazos_form").submit(function(e){
+
+              e.preventDefault();
+
+              var valor_input= ($("#pago_input").val()).toString();
+
+              var fecha_pago_input= $("#fecha_pago").val();
+
+              var data2send = {numero:valor_input,fecha:fecha_pago_input};
+
+              //console.log(data2send);
+
+              var valor_agregar=valor_input;
+              var valor_letras;
+              var fecha_letras;
+
+              var costo_total;
+
+              console.log(valor_restante);
+              costo_total= parseInt(costo_vehiculo.replace(/[ ,.'$]/g, ""));
+
+              //valor_restante = parseInt(valor_restante.replace(/[ ,.'$]/g, "")));
+
+              valor_agregar = parseInt(valor_input.replace(/[ ,.'$]/g, ""));
+
+
+              valor_restante = valor_restante - valor_agregar;
+
+              if(valor_restante<0){
+                $("#msg_plazos").html("El valor no puede ser mayor al restante");
+              }else{
+
+                $.ajax({
+                    url: "https://panel.yolitigo.co/links/formatear_fecha",
+                    data:data2send,
+                    type: "GET",
+                    success: function(response) {
+                      //  console.log(response);
+
+                        if (response.fecha) {
+                          //console.log(response.ano);
+                          fecha_letras=response.fecha+" "+response.ano;
+
+                          console.log("Pago No. $"+valor_agregar+" el "+fecha_letras+" ");
+
+                          var item= "Pago No. $"+valor_agregar+" el "+fecha_letras+" </br>";
+
+                          $("#resumen_item").append(item);
+
+                          $('#plazos_form').trigger("reset");
+
+
+                          //console.log(valor_restante);
+
+
+                        }else{
+                          $("#msg_plazos").html("Ingrese una fecha primero");
+                        }
+                    },
+                    error: function(xhr) {
+
+                      console.log("problema adquiriendo fecha");
+                      $("#msg_plazos").html("problema adquiriendo fecha");
+
+                    }
+                });
+              }
+
+
+
+
+
+
+
+
+
+
+           });
+
+  				 	$("#vendedor_form").submit(function(e){
+
+          				e.preventDefault();
+  						    var nombre= $("#nombre_vendedor_form").val();
+  						    var cedula= $("#cedula_vendedor_form").val();
+  						    var departamento= $( "#dep2 option:selected" ).text();
+  						    var ciudad= $( "#city2 option:selected" ).text();
+  						    var celular= $("#cedula_vendedor_form").val();
+  						    var email= $("#email_vendedor").val();
+
+  						    $('#completar_datos_vendedor').hide();
+
+  						    $('#documento').show();
+
+                  $('#residencia_vendedor').html(ciudad)
+
+
+  						    ir("nombre_comprador");
+
+
+
+      			});
+
+            $("#comprador_form").submit(function(e){
+
+          				e.preventDefault();
+  						    var nombre= $("#nombre_comprador_form").val();
+  						    var cedula= $("#cedula_comprador_form").val();
+  						    var departamento= $( "#dep3 option:selected" ).text();
+  						    var ciudad= $( "#city3 option:selected" ).text();
+  						    var celular= $("#cedula_comprador_form").val();
+  						    var email= $("#email_comprador").val();
+
+  						    $('#completar_datos_comprador').hide();
+
+  						    $('#documento').show();
+
+                  $('#residencia_comprador').html(ciudad);
+
+
+                  ir("marca");
+
+      			});
+
+            $("#vehiculo_form").submit(function(e){
+
+          				e.preventDefault();
+  						    info_vehiculo.chasis= $("#chasis_vehiculo_form").val();
+  						    info_vehiculo.modelo= $("#modelo_vehiculo_form").val();
+  						    info_vehiculo.lugar_matricula= $("#lugar_matricula_vehiculo_form").val();
+                  info_vehiculo.serie= $("#serie_vehiculo_form").val();
+                  info_vehiculo.puertas= $("#puertas_vehiculo_form").val();
+                  info_vehiculo.cilindraje= $("#cilindraje_vehiculo_form").val();
+
+                  console.log(info_vehiculo);
+
+  						    $('#completar_datos_vehiculo').hide();
+
+  						    $('#documento').show();
+
+
+                  $(".marca").html(info_vehiculo.marca);
+                  $("#modelo").html(info_vehiculo.modelo);
+                  $("#linea").html(info_vehiculo.linea);
+                  $(".linea").html(info_vehiculo.linea);
+                  $("#placa").html(info_vehiculo.placa);
+                  $("#motor").html(info_vehiculo.cilindraje);
+                  $("#serie").html(info_vehiculo.serie);
+                  $("#chasis").html(info_vehiculo.chasis);
+                  $("#color").html(info_vehiculo.color);
+                  $("#lugar_matricula").html(info_vehiculo.lugar_matricula);
+                  $("#estado_soat").html(info_vehiculo.estado_soat);
+                  $("#estado_revision").html(info_vehiculo.estado_revision);
+                  $("#puertas").html(info_vehiculo.puertas);
+
+
+                  ir("precio");
+
+      			});
+
+
+
+
+  					$("#form_representante").submit(function(e){
+
+          				e.preventDefault();
+
+  								var nombre= $("#name2").val();
+  								var cedula= $("#cedula2").val();
+  								var departamento= $( "#dep2 option:selected" ).text();
+  								var ciudad= $( "#city2 option:selected" ).text();
+
+  								var telefono= $("#telefono2").val();
+  								var celular= $("#celular2").val();
+  								var email= $("#email2").val();
+
+
+  								$('#paso2_representante').css("display", "none");
+  								$('#documento').css("display", "block");
+
+
+  								$('#0').html(nombre);
+  								$('#15').html(nombre);
+
+  								$('#13').html(ciudad);
+
+  								$('#14').html(departamento);
+
+  								$('#campo_motiva').css("display", "block");
+
+  								$('#12').tooltipster('open');
+  								$('html, body').animate({
+  			     	 			scrollTop: ($('#12').offset().top-400)
+  			 					},500);
+
+  								$("#uno").removeClass("btn-default");
+  						    $("#uno").addClass("btn-success");
+
+      			});
+
+
+
+  					$("#form_hechos").submit(function(e){
+
+          				e.preventDefault();
+
+  								var hechos= $("#hechos").val();
+
+  								$('#paso3_hechos').css("display", "none");
+  								$('#documento').css("display", "block");
+
+  								$('#3').html(hechos);
+
+  								$('#17').tooltipster('open');
+  								$('html, body').animate({
+  			     	 			scrollTop: ($('#17').offset().top-400)
+  			 					},500);
+
+  								$("#cuatro").removeClass("btn-default");
+  								$("#cuatro").addClass("btn-success");
+
+      			});
+
+
+
+
+
+
+  				$('#representante').click(function() {   //BOTON DE REPRESENTANTE
+
+    				$('#0').tooltipster('close');
+  					$('#documento').css("display", "none");
+  					$('#paso2_representante').css("display", "block");
+
+  					$('html, body').animate({
+  						scrollTop: ($('#name').offset().top-400)
+  					},500);
+
+
+  					$.getJSON("/assets/data/departamentos.json", function (data) {
+  							departamentos = data;
+  					});
+
+  					$.getJSON("/assets/data/ciudades.json", function (data) {
+  							ciudades = data;
+  							setTimeout(function () {
+  									if (ciudades !== undefined) {
+  											loadDepartamentos2();
+  									}
+  							}, 2000);
+  					});
+
+  					$("#dep2").change(function () {
+  							var departamentoId = $("#dep2").val();
+  							loadCiudades2(departamentoId);
+  					});
+
+
+
+  				});
+
+
+  				$('#demandante').click(function() {  //BOTON DE DEMANDANTE
+
+  					$('#0').tooltipster('close');
+  					$("#motiva").css("display", "none");
+  					$('#documento').css("display", "none");
+  					$('#paso2_demandante').css("display", "block");
+
+  					$('html, body').animate({
+  						scrollTop: ($('#name').offset().top-400)
+  					},500);
+
+  					$.getJSON("/assets/data/departamentos.json", function (data) {
+  				      departamentos = data;
+  				  });
+
+  				  $.getJSON("/assets/data/ciudades.json", function (data) {
+  				      ciudades = data;
+  				      setTimeout(function () {
+  				          if (ciudades !== undefined) {
+  				              loadDepartamentos();
+  				          }
+  				      }, 2000);
+  				  });
+
+  				  $("#dep").change(function () {
+  				      var departamentoId = $("#dep").val();
+  				      loadCiudades(departamentoId);
+  				  });
+
+  				});
+
+
+
+  				$( "#motiva_select" ).change(function() {    //SELECION DE MOTIVO DE REPRESENTANTE
+  					var motiva= $( "#motiva_select option:selected" ).text();
+  					$('#12').html(motiva);
+  					$('#12').tooltipster('close');
+  					$('#1').tooltipster('open');
+  					$('html, body').animate({
+       	 			scrollTop: ($('#1').offset().top-400)
+   					},500);
+  				});
+
+
+  				$( "#eps_select" ).change(function() {    //SELECION DE EPS
+    				var eps= $( "#eps_select option:selected" ).text();
+  					$('#1').html(eps);
+  					$('#16').html(eps);
+  					$('#1').tooltipster('close');
+  					$('#4').tooltipster('open');
+  					$('html, body').animate({
+       	 			scrollTop: ($('#4').offset().top-400)
+   					},500);
+
+  					$("#dos").removeClass("btn-default");
+  					$("#dos").addClass("btn-success");
+  				});
+
+
+
+
+
+  				var originalSize = $('#documento p').css('font-size');
+  				var originalSize_titulo = $('#documento h2').css('font-size');
+  				var originalSize_subtitulos = $('#documento h3').css('font-size');
+
+  			 // reset
+  				$("#resetMe").click(function(){
+  			 $('#documento p').css('font-size', originalSize);
+  			 $('#documento h2').css('font-size', originalSize_titulo);
+  			 $('#documento h3').css('font-size', originalSize_subtitulos);
+
+  				});
+
+  				// Increase Font Size
+  				$("#increase").click(function(){
+  			 var currentSize = $('#documento p').css('font-size');
+  			 var currentSize_titulo = $('#documento h2').css('font-size');
+  			 var currentSize_subtitulo = $('#documento h3').css('font-size');
+  			 var currentSize = parseFloat(currentSize)*1.2;
+  			 var currentSize_titulo = parseFloat(currentSize_titulo)*1.2;
+  			 var currentSize_subtitulo = parseFloat(currentSize_subtitulo)*1.2;
+  			 $('#documento p').css('font-size', currentSize);
+  			 $('#documento h2').css('font-size', currentSize_titulo);
+  			 $('#documento h3').css('font-size', currentSize_subtitulo);
+  			 return false;
+  			 });
+
+  				// Decrease Font Size
+  				$("#decrease").click(function(){
+  					var currentSize = $('#documento p').css('font-size');
+  	 			 var currentSize_titulo = $('#documento h2').css('font-size');
+  	 			 var currentSize_subtitulo = $('#documento h3').css('font-size');
+  	 			 var currentSize = parseFloat(currentSize)*0.8;
+  	 			 var currentSize_titulo = parseFloat(currentSize_titulo)*0.8;
+  	 			 var currentSize_subtitulo = parseFloat(currentSize_subtitulo)*0.8;
+  	 			 $('#documento p').css('font-size', currentSize);
+  	 			 $('#documento h2').css('font-size', currentSize_titulo);
+  	 			 $('#documento h3').css('font-size', currentSize_subtitulo);
+  				return false;
+  				});
+
+
+     });
+
+
+</script>
+
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr0ltRhJyhUZfUVphYv1wFsN64DzkHtCs&callback=initialize">
+</script>

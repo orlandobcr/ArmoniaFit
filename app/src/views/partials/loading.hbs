@@ -1,0 +1,62 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+<div id="cargando" style="display:none"  class="cargando">
+
+  <div class="icono_cargando">
+
+    <div class="row">
+      <div class="lds-roller"><div></div><div></div></div>
+      <div style="width:350px"> <h1 id="porcentaje" style="color:#cecece !important"> Procesando</h1><h5 style="color:#cecece !important">Esto prodría tardar dependiendo de la velocidad de tu conexión a internet y el tamaño de los archivos adjuntos</h5></div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+/*
+	$(document).ready(function(){
+
+        var percent = $('#porcentaje');
+        var respu = $('#form-with-file');
+
+        $('#archivo').change(function (){
+          if ($('#archivo').get(0).files.length === 0) {
+                console.log("NO FILE!");
+                $('#form-with-file').ajaxFormUnbind();
+                // $('#form-with-file').removeClass("form-with-file");
+
+
+            }else{
+                console.log("FILE!");
+                //$('#form-with-file').addClass( "form-with-file" );
+                $('#form-with-file').ajaxForm({
+                    beforeSend: function() {
+
+                        percent.empty();
+                        var percentVal = '0% Procesado';
+                        percent.html(percentVal);
+                        $("#cargando").css("display","block");
+                    },
+                    uploadProgress: function(event, position, total, percentComplete) {
+                        var percentVal = percentComplete + '% Procesado';
+                        percent.html(percentVal);
+                        //console.log(percentVal);
+                    },
+                    complete: function(xhr) {
+                        percent.html(xhr.responseText);
+                    }
+                });
+
+            }
+            });
+
+
+
+
+
+    });
+
+    */
+
+</script>

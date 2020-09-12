@@ -1,0 +1,187 @@
+<!-- BEGIN: Page CSS-->
+<link rel="stylesheet" type="text/css" href="/app-assets/css/core/menu/menu-types/vertical-menu.css">
+<link rel="stylesheet" type="text/css" href="/app-assets/css/core/colors/palette-gradient.css">
+<link rel="stylesheet" type="text/css" href="/app-assets/css/plugins/file-uploaders/dropzone.css">
+<link rel="stylesheet" type="text/css" href="/app-assets/css/pages/data-list-view.css">
+<!-- END: Page CSS-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+          <div class="content-header row">
+              <div class="content-header-left col-md-9 col-12 mb-2">
+                  <div class="row breadcrumbs-top">
+                      <div class="col-12">
+                          <h2 class="content-header-title float-left mb-0">Gestión de precios</h2>
+                          <div class="breadcrumb-wrapper col-12">
+                              <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="index.html">Home</a>
+                                  </li>
+                                  <li class="breadcrumb-item"><a href="#">gestión de precios</a>
+                                  </li>
+                                  <li class="breadcrumb-item active">cajas
+                                  </li>
+                              </ol>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+          <div class="content-body">
+              <!-- Data list view starts -->
+              <section id="data-list-view" class="data-list-view-header">
+
+
+                  <!-- DataTable starts -->
+                  <div class="table-responsive">
+                      <table class="table data-list-view">
+                          <thead>
+                              <tr>
+                                  <th></th>
+                                  <th style="display:none;"  >ID</th>
+                                  <th>Ciudad</th>
+                                  <th>Nombre</th>
+                                  <th style="display:none;"  >Descripción</th>
+                                  <th style="display:none;">Tipo</th>
+                                  <th>Cantidad de pulpas</th>
+                                  <th style="display:none;">Referencia</th>
+                                  <th>Precio</th>
+                                  <th>Popularidad</th>
+                                  <th>Acción</th>
+
+                              </tr>
+                          </thead>
+                          <tbody>
+                            {{#each cajas}}
+                              <tr>
+                                  <td></td>
+                                  <td style="display:none;"  class="item-id">{{id_caja}}</td>
+                                  <td class="item-city">{{nombre_ciudad}}</td>
+                                  <td class="item-name">{{nombre_caja}}</td>
+                                  <td style="display:none;"  class="item-descrip">{{descripcion}}</td>
+                                  <td style="display:none;" class="item-type">{{tipo_caja}}</td>
+                                  <td class="item-pulp-amount">{{cantidad_pulpas}}</td>
+                                  <td style="display:none;" class="item-reference">{{referencia}}</td>
+                                  <td class="item-price">{{#if precio_caja}} {{precio_caja}} {{else}} Dinámico{{/if}}</td>
+                                  <td>
+                                      <div class="progress progress-bar-success">
+                                          <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="40" aria-valuemax="100" style="width:97%"></div>
+                                      </div>
+                                  </td>
+
+                                  <td class="product-action">
+                                  <span  style="font-size:1.5em" ><i class="feather icon-edit action-edit"></i></span>
+
+                                  </td>
+                              </tr>
+                              {{/each}}
+                          </tbody>
+                      </table>
+                  </div>
+                  <!-- DataTable ends -->
+
+                  <!-- add new sidebar starts -->
+                  <div class="add-new-data-sidebar">
+                      <div class="overlay-bg"></div>
+                      <div class="add-new-data">
+                          <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                              <div>
+                                  <h4 class="text-uppercase modo">Agregando caja</h4>
+                                  <h4 style="display:none" class="text-uppercase  modo">Editando caja</h4>
+                              </div>
+                              <div class="hide-data-sidebar">
+                                  <i class="feather icon-x"></i>
+                              </div>
+                          </div>
+                          <div class="data-items pb-3">
+                              <div class="data-fields px-2 mt-1">
+                                  <div class="row">
+                                      <form id="form_caja" enctype="multipart/form-data" action="/links/guardar_caja" method="post"  >
+                                      <input id="id_caja" type="text" class="form-control" name="id_caja" hidden>
+                                      <div class="col-sm-12 data-field-col">
+                                        <label for="data-category">Ciudad</label>
+                                        <select id="id_ciudad" class="form-control" name="id_ciudad" required>
+                                          <option value="" selected disabled>Selecione</option>
+                                          {{#each ciudades}}
+                                          <option value="{{id_ciudad}}">{{nombre_ciudad}}</option>
+                                          {{/each}}
+                                        </select>
+                                      </div>
+                                      <div class="col-sm-12 data-field-col">
+                                          <label for="data-name">Nombre de caja</label>
+                                          <input id="nombre_caja" type="text" class="form-control" name="nombre_caja" required>
+                                      </div>
+                                      <div class="col-sm-12 data-field-col">
+                                          <label for="data-name">Descripción de caja</label>
+                                          <input id="descripcion" type="text" class="form-control" name="descripcion" required>
+                                      </div>
+                                      <div class="col-sm-12 data-field-col">
+                                          <label for="data-category">Tipo de caja </label>
+                                          <select id="tipo_caja" class="form-control" name="tipo_caja" required>
+                                              <option value="normal" >Normal</option>
+                                              <option value="personalizada">Personalizada</option>
+                                          </select>
+                                      </div>
+                                      <div class="col-sm-12 data-field-col no-perso">
+                                          <label for="data-name">Precio de caja</label>
+                                          <input id="precio_caja" type="number" class="form-control" name="precio_caja" required>
+                                      </div>
+                                      <div class="col-sm-12 data-field-col no-perso">
+                                          <label for="data-price">Cantidad de pulpas (max)</label>
+                                          <input id="cantidad_pulpas" type="number" class="form-control" name="cantidad_pulpas" required>
+                                      </div>
+                                      <div class="col-sm-12 data-field-col">
+                                          <label for="data-name">Referencia</label>
+                                          <input id="referencia" type="text" class="form-control" name="referencia">
+                                      </div>
+                                      <div class="col-sm-12 data-field-col data-list-upload">
+
+                                      <fieldset class="form-group">
+                                          <label for="basicInputFile">Imágen del producto</label>
+                                          <div class="custom-file">
+                                              <input type="file" class="custom-file-input" name="imagen_producto">
+                                              <label class="custom-file-label" for="inputGroupFile01">Seleccione</label>
+                                          </div>
+                                      </fieldset>
+
+
+
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                              <div class="add-data-btn">
+                                  <button class="btn btn-primary">Guardar</button>
+                              </div>
+                              <div class="cancel-data-btn">
+                                  <button class="btn btn-outline-danger">Cancelar</button>
+                              </div>
+                          </div>
+
+
+                            </form>
+                      </div>
+
+                  </div>
+                  <!-- add new sidebar ends -->
+              </section>
+              <!-- Data list view end -->
+
+          </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+
+    <script src="/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+    <script src="/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+    <script src="/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
+    <script src="/app-assets/vendors/js/tables/datatable/dataTables.select.min.js"></script>
+    <script src="/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+
+    <script src="/app-assets/js/scripts/ui/gestion_precios_cajas.js"></script>

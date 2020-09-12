@@ -1,0 +1,7 @@
+File from: [full_path]
+
+File to: [./src/public/img_profiles/full_path]
+
+Compression algorithm: [-]
+
+Description: File does not exist!

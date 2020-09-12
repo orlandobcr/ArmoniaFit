@@ -1,0 +1,609 @@
+<!-- BEGIN: Page CSS-->
+<link href="/app-assets/vendors/css/summernote/summernote-lite.min.css" rel="stylesheet">
+<link href="/app-assets/vendors/css/inputosaurus/inputosaurus.css" rel="stylesheet">
+
+
+<link href="/app-assets/vendors/css/extensions/jquery-ui.min.css" rel="stylesheet">
+
+  <!-- BEGIN: Content-->
+  <div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+      <div class="content-header row">
+        <div class="content-header-left col-md-9 col-12 mb-2">
+          <div class="row breadcrumbs-top">
+            <div class="col-12">
+              <h2 class="content-header-title float-left mb-0 ">Creando publicación</h2>
+              <div class="breadcrumb-wrapper">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a>
+                  </li>
+                  <li class="breadcrumb-item"><a href="/links/perfil_entrenador">entrenador</a>
+
+                  </li>
+                  <li class="breadcrumb-item"><a href="/links/crear_publicacion">publicando</a>
+
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="content-bod">
+
+        <form method="post" id="form-articulo" class="p-t-15" action="/links/guardar_publicacion">
+          <input type="text"  name="id_publicacion" id="id_publicacion" value="" hidden>
+          <input type="text"  name="borrador" id="borrador" value="" hidden>
+          <input type="text" name="html_content" id="html_content" value="" hidden>
+          <input type="text" name="text_content" id="text_content" value="" hidden>
+          <input type="text" name="imagen_publicacion" id="imagen_publicacion" value="" hidden>
+
+        <div  class="row mb-2 full-width">
+          <div class="col-md-8 col-lg-8 col-sm-12 ">
+              <input style="left:10px;right:10px" id="titulo" type="text" class="bg-brigth form-control-lg col-12 " placeholder="Ingresa un título para tu publicación..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa un título para tu publicación...'" name="titulo" required>
+          </div>
+          <div class="col-md-2 col-lg-2 col-sm-6 col-xs-6 col-6">
+
+            <button id="guardar_bnt" style="left:10px;right:10px:" type="button" class="btn  btn-lg btn-secondary col-12">Guardar</button>
+            <button id="editar_bnt" style="left:10px;right:10px;display:none" type="button" class="btn  btn-lg btn-warning col-12">Editar</button>
+          </div>
+          <div class="col-md-2 col-lg-2 col-sm-6 col-xs-6 col-6">
+            <button id="publicar_bnt" style="left:10px; right:10px" type="button" class="btn btn-icon btn-lg btn-primary col-12"><!--<i class="feather icon-edit-2"></i> -->Publicar </button>
+          </div>
+
+        </div>
+
+
+
+          <div  class="full-width col-12 mb-2">
+
+            <div  id="summernote"></div>
+
+          </div>
+
+          <section class="col-12 " id="accordion">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="accordionWrapa1" role="tablist" aria-multiselectable="true">
+                                <div class="card collapse-icon accordion-icon-rotate">
+                                    <div class="card-header mb-1">
+                                        <h4 class="card-title">Otras opciones</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="">
+
+                                            <div class="accordion-default collapse-bordered">
+                                                <div class="card collapse-header">
+                                                    <div id="heading1" class="card-header collapse-header" data-toggle="collapse" role="button" data-target="#accordion1" aria-expanded="false" aria-controls="accordion1">
+                                                        <span class="lead collapse-title">
+                                                            SEO (Para ayudar al posicionamiento)
+                                                        </span>
+                                                    </div>
+                                                    <div id="accordion1" role="tabpanel" data-parent="#accordionWrapa1" aria-labelledby="heading1" class="collapse">
+                                                        <div class="card-content">
+                                                            <div class="card-body">
+
+                                                              <div class="col-12">
+                                                                <div class="text-bold-600 font-medium-2">
+                                                                  Ingrese las palabras clave de esta publicación:
+                                                                </div>
+                                                                <div class="form-group">
+                                                                <input id="meta_etiquetas" type="text" class="bg-brigth form-control col-12 " placeholder="Ingresa palabras" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Algunas palabras clave de la publicación" name="meta_etiquetas">
+                                                                </div>
+                                                              </div>
+
+
+                                                              <input id="meta_descripcion" type="text" class="bg-brigth form-control col-12 " placeholder="Ingresa una descripcion corta" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa una descripcion corta'" name="meta_descripcion">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card collapse-header">
+                                                    <div id="heading4" class="card-header" data-toggle="collapse" role="button" data-target="#accordion4" aria-expanded="false" aria-controls="accordion4">
+                                                        <span class="lead collapse-title">
+                                                            Previsualización
+                                                        </span>
+                                                    </div>
+                                                    <div id="accordion4" role="tabpanel" data-parent="#accordionWrapa1" aria-labelledby="heading4" class="collapse" aria-expanded="false">
+                                                        <div class="card-content">
+                                                            <div class="card-body">
+                                                              <div  class="full-width col-12 row">
+
+                                                                <div class="media col-lg-6 col-md-6 col-sm-12 col-xs-12 row">
+                                                                  <h2 class="full-width col-12">
+                                                                      En facebook
+                                                                  </h2>
+
+                                                                                      <div class="card">
+                                                                                          <div class="card-body">
+
+                                                                                              <div class="d-flex justify-content-start align-items-center mb-1">
+                                                                                                  <div class="avatar mr-1">
+                                                                                                      <img src="{{#if user.imagen_perfil}}{{user.imagen_perfil}}{{else}}/img_profiles/profile_default.jpg{{/if}}" alt="avtar img holder" height="45" width="45">
+                                                                                                  </div>
+                                                                                                  <div class="user-page-info">
+                                                                                                      <p class="mb-0">{{user.nick}}</p>
+                                                                                                      <span class="font-small-2">{{moment date lang="es" format="MM MMMM HH:mm"}} · Ciudad · <i class="feather icon-users"></i></span>
+                                                                                                  </div>
+                                                                                                  <div class="ml-auto user-like text-danger"><i class="fa fa-more-vertical"></i></div>
+                                                                                              </div>
+                                                                                              <p id="facebook_intro" class="d-flex justify-content-start align-items-center mb-1 col-12">I love jujubes wafer pie ice cream tiramisu. Chocolate I love pastry pastry sesame snaps wafer. Pastry topping biscuit lollipop topping I love lemon drops sweet roll bonbon. Brownie donut icing.</p>
+                                                                                              <img id="faceboo_img" class="img-fluid card-img-top rounded-sm mb-2 " src="../../../app-assets/images/profile/post-media/2.jpg" alt="avtar img holder">
+                                                                                              <div class="d-flex justify-content-start align-items-center mb-1 col-12">
+
+                                                                                                  <div class="ml-0">
+                                                                                                      <ul class="list-unstyled users-list m-0  d-flex align-items-center">
+
+                                                                                                          <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Trina Lynes" class="avatar pull-up">
+                                                                                                            <button style="background-color:#0471e5" type="button"  class="btn btn-sm btn-icon btn-icon rounded-circle ">
+                                                                                                                <i class="feather icon-thumbs-up text-white"></i>
+                                                                                                            </button>
+                                                                                                          </li>
+                                                                                                          <li data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Trina Lynes" class="avatar pull-up">
+                                                                                                            <button style="background-color:#f23f5f;" type="button"  class="btn btn-sm  btn-icon btn-icon rounded-circle ">
+                                                                                                                <i class="feather icon-heart text-white"></i>
+                                                                                                            </button>
+                                                                                                          </li>
+
+
+                                                                                                          <li class="d-inline-block pl-50">
+                                                                                                              <span>+140</span>
+                                                                                                          </li>
+                                                                                                      </ul>
+                                                                                                  </div>
+                                                                                                  <p class="ml-auto d-flex align-items-center ">
+                                                                                                      77 comentarios
+                                                                                                  </p>
+                                                                                              </div>
+                                                                                              <div class="d-flex justify-content-start align-items-center mb-1 col-12">
+                                                                                                  <div class="avatar mr-50">
+                                                                                                      <img src="../../../app-assets/images/portrait/small/avatar-s-6.jpg" alt="Avatar" height="30" width="30">
+                                                                                                  </div>
+                                                                                                  <div class="user-page-info">
+                                                                                                      <h6 class="mb-0">Kitty Allanson</h6>
+                                                                                                      <span class="font-small-2">orthoplumbate morningtide naphthaline exarteritis</span>
+                                                                                                  </div>
+                                                                                                  <div class="ml-auto cursor-pointer">
+                                                                                                      <i class="feather icon-heart mr-50"></i>
+                                                                                                      <i class="feather icon-message-square"></i>
+                                                                                                  </div>
+                                                                                              </div>
+                                                                                              <div class="d-flex justify-content-start align-items-center mb-1 col-12">
+                                                                                                  <div class="avatar mr-50">
+                                                                                                      <img src="../../../app-assets/images/portrait/small/avatar-s-8.jpg" alt="Avatar" height="30" width="30">
+                                                                                                  </div>
+                                                                                                  <div class="user-page-info">
+                                                                                                      <h6 class="mb-0">Jeanie Bulgrin</h6>
+                                                                                                      <span class="font-small-2">blockiness pandemy metaxylene speckle coppy</span>
+                                                                                                  </div>
+                                                                                                  <div class="ml-auto cursor-pointer">
+                                                                                                      <i class="feather icon-heart mr-50"></i>
+                                                                                                      <i class="feather icon-message-square"></i>
+                                                                                                  </div>
+                                                                                              </div>
+                                                                                              <fieldset class="form-label-group mb-50 col-12">
+                                                                                                  <textarea class="form-control" id="label-textarea" rows="1" placeholder="Agregar comentario"></textarea>
+                                                                                                  <label for="label-textarea">Agregar comentario</label>
+                                                                                              </fieldset>
+
+                                                                                          </div>
+                                                                                      </div>
+
+                                                                </div>
+
+                                                                <div class="media col-lg-6 col-md-6 col-sm-12 col-xs-12 row">
+                                                                  <h2 class="full-width col-12">
+                                                                      En google
+                                                                  </h2>
+                                                                  <div class="col-12">
+                                                                    <p class="mb-0" style="color:#202124 !important">armoniafit.com - {{user.nick}}</p>
+                                                                    <h3 id="google_titte"   class="text-bold-400 mb-0" style="color:#1a0dab !important">iCell - disrupt butcher pitchfork.</h3>
+                                                                    <p id="google_intro"  >12 DEC 2015 - Cake fruitcake cake caramels jelly beans chocolate bar. Macaroon gingerbread pastry. Gummies ice cream chocolate lollipop brownie cotton candy. Topping cotton candy brownie. Cake tiramisu macaroon sugar plum. Sweet cotton can...</p>
+                                                                  </div>
+
+                                                                  <div class="col-12">
+                                                                    <p class="mb-0 blurry-text textshadow" style="color:#1136ea38 !important;text-shadow: 0 0 5px rgba(0,0,0,0.5);">armoniafit.com - {{user.nick}}</p>
+                                                                    <h3  class="text-bold-400 mb-0 " style="color:#1136ea38 !important;text-shadow: 0 0 5px rgba(0,0,0,0.5);">iCell - disrupt butcher pitchfork.</h3>
+                                                                    <p i style="color: transparent;text-shadow: 0 0 5px rgba(0,0,0,0.5);" class=""  >12 DEC 2015 - Cake fruitcake cake caramels jelly beans chocolate bar. Macaroon gingerbread pastry. Gummies ice cream chocolate lollipop brownie cotton candy. Topping cotton candy brownie. Cake tiramisu macaroon sugar plum. Sweet cotton can...</p>
+                                                                  </div>
+                                                                  <div class="col-12">
+                                                                    <p class="mb-0 blurry-text textshadow" style="color:#1136ea38 !important;text-shadow: 0 0 5px rgba(0,0,0,0.5);">armoniafit.com - {{user.nick}}</p>
+                                                                    <h3   class="text-bold-400 mb-0 " style="color:#1136ea38 !important;text-shadow: 0 0 5px rgba(0,0,0,0.5);">iCell - disrupt butcher pitchfork.</h3>
+                                                                    <p  style="color: transparent;text-shadow: 0 0 5px rgba(0,0,0,0.5);" class=""  >12 DEC 2015 - Cake fruitcake cake caramels jelly beans chocolate bar. Macaroon gingerbread pastry. Gummies ice cream chocolate lollipop brownie cotton candy. Topping cotton candy brownie. Cake tiramisu macaroon sugar plum. Sweet cotton can...</p>
+                                                                  </div>
+                                                                  <div class="col-12">
+                                                                    <p class="mb-0 blurry-text textshadow" style="color:#1136ea38 !important;text-shadow: 0 0 5px rgba(0,0,0,0.5);">armoniafit.com - {{user.nick}}</p>
+                                                                    <h3   class="text-bold-400 mb-0 " style="color:#1136ea38 !important;text-shadow: 0 0 5px rgba(0,0,0,0.5);">iCell - disrupt butcher pitchfork.</h3>
+                                                                    <p  style="color: transparent;text-shadow: 0 0 5px rgba(0,0,0,0.5);" class=""  >12 DEC 2015 - Cake fruitcake cake caramels jelly beans chocolate bar. Macaroon gingerbread pastry. Gummies ice cream chocolate lollipop brownie cotton candy. Topping cotton candy brownie. Cake tiramisu macaroon sugar plum. Sweet cotton can...</p>
+                                                                  </div>
+                                                                </div>
+
+
+                                                              </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+  </form>
+
+
+        <!-- Data list view starts -->
+        <!-- Data list view end -->
+
+      </div>
+    </div>
+  </div>
+  <!-- END: Content-->
+
+
+<style>
+
+</style>
+
+
+<script src="/app-assets/vendors/js/extensions/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+<script src="/app-assets/vendors/js/inputosaurus/inputosaurus.js"></script>
+<script src="/app-assets/vendors/js/summernote/summernote-lite.min.js"></script>
+
+
+<script>
+
+$('#meta_etiquetas').inputosaurus({
+width:"100%"
+});
+
+var saved=0;
+var ciudades=[];
+var departamentos=[];
+var calendar;
+
+// register jQuery extension
+jQuery.extend(jQuery.expr[':'], {
+    focusable: function (el, index, selector) {
+        return $(el).is('a, button, :input, [tabindex]');
+    }
+});
+
+$(document).on('keypress', '#titulo', function (e) {
+    if (e.which == 13) {
+        e.preventDefault();
+        // Get all focusable elements on the page
+        $('#summernote').summernote('focus')
+    }
+});
+
+        $(window).bind('beforeunload', function(){
+         //the custom message for page unload doesn't work on Firefox
+         if(!saved){
+          var message =  'No has guardado tu publición, quieres salir sin guardar?'
+          return message;
+         }
+       });
+
+
+  {{#each usuario}}
+
+  // estado 0 = sin activar    // estado 1 = registro terminado  //  estado 2 = verificado   //  -1 = desactivado
+    var estado_usuario={{estado}};
+    var departamento="{{departamento}}";
+    var ciudad="{{ciudad}}";
+    var calendar_data= '{{#if horarios_disponibles }} {{#decode_html  horarios_disponibles}}{{/decode_html}}{{/if}}';
+
+    if (calendar_data!= '') {
+      calendar_data=JSON.parse(calendar_data);
+    }
+
+  {{/each}}
+
+
+
+
+
+$(document).ready(function(e) {
+
+ $('#summernote').summernote({
+ height: 350,
+ lang: 'es-ES',
+ callbacks: {
+        onImageUpload: function(files, editor, welEditable) {
+            sendFile(files[0], editor, welEditable);
+        },
+        onBlur: function() {
+                   update_intro();
+               }
+    }
+ });
+
+
+
+ function sendFile(file, editor, welEditable) {
+            data = new FormData();
+            data.append("file", file);
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: "/links/imagenes_articulo",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+
+                  if(response.status == 1){
+
+                    $('#faceboo_img').attr("src",response.path);
+                    $( "#faceboo_img" ).removeClass( "d-none" )
+
+                    $('#summernote').summernote('editor.insertImage', response.path);
+                    $( "#imagen_publicacion" ).val(response.path);
+                  }else{
+
+                    Swal.fire({
+                      title: "Ha ocurrido un problema subiendo tu imagen, por favor intenta de nuevo",
+                      text: "",
+                      type: "danger",
+                      confirmButtonClass: 'btn btn-primary',
+                      buttonsStyling: false,
+                    });
+
+
+                  }
+
+                }
+            });
+          }
+
+      function check_form() {
+
+          if($("#titulo").val()==""){
+
+            Swal.fire({
+              title: "Debes ingresar un título a la publicación",
+              text: "",
+              type: "warning",
+              confirmButtonClass: 'btn btn-primary',
+              buttonsStyling: false,
+              onClose: () => {
+                $("#titulo").focus()
+              }
+            });
+
+
+
+            return 0;
+
+          }
+
+          if($('#summernote').summernote('isEmpty')){
+
+            Swal.fire({
+              title: "El articulo está vacio",
+              text: "",
+              type: "warning",
+              confirmButtonClass: 'btn btn-primary',
+              buttonsStyling: false,
+              onClose: () => {
+                $('#summernote').summernote('focus')
+              }
+            });
+            return 0;
+          }
+
+          var text = $($("#summernote").summernote("code")).text();
+          if(text.length < 250){
+
+            Swal.fire({
+              title: "El articulo es muy corto",
+              text: "",
+              type: "warning",
+              confirmButtonClass: 'btn btn-primary',
+              buttonsStyling: false,
+              onClose: () => {
+                $('#summernote').summernote('focus')
+              }
+            });
+            return 0;
+          }
+
+
+
+          if($("#imagen_publicacion").val()==""){
+
+            Swal.fire({
+              title: "Debes insertar por lo menos una imágen en tu publicación",
+              text: "",
+              type: "warning",
+              confirmButtonClass: 'btn btn-primary',
+              buttonsStyling: false
+            });
+
+
+
+            return 0;
+
+          }
+
+          return 1;
+        }
+
+        $( "#titulo" ).change(function() {
+          saved=0;
+          var title = $( "#titulo" ).val()
+          if(title.length >= 55){
+              title = jQuery.trim(title).substring(0, 55);
+              $( "#google_titte" ).html(title+"..");
+          }else{
+            $( "#google_titte" ).html(title);
+          }
+
+        });
+
+        function update_intro(){
+          saved=0;
+
+                    var intro =  $($("#summernote").summernote("code")).text();
+
+                    if(intro.length >= 235){
+                        intro = jQuery.trim(intro).substring(0, 235)
+                        $( "#google_intro" ).html(intro+"...")
+                        $( "#facebook_intro" ).html(intro+"...")
+                    }else{
+                      $( "#google_intro" ).html(intro);
+                      $( "#facebook_intro" ).html(intro)
+                    }
+
+                    if(intro.length < 1){
+                      $( "#google_intro" ).html("  I love jujubes wafer pie ice cream tiramisu. Chocolate I love pastry pastry sesame snaps wafer. Pastry topping biscuit lollipop topping I love lemon drops sweet roll bonbon. Brownie donut icing.");
+                      $( "#facebook_intro" ).html("  I love jujubes wafer pie ice cream tiramisu. Chocolate I love pastry pastry sesame snaps wafer. Pastry topping biscuit lollipop topping I love lemon drops sweet roll bonbon. Brownie donut icing.")
+
+                    }
+
+
+        }
+
+
+        $("#editar_bnt").click(function(){
+          $("#editar_bnt").hide("slow");
+          $("#guardar_bnt").show("slow");
+          $( "#titulo" ).prop( "disabled", false );
+          $('#summernote').summernote('enable');
+          $('#summernote').summernote({disableDragAndDrop : false});
+        });
+
+
+        $("#publicar_bnt").click(function(){
+        if(check_form()){
+          var html_content = $('#summernote').summernote('code');
+          var text_content = $($("#summernote").summernote("code")).text();
+
+          //console.log(markupStr);
+
+          $('#html_content').val(html_content);
+          $('#text_content').val(text_content);
+          $('#borrador').val(0);
+          var data2send = new FormData($("#form-articulo").get(0));
+
+          $.ajax({
+              url: "/links/guardar_publicacion",
+              data:data2send,
+              type: "POST",
+              contentType : false,
+              processData : false,
+              success: function(response) {
+
+                  if(response.status == 1){
+                    window.location.href = '/links/publicacion/'+response.q_res.insertId;
+                  }else{
+
+                    Swal.fire({
+                      title: "No se pudo guardar la información",
+                      text: "",
+                      type: "error",
+                      confirmButtonClass: 'btn btn-primary',
+                      buttonsStyling: false,
+                    });
+
+
+                  }
+              },
+              error: function(xhr) {
+
+              }
+          });
+
+
+        }
+
+      });
+
+        $("#guardar_bnt").click(function(){
+
+          if(check_form()){
+
+            var html_content = $('#summernote').summernote('code');
+            var text_content = $($("#summernote").summernote("code")).text();
+
+            $('#html_content').val(html_content);
+            $('#text_content').val(text_content);
+
+            $('#borrador').val(1);
+            var data2send = new FormData($("#form-articulo").get(0));
+
+            $.ajax({
+                url: "/links/guardar_publicacion",
+                data:data2send,
+                type: "POST",
+                contentType : false,
+                processData : false,
+                success: function(response) {
+
+                    if(response.status == 1){
+                      Swal.fire({
+                        title: "Borrador guardado",
+                        text: "",
+                        type: "success",
+                        confirmButtonClass: 'btn btn-primary',
+                        buttonsStyling: false,
+                      });
+
+                      saved=1;
+
+                      $('#id_publicacion').val(response.q_res.insertId)
+                      $("#editar_bnt").show("slow");
+                      $( "#titulo" ).prop( "disabled", true );
+                      $("#guardar_bnt").hide("slow");
+                      $('#summernote').summernote('disable');
+                      $('#summernote').summernote({disableDragAndDrop : true});
+
+
+                    }else{
+
+                      Swal.fire({
+                        title: "No se pudo guardar la información",
+                        text: "",
+                        type: "error",
+                        confirmButtonClass: 'btn btn-primary',
+                        buttonsStyling: false,
+                      });
+
+
+                    }
+                },
+                error: function(xhr) {
+
+                }
+            });
+
+
+          }
+
+
+
+        });
+
+
+
+
+
+
+});
+
+</script>
+
+<script src="/app-assets/vendors/js/summernote/lang/summernote-es-ES.js"></script>
+
+<script src="/app-assets/js/scripts/forms/select/form-select2.js"></script>

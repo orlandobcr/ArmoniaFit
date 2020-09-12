@@ -1,0 +1,63 @@
+<!-- BEGIN: Page CSS-->
+
+<script async src="/app-assets/vendors/js/share-buttons/share-buttons.js"></script>
+
+  <!-- BEGIN: Content-->
+  <div style="{{#if user.id}}{{else}}margin-left:unset;{{/if}}" class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+
+      <div class="d-flex justify-content-start align-items-center mb-1 col-12">
+          <div class="avatar mr-50 clearfix d-none d-sm-block">
+              <img src="{{usuario.0.imagen_perfil}}" alt="Avatar" height="50" width="50">
+          </div>
+          <div class="user-page-info mt-1">
+
+              <h2 class="mb-0 content-header-title">{{publicacion.0.titulo}}</h2>
+              <p class="text-muted font-medium-1"><span class="text-muted">Publicado el {{moment fecha_publicacion lang="es" format="MM MMMM, YYYY"}}</span> por {{usuario.0.nick}}</p>
+
+          </div>
+
+      </div>
+
+      <div class="content-bod">
+
+        <div id="content"  class="full-width col-12">
+
+        </div>
+
+        <div class="share-btn" data-url="{{test}}" data-title="{{publicacion.0.titulo}}" data-desc="publicacion.0.meta_descripcion">
+    <a class="btn-vk" data-id="vk"><i class="fa fa-vk"></i> VK</a>
+    <a class="btn-facebook" data-id="fb"><i class="fa fa-facebook-square"></i> Facebook</a>
+    <a class="btn-twitter" data-id="tw"><i class="fa fa-twitter"></i> Twitter</a>
+    <a class="btn-telegram" data-id="tg"><i class="fa fa-telegram"></i> Telegram</a>
+    <a class="btn-mail" data-id="mail"><i class="fa fa-at"></i> EMail</a>
+  </div>
+
+
+          <div  class="full-width col-12">
+            <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5" data-width="100%"></div>
+          </div>
+        <!-- Data list view starts -->
+        <!-- Data list view end -->
+
+      </div>
+    </div>
+  </div>
+  <!-- END: Content-->
+
+
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v8.0&appId=274455249237947&autoLogAppEvents=1" nonce="Ty6iH1qI"></script>
+
+<script>
+
+$(document).ready(function(e) {
+
+var content=`{{#decode_html publicacion.0.html_content}}{{/decode_html}}`;
+$("#content").html(content);
+});
+
+</script>
