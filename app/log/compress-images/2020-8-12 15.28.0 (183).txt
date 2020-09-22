@@ -1,0 +1,7 @@
+File from: [./src/public/galeria_fotos/originales/gallery_4350_20200912_150918.jpg]
+
+File to: [./src/public/galeria_fotos/gallery_4350_20200912_150918.jpg]
+
+Compression algorithm: [-]
+
+Description: File does not exist!

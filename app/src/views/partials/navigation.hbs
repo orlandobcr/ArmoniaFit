@@ -16,9 +16,15 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="active nav-item"><a href="/"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
+            <li class="nav-item"><a href="/"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Inicio</span></a>
 
             </li>
+
+            {{#compare user.es_entrenador 1}}
+            <li class="nav-item"><a href="/links/perfil_entrenador"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Perfil">Mi perfil</span></a>
+
+            </li>
+            {{/compare}}
 
             <li class=" navigation-header"><span>Aulas</span>
             </li>

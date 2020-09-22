@@ -166,7 +166,7 @@
 
 
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{user.nombre}} {{user.apellido}}</span><span class="user-status"></span></div><span><img class="round" class="imagen_perfil" src="{{#if user.imagen_perfil}}{{user.imagen_perfil}}{{else}}/img_profiles/profile_default.jpg{{/if}}" alt="avatar" height="40" width="40"></span>
+                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{#if user.nick}}{{user.nick}}{{else}}{{user.nombre}} {{user.apellido}}{{/if}}</span><span class="user-status"></span></div><span><img class="round" class="imagen_perfil" src="{{#if user.imagen_perfil}}{{user.imagen_perfil}}{{else}}/img_profiles/profile_default.jpg{{/if}}" alt="avatar" height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
 

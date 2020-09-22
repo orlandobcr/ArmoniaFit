@@ -28,6 +28,7 @@
                                         <div class="col-12">
                                             <div class="profile-header mb-2">
                                                 <div class="relative">
+                                                    {{#if ../puede_editar}}
                                                   <div style="margin-bottom: -15px;padding-right: 20px;" class="float-right">
                                                       <button type="button" id="editar_imagen_cover_btn"  class="btn btn-icon btn-icon rounded-circle btn-primary mr-1">
                                                           <i class="feather icon-edit-2"></i>
@@ -36,6 +37,7 @@
                                                           <i class="feather icon-settings"></i>
                                                       </button>
                                                   </div>
+                                                    {{/if}}
                                                     <div class="cover-container">
                                                         <img id="cover_image" class="img-fluid bg-cover rounded-0 w-100" src="{{#if imagen_cover}}{{imagen_cover}}{{else}}/img_profiles/cover_default.jpg{{/if}}" alt="{{nombre}}">
                                                         <input type="file" class="sr-only" id="input_cover" name="image" accept="image/*" hidden>
@@ -43,9 +45,11 @@
                                                     <div class="profile-img-container d-flex align-items-center justify-content-between">
                                                       <div class="float-left">
                                                         <img id="profile_image"  src="{{#if imagen_perfil}}{{imagen_perfil}}{{else}}/img_profiles/profile_default.jpg{{/if}}" class="rounded-circle img-border box-shadow-1 imagen_perfil" alt="Imágen de perfil">
+                                                        {{#if ../puede_editar}}
                                                         <button style="margin-left: -20px;" type="button" id="editar_imagen_perfil_btn"  class="btn btn-icon btn-icon rounded-circle btn-primary mr-1">
                                                             <i class="feather icon-edit-2"></i>
                                                         </button>
+                                                        {{/if}}
                                                       </div>
 
                                                         <input type="file" class="sr-only" id="input_profile" name="image" accept="image/*" hidden>
@@ -79,9 +83,9 @@
                                                 <div class="card">
                                                     <div class="card-header row">
                                                         <h4>{{nick}}</h4>
-
+                                                            {{#if ../puede_editar}}
                                                             <i id="editar_bio_btn" class="feather icon-edit-2 btn btn-icon btn-icon rounded-circle btn-primary"></i>
-
+                                                            {{/if}}
                                                     </div>
                                                     <div class="card-body">
                                                         <p>{{bio}}</p>
@@ -499,14 +503,15 @@
                                                     <div class="card-body">
                                                       <input type="file" class="d-none" id="input_gallery" name="image" accept="image/*" hidden>
                                                         <div id="galeria" class="row">
-
+                                                            {{#if ../puede_editar}}
                                                           <div class="col-md-4 col-6 user-latest-img">
                                                               <button id="agregar_foto_galeria_btn"  type="button" class="btn btn-primary btn-icon ml-auto user-latest-img"><i class="feather icon-plus"></i></button>
                                                           </div>
+                                                            {{/if}}
 
                                                             {{#each ../fotos}}
                                                             <div class="col-md-4 col-6 user-latest-img">
-                                                                <img src="{{foto}}" data_id="{{id_foto}}" class="img-fluid mb-1 rounded-sm foto_gal" alt="avtar img holder">
+                                                                <img src="{{thumbnail}}" data_id="{{id_foto}}" path="{{foto}}" class="img-fluid mb-1 rounded-sm foto_gal" alt="avtar img holder">
                                                             </div>
                                                             {{else}}
 
@@ -774,10 +779,11 @@
     <div style="display: none; position: fixed;  left: 0; top: 0; width: 100%; height: 100%;  overflow: auto;  background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.9); " id="show-image-modal" class="modal text-center">
       <i data-dismiss="modal" class="fa fa-close close font-large-2 text-white"></i>
     <img id="image-on-modal" style="margin: auto; margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);max-width: 100vh; max-height: 100vh" src="" class="col">
-
+    {{#if puede_editar}}
     <button style=" margin: 0;position: absolute;left: 50%;-ms-transform: translateX(-50%);transform: translateX(-50%); bottom:0px" type="button" id="eliminar_foto" class="btn btn btn-primary">
       <span aria-hidden="true">eliminar</span>
     </button>
+    {{/if}}
     <i id="prev_foto" style="position:absolute;top:50%;left:0px" class=" rgba-white-strong fa fa-chevron-left font-large-2 text-brigth"></i>
     <i id="next_foto" style="position:absolute;top:50%;right: 0px"  class=" rgba-white-strong fa fa-chevron-right font-large-2 text-brigth"></i>
   <div id="caption"></div>
@@ -902,8 +908,8 @@ $(document).ready(function(e) {
 
 $("#eliminar_foto").click(function () {
 
+  var data2send= {data_id:imageClicked.attr('data_id'),nombre:imageClicked.attr('src')};
 
-  var data2send= {"name":"data_id","value":imageClicked.attr('data_id')}
   $.ajax('/links/eliminar_imagen_galeria', {
     method: 'POST',
     data: data2send,
@@ -920,12 +926,6 @@ $("#eliminar_foto").click(function () {
 
 
           $('*[data_id=\"'+imageClicked.attr('data_id')+'\"]').closest('div').remove();
-
-
-          //$(this).closest('.li').remove();
-
-
-          //console.log(response.q_res.insertId);
 
           setTimeout(function(){
             //$("#galeria").append("<div class=\"col-md-4 col-6 user-latest-img\"><img src=\""+response.path+"\" data_id=\""+response.q_res.insertId+"\" class=\"img-fluid mb-1 rounded-sm foto_gal\" alt=\"avtar img holder\"></div>");
@@ -955,7 +955,7 @@ $("#eliminar_foto").click(function () {
 
 $(".foto_gal").click(function () {
   imageClicked = $(this);
-    $("#image-on-modal").attr("src", imageClicked.attr('src'));
+    $("#image-on-modal").attr("src", imageClicked.attr('path'));
     $("#image-on-modal").attr("data_id", imageClicked.attr('data_id'));
     //$("#image-on-modal").attr("src", imageClicked.attr('src'));
     $modal_foto.modal('show');
@@ -971,7 +971,7 @@ $("#prev_foto").click(function () {
 imageClicked.closest('.user-latest-img').prev().find('img').trigger('click');
 });
 
-  $("#crop_cover").click(function () {
+$("#crop_cover").click(function () {
 
     if (cropper) {
       canvas = cropper.getCroppedCanvas({
@@ -1026,10 +1026,10 @@ imageClicked.closest('.user-latest-img').prev().find('img').trigger('click');
 
 
     }
-  });
+});
 
 
-  $("#crop_profile").click(function () {
+$("#crop_profile").click(function () {
 
     if (cropper) {
       canvas = cropper.getCroppedCanvas({
@@ -1083,10 +1083,10 @@ imageClicked.closest('.user-latest-img').prev().find('img').trigger('click');
 
 
     }
-  });
+});
 
 
-  $("#crop_gallery").click(function () {
+$("#crop_gallery").click(function () {
 
     if (cropper) {
       canvas = cropper.getCroppedCanvas({
@@ -1097,7 +1097,7 @@ imageClicked.closest('.user-latest-img').prev().find('img').trigger('click');
       //initialAvatarURL = gallery_image.src;
       //gallery_image.src = canvas.toDataURL();
 
-      canvas.toBlob(function (blob) {
+        canvas.toBlob(function (blob) {
         var formData = new FormData();
 
         formData.append('galleryimage', blob, 'gallery.jpg');
@@ -1117,11 +1117,11 @@ imageClicked.closest('.user-latest-img').prev().find('img').trigger('click');
                   buttonsStyling: false,
                 });
 
-                console.log(response.q_res.insertId);
+                //console.log(response.q_res.insertId);
 
                 setTimeout(function(){
 
-                  $("#galeria").append("<div class=\"col-md-4 col-6 user-latest-img\"><img src=\""+response.path+"\" data_id=\""+response.q_res.insertId+"\" class=\"img-fluid mb-1 rounded-sm foto_gal\" alt=\"avtar img holder\"></div>");
+                  $("#galeria").append("<div class=\"col-md-4 col-6 user-latest-img\"><img src=\""+response.path+"\" path=\""+response.thumbnail+"\" data_id=\""+response.q_res.insertId+"\" class=\"img-fluid mb-1 rounded-sm foto_gal\" alt=\"avtar img holder\"></div>");
 
                   $(".foto_gal").click(function () {
                     imageClicked = $(this);

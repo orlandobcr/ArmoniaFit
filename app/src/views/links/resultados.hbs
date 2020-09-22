@@ -9,15 +9,15 @@
 
 
 <div style="{{#if user.id}}{{else}}padding-top:90px; padding-bottom: 100px{{/if}} position:relative" class="row mb-5">
-  <div class="col-5 {{#if user.id}}{{else}}pl-3 pt-1{{/if}}">
-    <div class="text-bold-600 font-medium-2 col-12 mb-1 text-center">
+  <div class="col-12 {{#if user.id}}{{else}}pl-3 pt-1{{/if}}">
+    <div class="text-bold-600 font-medium-2 col-12 mb-1 ">
       OPCIONES DE BÚSQUEDA:
     </div>
 
     <div class=" col-12 ">
-      <form style="" class="row">
+      <form method="GET" style="" class="row">
 
-        <fieldset class="form-group position-relative has-icon-left mb-0 col-5 pl-0 pr-1">
+        <fieldset class="form-group position-relative has-icon-left mb-0 col-6 pl-0 pr-1">
           <select class="form-control js-example-programmatic" name="categoria" id="categoria" required>
             <option disabled value="" selected="selected">Categoría... </option>
             {{#each categorias}}
@@ -26,71 +26,45 @@
           </select>
         </fieldset>
 
-
-
-        <div class=" row full-width col-7">
-
-          <div class="vs-checkbox-con vs-checkbox-primary col">
-            <input id="virtual" name="virtual" type="checkbox" value="0">
-            <span class="vs-checkbox vs-checkbox-lg">
-              <span class="vs-checkbox--check">
-                <i class="vs-icon feather icon-check"></i>
-              </span>
-            </span>
-            <span class="">Virtual</span>
-          </div>
-          <div class="vs-checkbox-con vs-checkbox-primary col ">
-            <input id="presencial" name="presencial" type="checkbox" value="0">
-            <span class="vs-checkbox vs-checkbox-lg">
-              <span class="vs-checkbox--check">
-                <i class="vs-icon feather icon-check"></i>
-              </span>
-            </span>
-            <span class="">Presencial</span>
-          </div>
-        </div>
-
-
-
-        <fieldset class="form-group position-relative has-icon-left mb-0 col-9 pl-0 pr-1 mt-1">
-          <input id="addresspicker_map" type="text" class="form-control col" name="dir" placeholder="Dirección">
-          <div class="form-control-position">
-            <i class="fa fa-map-marker"></i>
-          </div>
-          <div style="display:none" class="col-sm-6 data-field-col">
-            <label style="color:white !important" for="data-name">LAT:</label>
-            <input name="lat" class="col form-control" id="lat" required>
-          </div>
-
-          <div style="display:none" class="col-sm-6 data-field-col">
-            <label style="color:white !important" for="data-name">LON:</label>
-            <input name="lng" class="col form-control" id="lng" required>
-          </div>
+        <fieldset class="form-group position-relative has-icon-left mb-0 col-3 pl-0 pr-1">
+          <select class="form-control js-example-programmatic" name="modalidad" id="modalidad" required>
+            <option disabled value="" selected="selected">¿Presencial o virtual?</option>
+            <option value="1">Presencial</option>
+            <option value="2">Virtual</option>
+            <option value="0">Ambos</option>
+          </select>
         </fieldset>
 
-        <fieldset class="form-group position-relative has-icon-left mb-0 col-3 pl-0 pr-1 mt-1">
-            <button style="" id="subir_runef" type="submit" class="btn btn-primary full-width" data-dismiss="modal">Buscar</button>
+
+
+
+        <fieldset class="form-group position-relative has-icon-left mb-0 col-3 pl-0 pr-1">
+            <button style=""  type="submit" class="btn btn-primary full-width" data-dismiss="modal">Buscar</button>
         </fieldset>
 
 
       </form>
     </div>
 
-    <div class=" col-12 mt-3 row">
-    <div class=" col">
+    <div class="pt-3 text-bold-600 font-medium-2 col-12 mb-0 text-center ">
+      RESTULTADOS:
+    </div>
+    <div class=" col-12 mt-2 row">
+      {{#each usuarios}}
+    <div class=" col mt-1">
 
       <div class="col-xl-12 col-md-12 col-sm-12 profile-card-1 ">
         <div class="row bg-white p-2">
           <div class="col text-center">
             <div class="m-0 p-0">
-              <h4>Ana gomes</h4>
-              <p class="">Backend Dev</p>
+              <h4>{{nick}}</h4>
+              <p class="">{{bio}}</p>
             </div>
             <div class="avatar avatar-xl ">
-              <img class="img-fluid" src="../../../app-assets/images/portrait/small/avatar-s-12.jpg" alt="img placeholder">
+              <img class="img-fluid" src="{{imagen_perfil}}" alt="img placeholder">
             </div>
             <div class="row">
-              <button class="btn gradient-light-primary waves-effect waves-light col">Ver</button>
+              <button onclick="window.location.href = '/links/ver_perfil/{{id}}'" class="btn gradient-light-primary waves-effect waves-light col">Ver</button>
             </div>
             <hr class="my-1 ">
             <div class="d-flex justify-content-between">
@@ -109,39 +83,8 @@
 
 
     </div>
+    {{/each}}
 
-    <div class=" col">
-
-      <div class="col-xl-12 col-md-12 col-sm-12 profile-card-1 ">
-        <div class="row bg-white p-2">
-          <div class="col text-center">
-            <div class="m-0 p-0">
-              <h4>Ana gomes</h4>
-              <p class="">Backend Dev</p>
-            </div>
-            <div class="avatar avatar-xl ">
-              <img class="img-fluid" src="../../../app-assets/images/portrait/small/avatar-s-12.jpg" alt="img placeholder">
-            </div>
-            <div class="row">
-              <button class="btn gradient-light-primary waves-effect waves-light col">Ver</button>
-            </div>
-            <hr class="my-1 ">
-            <div class="d-flex justify-content-between">
-              <div class="float-left">
-                <i class="feather icon-star text-warning mr-50"></i> 4.9
-              </div>
-              <div class="float-right">
-                <i class="feather icon-home text-primary mr-50"></i>
-                <i class="feather icon-video text-primary mr-50"></i>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-    </div>
 
     </div>
 
@@ -151,12 +94,14 @@
 
 
 
-
+<!--
   <div style="height:100%; position: fixed;right: 0px;{{#if user.id}}width: calc(60% - 60px);height: calc(100% - 100px);{{else}}{{/if}}     " class="col-7">
-    <!--<p style="" class="text-bold-600 font-medium-2 col-12 mb-1 text-center">MAPA</p>  -->
+    <p style="" class="text-bold-600 font-medium-2 col-12 mb-1 text-center">MAPA</p>
 
     <div style="position:relative;height:calc(100% - 10px);top:0px;" id="map-canvas"></div>
   </div>
+
+  -->
 
 </div>
 
@@ -173,7 +118,7 @@
 <script src="/app-assets/js/scripts/forms/select/form-select2.js"></script>
 
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCSHkV_wdSyW2CuVmJMwgLHjXIq7xRcFNg"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDj4sAkJx04uba9l2UZYxzq17PflYhqXOQ"></script>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -183,440 +128,50 @@
 
 
 <script>
-  var gmarker;
-  var map;
-  var categoria;
+let searchParams = new URLSearchParams(window.location.search)
 
-  var modalidad;
+if(searchParams.has('categoria')){
+  categoria = searchParams.get('categoria');
+    $("#categoria").val(categoria).trigger("change");
+}
 
-  var cobertura_lat="";
+if(searchParams.has('modalidad')){
+  modalidad = searchParams.get('modalidad');
 
-  let searchParams = new URLSearchParams(window.location.search)
+  $("#modalidad").val(modalidad).trigger("change");
 
-  if(searchParams.has('categoria')){
-    categoria = searchParams.get('categoria');
-      $("#categoria").val(categoria).trigger("change");
-  }
-
-  if(searchParams.has('modalidad')){
-    modalidad = searchParams.get('modalidad');
-  }
-
-  var dir = "";
-
-  var lat = "";
-
-  var lng = "";
-
-  var punto_inicial = {
-          'Cucuta': {
-            center: {lat: 7.9214724, lng: -72.498776},
-            zoom: 12
-          },
-          'Bucaramanga': {
-            center: {lat: 7.0667326, lng: -73.1283975},
-            zoom: 12
-          },
-          'Bogota':{
-            center: {lat: 4.658891626523887, lng: -74.06043887636717},
-            zoom: 12
-          }
-        }
-
-
-
-
-
-
-$(function() {
-
-if(cobertura_lat==""){
-          initial_position = new google.maps.LatLng(punto_inicial['Bogota'].center.lat, punto_inicial['Bogota'].center.lng);
-}else{
-          initial_position = new google.maps.LatLng(cobertura_lat, cobertura_lng);
 }
 
 
-  var addresspicker = $( "#addresspicker" ).addresspicker({
-    componentsFilter: 'country:CO'
-  });
+$("#virtual").change(function() {
+    if(this.checked) {
+      $("#virtual").prop('checked', true);
+      $("#virtual").val(1);
+    }else{
 
-
-  var addresspickerMap = $( "#addresspicker_map" ).addresspicker({
-    regionBias: "co",
-    language: "es",
-    updateCallback: showCallback,
-    mapOptions: {
-      zoom: punto_inicial['Bogota'].zoom,
-      center: initial_position,
-      mapTypeControl: false,
-      panControl: false,
-      zoomControl: true,
-      streetViewControl: false,
-      disableDefaultUI: true,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    },
-    elements: {
-      map:      "#map-canvas",
-      lat:      "#lat",
-      lng:      "#lng",
-      street_number: '#street_number',
-      route: '#route',
-      locality: '#locality',
-      sublocality: '#sublocality',
-      administrative_area_level_3: '#administrative_area_level_3',
-      administrative_area_level_2: '#administrative_area_level_2',
-      administrative_area_level_1: '#administrative_area_level_1',
-      country:  '#country',
-      postal_code: '#postal_code',
-      type:    '#type'
+      $("#virtual").prop('checked', false);
+      $("#virtual").val(0);
     }
-  });
-
-  gmarker = addresspickerMap.addresspicker( "marker");
-  gmarker.setVisible(true);
-  addresspickerMap.addresspicker( "updatePosition");
-
-
-  function showCallback(geocodeResult, parsedGeocodeResult){
-  //  $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
-
-  lat_guardar=parsedGeocodeResult.lat;
-  lng_guardar=parsedGeocodeResult.lng;
-
-   console.log((JSON.stringify(parsedGeocodeResult, null, 4)));
-  }
-
-
-  map = $("#addresspicker_map").addresspicker("map");
-
-  $("#addresspicker_map").addresspicker("option", "reverseGeocode", 'true');
-
-  google.maps.event.addListener(map, 'idle', function(){
-    $('#zoom').val(map.getZoom());
-  });
-
 
 });
 
 
-(function( $, undefined ) {
+$("#presencial").change(function() {
+    if(this.checked) {
+      $("#presencial").prop('checked', true);
+      $("#presencial").val(1);
+      $('#menu-cobertura').show();
+    }else{
 
-  $.widget( "ui.addresspicker", {
-    options: {
-        appendAddressString: "{{query.ciudad}}",
-        draggableMarker: true,
-        regionBias: null,
-        bounds: '',
-        componentsFilter:'',
-        updateCallback: null,
-        reverseGeocode: false,
-        autocomplete: 'default',
-        language: '',
-        mapOptions: {
-            zoom: 10,
-            center: new google.maps.LatLng(46, 2),
-            scrollwheel: false,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        },
-        elements: {
-            map: false,
-            lat: false,
-            lng: false,
-            street_number: false,
-            route: false,
-            locality: false,
-            sublocality: false,
-            administrative_area_level_3: false,
-            administrative_area_level_2: false,
-            administrative_area_level_1: false,
-            country: false,
-            postal_code: false,
-            type: false
-
-        },
-        autocomplete: '' // could be autocomplete: "bootstrap" to use bootstrap typeahead autocomplete instead of jQueryUI
-    },
-
-    marker: function() {
-      return this.gmarker;
-    },
-
-    map: function() {
-      return this.gmap;
-    },
-
-    updatePosition: function() {
-      this._updatePosition(this.gmarker.getPosition());
-    },
-
-    reloadPosition: function() {
-      this.gmarker.setVisible(true);
-      this.gmarker.setPosition(new google.maps.LatLng(this.lat.val, this.lng.val));
-      this.gmap.setCenter(this.gmarker.getPosition());
-
-
-    },
-
-    resize: function() {
-      google.maps.event.trigger(this.gmap, 'resize')
-    },
-
-    selected: function() {
-      return this.selectedResult;
-    },
-    _mapped: {},
-    _create: function() {
-      var self = this;
-      this.geocoder = {
-        geocode: function(options, callback)
-        {
-          jQuery.ajax({
-            url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCSHkV_wdSyW2CuVmJMwgLHjXIq7xRcFNg&" + jQuery.param(options) + '&sensor=false',
-            type: "GET",
-            success: function(data) {
-              callback(data.results, data.status);
-            }
-          });
-        }
-        //new google.maps.Geocoder();
-      };
-
-      if (this.options.autocomplete === 'bootstrap') {
-          this.element.typeahead({
-            source: function(query, process) {
-                self._mapped = {};
-                var response = function(results) {
-                    var labels = [];
-                    for (var i = 0; i < results.length; i++) {
-                        self._mapped[results[i].label] = results[i];
-                        labels.push(results[i].label);
-                    }
-                    process(labels);
-                };
-                var request = {term: query};
-                self._geocode(request, response);
-            },
-            updater: function(item) {
-                var ui = {item: self._mapped[item]}
-                self._focusAddress(null, ui);
-                self._selectAddress(null, ui);
-                return item;
-            }
-          });
-      } else {
-        this.element.autocomplete($.extend({
-            source: $.proxy(this._geocode, this),
-            focus:  $.proxy(this._focusAddress, this),
-            select: $.proxy(this._selectAddress, this)
-        }), this.options.autocomplete);
-      }
-
-      this.lat      = $(this.options.elements.lat);
-      this.lng      = $(this.options.elements.lng);
-      this.street_number = $(this.options.elements.street_number);
-      this.route = $(this.options.elements.route);
-      this.locality = $(this.options.elements.locality);
-      this.sublocality = $(this.options.elements.sublocality);
-      this.administrative_area_level_3 = $(this.options.elements.administrative_area_level_3);
-      this.administrative_area_level_2 = $(this.options.elements.administrative_area_level_2);
-      this.administrative_area_level_1 = $(this.options.elements.administrative_area_level_1);
-      this.country  = $(this.options.elements.country);
-      this.postal_code = $(this.options.elements.postal_code);
-      this.type     = $(this.options.elements.type);
-      if (this.options.elements.map) {
-        this.mapElement = $(this.options.elements.map);
-        this._initMap();
-      }
-    },
-
-    _initMap: function() {
-
-      if (this.lat && this.lat.val()) {
-        this.options.mapOptions.center = new google.maps.LatLng(this.lat.val(), this.lng.val());
-
-      }
-
-      this.gmap = new google.maps.Map(this.mapElement[0], this.options.mapOptions);
-      this.gmarker = new google.maps.Marker({
-        position: this.options.mapOptions.center,
-        map:this.gmap,
-        draggable: this.options.draggableMarker});
-      google.maps.event.addListener(this.gmarker, 'dragend', $.proxy(this._markerMoved, this));
-      this.gmarker.setVisible(false);
-
-
-
-
-
-    },
-
-    _updatePosition: function(location) {
-      if (this.lat) {
-        this.lat.val(location.lat());
-      }
-      if (this.lng) {
-        this.lng.val(location.lng());
-      }
-    },
-
-    _addressParts: {street_number: null, route: null, locality: null, sublocality: null,
-                    administrative_area_level_3: null, administrative_area_level_2: null,
-                    administrative_area_level_1: null, country: null, postal_code:null, type: null},
-
-    _updateAddressParts: function(geocodeResult){
-
-      parsedResult = this._parseGeocodeResult(geocodeResult);
-
-      for (addressPart in this._addressParts){
-        if (this[addressPart]){
-          if (parsedResult[addressPart] !== false){
-            this[addressPart].val(parsedResult[addressPart]);
-          } else {
-            this[addressPart].val('');
-          }
-        }
-      }
-    },
-
-    _updateAddressPartsViaReverseGeocode: function(location){
-      this.geocoder.geocode({'latlng': location.lat() + "," + location.lng()}, $.proxy(function(results, status){
-        if (status == google.maps.GeocoderStatus.OK){
-
-          this._updateAddressParts(results[0]);
-          this.element.val(results[0].formatted_address);
-          this.selectedResult = results[0];
-
-          if (this.options.updateCallback) {
-            this.options.updateCallback(this.selectedResult, this._parseGeocodeResult(this.selectedResult));
-          }
-        }
-      }, this));
-    },
-
-    _parseGeocodeResult: function(geocodeResult){
-
-      var parsed = this._parseLatAndLng(geocodeResult.geometry.location);
-
-      for (var addressPart in this._addressParts){
-        parsed[addressPart] = this._findInfo(geocodeResult, addressPart);
-      }
-
-      parsed.type = geocodeResult.types[0];
-
-      return parsed;
-    },
-
-    _parseLatAndLng: function(location){
-      var longitude, latitude;
-
-      if(typeof(location.lat) === 'function'){
-        latitude =  location.lat();
-        longitude = location.lng();
-      } else {
-        latitude = location.lat;
-        longitude = location.lng;
-      }
-
-      return { lat: latitude, lng: longitude };
-    },
-
-    _markerMoved: function() {
-      this._updatePosition(this.gmarker.getPosition());
-
-      if (this.options.reverseGeocode){
-        this._updateAddressPartsViaReverseGeocode(this.gmarker.getPosition());
-      }
-
-
-    },
-
-    // Autocomplete source method: fill its suggests with google geocoder results
-    _geocode: function(request, response) {
-        var address = request.term, self = this;
-        this.geocoder.geocode({
-          'language': this.options.language,
-          'address': address + this.options.appendAddressString,
-          'region': this.options.regionBias,
-          'bounds': this.options.bounds,
-          'components': this.options.componentsFilter
-        }, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK && results) {
-                for (var i = 0; i < results.length; i++) {
-                  result = results[i]
-                  g = result.geometry
-                  g.location = new google.maps.LatLng(g.location.lat, g.location.lng);
-                  g.viewport = new google.maps.LatLngBounds(
-                    new google.maps.LatLng(g.viewport.southwest.lat, g.viewport.southwest.lng),
-                    new google.maps.LatLng(g.viewport.northeast.lat, g.viewport.northeast.lng)
-                  )
-                  result.label =  results[i].formatted_address;
-                }
-            }
-            response(results);
-        })
-    },
-
-    _findInfo: function(result, type) {
-      for (var i = 0; i < result.address_components.length; i++) {
-        var component = result.address_components[i];
-        if (component.types.indexOf(type) !=-1) {
-          return component.long_name;
-        }
-      }
-      return false;
-    },
-
-    _focusAddress: function(event, ui) {
-      var address = ui.item;
-      if (!address) {
-        return;
-      }
-      if (this.gmarker) {
-        this.gmarker.setPosition(address.geometry.location);
-      //  console.log(address.geometry.location);
-        this.gmarker.setVisible(true);
-        //this.gmap.fitBounds(address.geometry.viewport);
-
-
-        map.panTo(address.geometry.location);
-        //console.log("enfocando");
-
-        //console.log(gmarker.getPosition());
-
-
-      }
-
-      this._updatePosition(address.geometry.location);
-
-      this._updateAddressParts(address);
-
-    },
-
-    _selectAddress: function(event, ui) {
-      this.selectedResult = ui.item;
-      if (this.options.updateCallback) {
-        this.options.updateCallback(this.selectedResult, this._parseGeocodeResult(this.selectedResult));
-      }
+      $("#presencial").prop('checked', false);
+      $("#presencial").val(0);
+      $('#menu-cobertura').hide();
     }
-  });
 
-  $.extend( $.ui.addresspicker, {
-    version: "@VERSION"
-  });
+});
 
-  // make IE think it doesn't suck
-  if(!Array.indexOf){
-    Array.prototype.indexOf = function(obj){
-      for(var i=0; i<this.length; i++){
-        if(this[i]==obj){
-          return i;
-        }
-      }
-      return -1;
-    }
-  }
 
-})( jQuery );
+
+
 
 </script>

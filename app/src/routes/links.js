@@ -19,8 +19,33 @@ const holidaysCO = require('colombia-holidays');
 const jwt = require('jsonwebtoken');
 
 const compress_images = require("compress-images");
+const { compress } = require('compress-images/promise');
 
 const imageThumbnail = require('image-thumbnail');
+
+
+
+
+const processImages = async (full_path, destination) => {
+       const result = await compress({
+           source: full_path,
+           destination: destination,
+           enginesSetup: {
+               jpg: { engine: "mozjpeg", command: ["-quality", "70"] },
+               png: { engine: "pngquant", command: ["--quality=20-50", "-o"] },
+               svg: { engine: "svgo", command: "--multipass" },
+               gif: { engine: "gifsicle", command: ["--colors", "64", "--use-col=web"] }
+           }
+       });
+
+       const { statistics, errors } = result;
+
+       if(errors.length != 0){
+         return false;
+       }else{
+       return {statistics, errors }
+     }
+   };
 
 
 
@@ -627,17 +652,33 @@ router.get('/index', isLoggedIn, async (req, res) => {
 router.get('/resultados', async (req, res) => {
   //console.log(categorias);
 
+  let categoria = Number(req.query.categoria) || "%";
 
-  let categoria = req.query.categoria || "%";
-  categoria = "%" + categoria + "%";
-
-  let modalidad = req.query.modalidad || "%";
-  modalidad = "%" + modalidad + "%";
+  let modalidad = req.query.modalidad || 0;   // si es 1 = presencial    2 =  virtual   0= ambos
+  var virtual=0;
+  var presencial=0;
 
 
+  if(modalidad==1){
+      presencial=1;
+      virtual="%";
+  }else if(modalidad==2){
+     presencial="%";
+     virtual=1;
+  }else{
+      presencial="%";
+      virtual="%";
+  }
+
+
+  //console.log(virtual);
   const categorias = await pool.query('SELECT * FROM categorias WHERE 1');
 
-  res.render('links/resultados',{categorias,query: req.query});
+  const usuarios = await pool.query('SELECT * FROM usuarios WHERE categorias LIKE \'%"?"%\' AND admin = 0 AND super_admin = 0 AND presencial LIKE ? AND `virtual` LIKE ?',[categoria, presencial, virtual]);
+
+
+
+  res.render('links/resultados',{categorias,query: req.query,usuarios});
 });
 
 
@@ -1196,6 +1237,60 @@ router.get('/editar_perfil_cliente', isLoggedIn, async (req, res) => {
 });
 
 
+router.get('/ver_perfil/:id', isLoggedIn, async (req, res) => {
+
+  const {id} = req.params;
+
+  const usuario = await pool.query('SELECT * FROM usuarios WHERE id = ?', [id]);
+  const categorias = await pool.query('SELECT * FROM categorias WHERE 1');
+  var user_cats_id=JSON.parse(usuario[0].categorias);
+  var user_cats=[];
+
+  user_cats_id.forEach(function(item) {
+      categorias.forEach(function(item2) {
+            if(item==item2.id){
+              user_cats.push(item2.nombre)
+            }
+      });
+  });
+
+var idiomas=JSON.parse(usuario[0].idiomas);
+
+const pub_intro= await pool.query('SELECT * FROM publicaciones as t1, usuarios as t2 WHERE t1.id_usuario = t2.id AND t1.intro = 1 AND t1.borrador =0 order by t1.id_publicacion desc limit 1 ');
+
+pub_intro.forEach(function(item,i) {
+
+  if(item.titulo.length >= 55){
+      pub_intro[i].titulo= item.titulo.trim().substring(0, 55)+"..";
+  }
+
+  if(item.text_content.length >= 200){
+    pub_intro[i].text_content = item.text_content.trim().substring(0, 198)+"..";
+  }
+
+});
+
+
+  const pubs_usuario = await pool.query('SELECT * FROM publicaciones as t1, usuarios as t2 WHERE t1.id_usuario = t2.id  AND t1.id_usuario= ? AND t1.borrador =0  order by t1.id_publicacion desc limit 4 ', id);
+
+  pubs_usuario.forEach(function(item,i) {
+
+    if(item.titulo.length >= 55){
+        pubs_usuario [i].titulo= item.titulo.trim().substring(0, 55)+"..";
+    }
+
+    if(item.text_content.length >= 200){
+      pubs_usuario [i].text_content = item.text_content.trim().substring(0, 198)+"..";
+    }
+
+  });
+
+  const fotos = await pool.query('SELECT * FROM galeria_fotos WHERE id_usuario = ? ', [id]);
+
+  res.render('links/perfil_entrenador', {usuario,fotos,pubs_usuario,user_cats,idiomas});
+
+});
+
 
 router.get('/perfil_entrenador', isLoggedIn, async (req, res) => {
 
@@ -1214,7 +1309,7 @@ router.get('/perfil_entrenador', isLoggedIn, async (req, res) => {
 
 var idiomas=JSON.parse(usuario[0].idiomas);
 
-  const pub_intro= await pool.query('SELECT * FROM publicaciones as t1, usuarios as t2 WHERE t1.id_usuario = t2.id AND t1.intro = 1 limit 1');
+  const pub_intro= await pool.query('SELECT * FROM publicaciones as t1, usuarios as t2 WHERE t1.id_usuario = t2.id AND t1.intro = 1 AND t1.borrador =0 limit 1');
 
   pub_intro.forEach(function(item,i) {
 
@@ -1229,23 +1324,42 @@ var idiomas=JSON.parse(usuario[0].idiomas);
   });
 
 
-  const pubs_usuario = await pool.query('SELECT * FROM publicaciones as t1, usuarios as t2 WHERE t1.id_usuario = t2.id AND t1.destacada = 1 AND t1.id_usuario= ? limit 1', req.user.id);
+  const pubs_usuario = await pool.query('SELECT * FROM publicaciones as t1, usuarios as t2 WHERE t1.id_usuario = t2.id  AND t1.id_usuario= ? AND t1.borrador =0  order by t1.id_publicacion desc limit 4 ', req.user.id);
+
+  pubs_usuario.forEach(function(item,i) {
+
+    if(item.titulo.length >= 55){
+        pubs_usuario [i].titulo= item.titulo.trim().substring(0, 55)+"..";
+    }
+
+    if(item.text_content.length >= 200){
+      pubs_usuario [i].text_content = item.text_content.trim().substring(0, 198)+"..";
+    }
+
+  });
+
 
   const fotos = await pool.query('SELECT * FROM galeria_fotos WHERE id_usuario = ? ', [req.user.id]);
 
-  //console.log(usuario[0].omni_token);
-  //const categorias_json = JSON.stringify(categorias);
-  res.render('links/perfil_entrenador', {usuario,fotos,pub_intro,pubs_usuario,user_cats,idiomas});
+  console.log(pubs_usuario);
+
+  res.render('links/perfil_entrenador', {usuario,fotos,pub_intro,pubs_usuario,user_cats,idiomas, puede_editar:1});
 
 });
 
 router.post('/eliminar_imagen_galeria', isLoggedIn, async (req, res) => {
 
-//console.log(req.body.value);
+var q_res=await pool.query('DELETE FROM galeria_fotos where id_foto= ?',  [req.body.data_id]);
 
-var q_res=await pool.query('DELETE FROM galeria_fotos where id_foto= ?',  [req.body.value]);
-
-//console.log(q_res);
+var nombre = req.body.nombre;
+  nombre = nombre.substring(nombre.lastIndexOf("/")+1,nombre.length );
+try {
+  fs.unlinkSync("./src/public/galeria_fotos/originales/"+nombre)
+  fs.unlinkSync("./src/public/galeria_fotos/"+nombre)
+  fs.unlinkSync("./src/public/galeria_fotos/thumbnails/"+nombre)
+} catch(err) {
+  console.error(err)
+}
 
 
 if (q_res.affectedRows == 1) {
@@ -1268,90 +1382,114 @@ if (q_res.affectedRows == 1) {
 
 router.post('/agregar_imagen_galeria', isLoggedIn, async (req, res) => {
 
+
   if (req.files) {
-    //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
-    //console.log(req.files);
+
     let archivo = req.files.galleryimage;
-
     let ext = fileExtension(archivo.name);
-
     let fecha_archivo = moment(Date.now()).format('YYYYMMDD_HHMMSS');
-
     let formato = "gallery_"+req.user.id +"_"+fecha_archivo+ "." + ext;
-
     var full_path = "./src/public/galeria_fotos/originales/" + formato;
+    var destination = "./src/public/galeria_fotos/";
 
-    var ok=0;
+    var paso1=false;
 
+    try {
+      await archivo.mv(full_path);
+      paso1=true;
 
-    //Use the mv() method to place the file in upload directory (i.e. "uploads")
-    archivo.mv('./src/public/galeria_fotos/originales/' + formato);
-
-    compress_images(full_path,"./src/public/galeria_fotos/",
-   { compress_force: false, statistic: true, autoupdate: true },
-   false,
-   { jpg: { engine: "mozjpeg", command: ["-quality", "70"] } },
-   { png: { engine: "pngquant", command: ["--quality=20-50", "-o"] } },
-   { svg: { engine: "svgo", command: "--multipass" } },
-   { gif: { engine: "gifsicle", command: ["--colors", "64", "--use-col=web"] },
-   },
-   function (err, completed) {
-     if (completed === true) {
-
-       ok=1;
-     }else{
-       res.send({
-         "status": 0,
-       });
-
-     }
-   });
+    } catch (err) {
+      console.error(err);
+      paso1=false;
+    }
 
 
- var relative_path="/galeria_fotos/"+ formato;
+    if(paso1){
 
- const newLink = {
-   id_usuario: req.user.id,
-   foto:relative_path
- }
- var q_res=await pool.query('INSERT INTO galeria_fotos set ?',  [newLink]);
+        var relative_path="/galeria_fotos/"+ formato;
 
- try {
-     const thumbnail = await imageThumbnail("./src/public/galeria_fotos/"+formato);
-     console.log(thumbnail);
- } catch (err) {
-     console.error(err);
- }
+        var thumbnail = "/galeria_fotos/thumbnails/"+formato;
+
+        const paso2 = await processImages(full_path,destination);
+
+        if(paso2){
 
 
-if (q_res.affectedRows == 1) {
-  res.send({
-    "status": 1,
-    "path":path,
-    "q_res":q_res,
+          var paso3=false;
 
-  });
+          let options = { width: 100, height: 100}
+
+          try {
+            const thumbnail_buff = await imageThumbnail("./src/public/galeria_fotos/"+formato,options);
+            //console.log(thumbnail);
+            var imageBuffer = thumbnail_buff;
+            var imageName = './src/public/galeria_fotos/thumbnails/'+formato;
+            fs.createWriteStream(imageName).write(imageBuffer);
+            paso3=true;
+          } catch (err) {
+            console.error(err);
+            paso3=false;
+          }
+
+          if(paso3){
+
+          const newLink = {
+            id_usuario: req.user.id,
+            foto:relative_path,
+            thumbnail
+          }
+         var q_res=await pool.query('INSERT INTO galeria_fotos set ?',  [newLink]);
+
+          if (q_res.affectedRows == 1) {
+            res.send({
+              "status": 1,
+              "path":relative_path,
+              "thumbnail":thumbnail,
+              "q_res":q_res,
+            });
+
+
+          }else{
+            res.send({
+              "status": 0,
+              "q_res":q_res
+            });
+          }
+
+        }else{
+
+          res.send({
+            "status": 0
+          });
+
+        }
+
+        }else{
+
+          res.send({
+            "status": 0
+          });
+
+
+        }
+
+    }else{
+
+      res.send({
+        "status": 0
+      });
+
+
+    }
 
 
 }else{
-  res.send({
-    "status": 0,
-    "path":path,
-    "q_res":q_res
-  });
-}
-
-
-}else{
-
   res.send({
     "status": 0
   });
+
+
 }
-
-
-
-
 
 });
 

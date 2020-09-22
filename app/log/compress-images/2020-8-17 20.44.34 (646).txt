@@ -1,0 +1,7 @@
+File from: [./src/public/img_profiles/originales/profile_4335.jpg]
+
+File to: [./src/public/img_profiles/profile_4335.jpg]
+
+Compression algorithm: [-]
+
+Description: File does not exist!

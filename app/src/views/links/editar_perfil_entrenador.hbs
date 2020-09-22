@@ -907,7 +907,7 @@
 
 
 <script src="/app-assets/js/scripts/extensions/noui-slider.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCSHkV_wdSyW2CuVmJMwgLHjXIq7xRcFNg"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDj4sAkJx04uba9l2UZYxzq17PflYhqXOQ"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 
@@ -1999,7 +1999,7 @@ if(cobertura_lat==""){
         geocode: function(options, callback)
         {
           jQuery.ajax({
-            url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCSHkV_wdSyW2CuVmJMwgLHjXIq7xRcFNg&" + jQuery.param(options) + '&sensor=false',
+            url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDj4sAkJx04uba9l2UZYxzq17PflYhqXOQ&" + jQuery.param(options) + '&sensor=false',
             type: "GET",
             success: function(data) {
               callback(data.results, data.status);

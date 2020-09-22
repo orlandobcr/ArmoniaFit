@@ -1,7 +1,7 @@
 'use strict';
 
 require('dotenv').config();
-const { SESSION_SECRET} =  process.env;
+const { SESSION_SECRET } =  process.env;
 
 const express = require('express');
 const passport = require('passport');
